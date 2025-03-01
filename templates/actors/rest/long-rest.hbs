@@ -1,0 +1,14 @@
+<section class="flexcol">
+    <div class="note info">
+        {{ localize (ifThen isGroup "DUST.REST.Long.Hint.Group" "DUST.REST.Long.Hint.Normal") }}
+    </div>
+
+    {{#if fields.length}}
+    <fieldset>
+        <legend>{{ localize "DUST.REST.Configuration" }}</legend>
+        {{#each fields}}
+        {{ formField field name=name value=value input=input options=options rootId=../partId }}
+        {{/each}}
+    </fieldset>
+    {{/if}}
+</section>
