@@ -22,6 +22,21 @@
         "Actor": {
             "character": {
                 "attributes": {
+                    "stress": {
+            "type": "number",
+            "label": "Stress",
+            "default": 0
+          },
+          "corruption": {
+            "type": "number",
+            "label": "Corruption",
+            "default": 0
+          },
+          "trauma": {
+            "type": "number",
+            "label": "Trauma",
+            "default": 0
+          }
                     "relentless":{
                         "clash":{
                             "type": "number",
