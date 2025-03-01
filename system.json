@@ -21,6 +21,71 @@
         },
         "Actor": {
             "character": {
+                "attributes": {
+                    "relentless":{
+                        "clash":{
+                            "type": "number",
+                            "label": "Clash",
+                            "default": 0
+                        },
+                        "push":{
+                            "type": "number",
+                            "label": "Push",
+                            "default": 0
+                        },
+                        "menace":{
+                            "type": "number",
+                            "label": "Menace",
+                            "default": 0
+                        },
+                    "elusive":{
+                        "maneuver":{
+                            "type": "number",
+                            "label": "Maneuver",
+                            "default": 0
+                        },
+                        "control":{
+                            "type": "number",
+                            "label": "Control",
+                            "default": 0
+                        },
+                        "stealth":{
+                            "type": "number",
+                            "label": "Stealth",
+                            "default": 0
+                        },
+                    "charming":{
+                        "sense":{
+                            "type": "number",
+                            "label": "Sense",
+                            "default": 0
+                        },
+                        "influence":{
+                            "type": "number",
+                            "label": "Influence",
+                            "default": 0
+                        },
+                        "deceive":{
+                            "type": "number",
+                            "label": "Deceive",
+                            "default": 0
+                        },
+                    "discreet":{
+                        "notice":{
+                            "type": "number",
+                            "label": "Notice",
+                            "default": 0
+                        },
+                        "focus":{
+                            "type": "number",
+                            "label": "Focus",
+                            "default": 0
+                        },
+                        "invoke":{
+                            "type": "number",
+                            "label": "Invoke",
+                            "default": 0
+                        },
                 "htmlFields": [
                     "details.biography.value",
                     "details.biography.public",
