@@ -394,5 +394,11 @@
         "needsMigrationVersion": "4.0.1",
         "compatibleMigrationVersion": "0.8",
         "hotReload": false
+    },    
+            "download": {
+            "source": "https://github.com/WoodyAlanXien/dust-system",
+            "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/system.json",
+            "download": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/dust-system.zip"
+        }
     }
 }
