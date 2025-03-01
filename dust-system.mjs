@@ -169,6 +169,28 @@ function simplifyRollFormula(formula, { preserveFlavor=false, deterministic=fals
     roll.terms = terms;
   }
 
+  function rollForAttributeGroup(actor, groupName, attributeName) {
+    const attributeValue = actor.data.data.attributes[groupName][attributeName] || 0;
+  
+    // Determine the dice pool
+    const dicePool = attributeValue === 0 ? 2 : attributeValue;
+    const rollFormula = attributeValue === 0 ? "2d8kl1!" : `${dicePool}d8kh1!`;
+  
+    // Perform the roll
+    const roll = new Roll(rollFormula).roll({ async: false });
+  
+    // Log and return the result
+    console.log(`Rolling ${attributeName} (${groupName}): ${roll.result}`);
+    return roll.result;
+
+    // Output or return results
+    console.log(`Rolling for attribute ${attributeValue} with explosion: ${roll.result}`);
+    return roll.result;
+  }
+  
+customRoll(clashValue);
+
+
   // Perform arithmetic simplification on the existing roll terms.
   roll.terms = _simplifyOperatorTerms(roll.terms);
 
@@ -4149,7 +4171,7 @@ class AbilityTemplate extends (foundry.canvas?.placeables?.MeasuredTemplate ?? M
       y: 0,
       fillColor: game.user.color,
       flags: { dust-system: {
-        dimensions: {
+        dimensions:{
           size: target.size,
           width: target.width,
           height: target.height,
