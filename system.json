@@ -383,7 +383,7 @@
         "distance": 5,
         "units": "ft"
     },
-    "primaryTokenAttribute": "attributes.hp",
+    "primaryTokenAttribute": "attributes.stress",
     "background": "systems/dust-system/ui/official/dust-system-background.webp",
     "flags": {
         "dust-system": {
