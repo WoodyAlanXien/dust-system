@@ -1,0 +1,14 @@
+/* sheet-styles.css */
+
+:root {
+    --color-text-dark-primary: #191813;
+    --color-text-dark-inactive: #7a7971;
+    /* ... other color variables ... */
+    --dust-system-font-modesto: "Modesto Condensed", "Palatino Linotype", serif;
+    --dust-system-font-roboto: Roboto, sans-serif;
+    --dust-system-font-roboto-condensed: "Roboto Condensed", sans-serif;
+    --dust-system-font-roboto-slab: "Roboto Slab", serif;
+    --dust-system-sheet-background: url("ui/parchment.jpg") repeat;
+    /* ... more variables ... */
+  }
+  

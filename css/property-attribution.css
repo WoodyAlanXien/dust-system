@@ -1,0 +1,98 @@
+/* property-attribution.css */
+
+/* Property Attribution */
+:is(#tooltip, .locked-tooltip).property-attribution {
+    min-width: 150px;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    text-align: left;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table {
+    margin: 0;
+    border: 0;
+    font-size: var(--font-size-14);
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table caption {
+    padding-block: 0.25em 0.5em;
+    font-size: var(--font-size-16);
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table tr {
+    background-color: inherit;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table td {
+    padding: 3px;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table tr.total > td {
+    font-weight: 600;
+    padding-top: 5px;
+    border-top: 1px solid var(--dust-system-color-tan);
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table td.attribution-value {
+    width: 20%;
+    padding-right: 5px;
+    text-align: right;
+    font-weight: 600;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table td::before {
+    opacity: 0.6;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table td.mode-1::before {
+    content: "×";
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table td.mode-2::before {
+    content: "+";
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table td.mode-2.negative::before {
+    content: "−";
+    margin-right: -1px;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table td.mode-3::before {
+    content: "↓";
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution table td.mode-4::before {
+    content: "↑";
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row {
+    display: flex;
+    flex-direction: row;
+    font-size: var(--font-size-14);
+    gap: 0.5rem;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row + .row {
+    margin-top: 4px;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row .value {
+    font-weight: bold;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row .label {
+    flex: 1;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row .units {
+    opacity: 0.6;
+    font-weight: normal;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row > i.fas {
+    height: 16px;
+    width: 16px;
+    text-align: center;
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row > i.fas.burrow::before {
+    content: "\f85e";
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row > i.fas.climb::before {
+    content: "\f6fc";
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row > i.fas.fly::before {
+    content: "\f56b";
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row > i.fas.walk::before {
+    content: "\f554";
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row > i.fas.swim {
+    transform: scaleX(-1);
+  }
+  :is(#tooltip, .locked-tooltip).property-attribution .row > i.fas.swim::before {
+    content: "\f5c4";
+  }
+  

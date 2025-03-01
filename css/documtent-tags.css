@@ -1,0 +1,7 @@
+/* document-tags.css */
+
+document-tags:has(> .content-link) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  

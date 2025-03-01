@@ -1,0 +1,78 @@
+/* items-list.css */
+
+/* Items Lists */
+.dust-system .items-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    color: var(--dust-system-color-tan);
+  }
+  .dust-system .items-list .item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .dust-system .items-list .item-name {
+    flex: 2;
+    margin: 0;
+    overflow: hidden;
+    font-size: var(--font-size-13);
+    text-align: left;
+    align-items: center;
+  }
+  .dust-system .items-list .item-name h3,
+  .dust-system .items-list .item-name h4 {
+    margin: 0;
+    white-space: nowrap;
+    overflow-x: hidden;
+  }
+  .dust-system .items-list .item-controls {
+    flex: 0 0 60px;
+    justify-content: space-between;
+  }
+  .dust-system .items-list .item-controls a {
+    font-size: var(--font-size-12);
+    text-align: center;
+  }
+  .dust-system .items-list .item {
+    align-items: center;
+    padding: 0 2px;
+    border-bottom: 1px solid var(--dust-system-color-faint);
+  }
+  .dust-system .items-list .item:last-child {
+    border-bottom: none;
+  }
+  .dust-system .items-list .item .item-name {
+    color: var(--dust-system-color-dark);
+  }
+  .dust-system .items-list .item .item-name .item-image {
+    flex: 0 0 30px;
+    height: 30px;
+    background-size: cover;
+    background-position: 50% 0;
+    border: none;
+    margin-right: 5px;
+  }
+  .dust-system .items-list .items-header {
+    height: 28px;
+    margin: 2px 0;
+    padding: 0;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    border: var(--dust-system-border-groove);
+    font-weight: bold;
+  }
+  .dust-system .items-list .items-header > * {
+    font-size: var(--font-size-12);
+    text-align: center;
+  }
+  .dust-system .items-list .items-header h3 {
+    padding-left: 5px;
+    font-family: var(--dust-system-font-modesto);
+    font-size: var(--font-size-16);
+    font-weight: 700;
+    text-align: left;
+  }
+  

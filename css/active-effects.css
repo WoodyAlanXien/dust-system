@@ -1,0 +1,22 @@
+/* active-effects.css */
+
+/* Active Effects */
+.effects-element {
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+  }
+  .effects-element .effects-list {
+    flex-grow: 1;
+  }
+  .effects-element .effect-source,
+  .effects-element .effect-duration,
+  .effects-element .effect-controls {
+    text-align: center;
+    border-inline: 1px solid var(--dust-system-color-faint);
+    font-size: var(--font-size-12);
+  }
+  .effects-element .effect-controls {
+    border: none;
+  }
+  

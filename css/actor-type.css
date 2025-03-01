@@ -1,0 +1,26 @@
+.actor-type .trait-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .actor-type .trait-list li {
+    flex-basis: 50%;
+    flex-grow: 1;
+  }
+  .actor-type .trait-list li.form-group {
+    flex-basis: 100%;
+  }
+  .actor-type label.radio {
+    display: flex;
+    flex: auto;
+    font-size: var(--font-size-12);
+    line-height: 20px;
+    font-weight: normal;
+    align-items: baseline;
+  }
+  .actor-type label.radio > input[type="radio"] {
+    margin: 0 5px 0 0;
+  }
+  .actor-type li.custom-type input[type="radio"] {
+    display: none;
+  }
+  

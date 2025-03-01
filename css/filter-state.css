@@ -1,0 +1,31 @@
+/* filter-state.css */
+
+filter-state {
+    --filter-state-background-color: var(--checkbox-background-color);
+    --filter-state-focus-color: var(--color-warm-2);
+    /* ... other variables ... */
+    display: inline-block;
+    flex: 0 0 var(--filter-state-size);
+    width: var(--filter-state-size);
+    height: var(--filter-state-size);
+  }
+  filter-state:focus,
+  filter-state:focus-visible {
+    outline: none;
+  }
+  filter-state .indicator {
+    transition: all 250ms ease, outline-color 0.5s;
+    border-radius: 3px;
+    outline: 2px solid transparent;
+  }
+  filter-state .indicator::before {
+    content: "\f0c8";
+    width: var(--filter-state-size);
+    height: var(--filter-state-size);
+    color: var(--filter-state-background-color);
+    font-family: var(--font-awesome);
+    font-size: var(--filter-state-size);
+    line-height: var(--filter-state-size);
+  }
+  /* ... other styles ... */
+  

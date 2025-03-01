@@ -1,0 +1,30 @@
+/* item-list-controls.css */
+
+/* Common styles for search fields and filters */
+.dust-system2 item-list-controls search,
+.dust-system2 .filter-element search {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background: var(--dust-system-background-card);
+  box-shadow: 0 0 6px var(--dust-system-shadow-45);
+  border: var(--dust-system-border-gold);
+  padding-right: 0.25rem;
+  position: relative;
+}
+/* Styles for text input fields */
+.dust-system2 item-list-controls search > input[type="text"],
+.dust-system2 .filter-element search > input[type="text"] {
+  --input-placeholder-color: var(--color-text-dark-secondary);
+  color: var(--color-text-dark-primary);
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 0.75rem 0.5rem 0.75rem 2.25rem;
+  font-size: var(--font-size-13);
+  height: unset;
+  line-height: 1;
+  font-family: var(--dust-system-font-roboto);
+  outline: none;
+}
+/* ... other styles ... */
