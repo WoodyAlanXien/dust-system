@@ -1,0 +1,242 @@
+<header class="window-header flexrow">
+  <h4 class="window-title">{{name}}</h4>
+  <nav class="window-controls">
+    <a class="light-shadow-toggle" title="Toggle Light/Shadow" aria-label="Toggle Light/Shadow">
+      <i class="fas fa-sun toggle-icon" data-mode="light"></i> <!-- Default to light mode -->
+    </a>
+    <a class="configure-character" title="Configure Character" aria-label="Configure Character">
+      <i class="fas fa-cogs"></i>
+    </a>
+    {{window-controls}}
+  </nav>
+</header>
+
+<div class="dust-sheet character-sheet-option1"</div>
+<div class="sheet-container">
+  <header class="sheet-header">
+    <!-- Character Image and Details -->
+    <div class="character-image">
+      <img src="{{img}}" alt="Character Image" class="image-clickable" title="Click to Change Image" aria-label="Click to Change Character Image" />
+    </div>
+    <div class="character-details">
+      <h1 class="character-name">{{name}}</h1>
+      <p><strong>Archetype:</strong> {{system.archetype.name || "Unassigned"}}</p>
+      <p><strong>Quirk:</strong> {{system.quirk.name || "Unassigned"}}</p>
+      <p><strong>Drive:</strong> {{system.drive.name || "Unassigned"}}</p>
+      <p><strong>Action Points:</strong></p>
+<div class="action-points">
+  <!-- Combat Action Points -->
+  <div class="combat-ap">
+    <p>Combat AP:</p>
+    <div class="ap-icons">
+      {{#each (range 0 ../system.combatApTotal)}}
+        <i class="fas fa-square {{#if ../system.combatApAvail '>' @index}}red-ap{{else}}gray-ap{{/if}}"></i>
+      {{/each}}
+    </div>
+  </div>
+
+  <!-- General Action Points -->
+  <div class="general-ap">
+    <p>General AP:</p>
+    <div class="ap-icons">
+      {{#each (range 0 ../system.genApTotal)}}
+        <i class="fas fa-square {{#if ../system.genApAvail '>' @index}}blue-ap{{else}}gray-ap{{/if}}"></i>
+      {{/each}}
+    </div>
+  </div>
+</div>
+      <p><strong>Level:</strong> {{system.level || 0}}</p>
+  <p><strong>XP:</strong> {{system.unspentXp || 0}} / {{system.cumulativeXp || 0}}</p>
+      <div class="purchase-upgrade-icon">
+        <i class="fas fa-shopping-cart clickable-icon" title="Purchase Upgrade" aria-label="Purchase Upgrade"></i>
+      </div>
+    </div>
+  </header>
+
+  <div class="resilience-section">
+  <h3>Resilience</h3>
+  <div class="resilience-container">
+    <!-- Resilience -->
+    <div class="resilience-icon" data-tooltip="Resilience" title="Click to roll for Resilience">
+      <img 
+        src="ui/icons/resilience.webp" 
+        alt="Resilience Icon" 
+        class="clickable-resilience" 
+        data-resilience="{{system.resilience}}" 
+        data-tempres="{{system.tempRes}}" 
+        aria-label="Click to roll for Resilience" />
+      <span>{{system.resilience || 0}}</span>
+    </div>
+
+    <!-- Temp Resilience -->
+    <div class="temp-resilience-icon" data-tooltip="Temporary Resilience">
+      <img 
+        src="ui/icons/temp-resilience.webp" 
+        alt="Temporary Resilience Icon" 
+        aria-label="Temporary Resilience" />
+      <span>{{system.tempRes || 0}}</span>
+    </div>
+
+    <!-- Temporary Nerve -->
+    <div class="temp-nerve-icon" data-tooltip="Temporary Nerve">
+      <img 
+        src="ui/icons/temp-nerve.webp" 
+        alt="Temporary Nerve Icon" 
+        aria-label="Temporary Nerve" />
+      <span>{{system.tempNerve || 0}}</span>
+    </div>
+  </div>
+
+  <!-- Skills Section -->
+  <div class="skills">
+  <h3>Skills</h3>
+  <div class="skills-container">
+    {{#each system.skills}}
+      <div class="skill-icon-container" data-skill="{{@key}}" data-value="{{this}}" title="Roll {{@key}}">
+        <img 
+          src="ui/icons/skill.webp" 
+          alt="{{@key}} Icon" 
+          class="skill-icon clickable-skill" 
+          aria-label="Roll {{@key}}" />
+        <span class="skill-label">{{@key}}: {{this}}</span>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+
+  <!-- Health Section -->
+  <div class="health-display">
+  <!-- Trauma -->
+  <div class="trauma-grid">
+    <h4>Trauma</h4>
+    <div class="grid">
+      {{#each (range 0 4)}}
+        <div class="grid-square {{#if ../system.trauma '>' @index}}filled{{/if}}"></div>
+      {{/each}}
+    </div>
+  </div>
+
+  <!-- Stress -->
+  <div class="stress-grid">
+    <h4>Stress</h4>
+    <div class="grid">
+      {{#each (range 0 ../system.stressTolerance)}}
+        <div class="grid-square stress {{#if ../system.stress '>' @index}}filled{{/if}}"></div>
+      {{/each}}
+    </div>
+  </div>
+
+  <!-- Corruption -->
+  <div class="corruption-grid">
+    <h4>Corruption</h4>
+    <div class="grid corruption">
+      {{#each (range 0 20)}}
+        <div class="grid-square {{#if ../system.corruption '>=' (subtract 19 @index)}}filled{{/if}}"></div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+<!-- aether -->
+  <div class="aether-section">
+  <h3>Aether</h3>
+  <p>
+    <strong>Capacity:</strong> {{system.aetherCap}} 
+    <i class="fas fa-info-circle" title="Aether Capacity is upgradable by items." aria-label="Aether Capacity is upgradable by items."></i>
+  </p>
+  <p>
+    <strong>Conserving:</strong> 
+    <input 
+      type="number" 
+      value="{{system.aetherConserve}}" 
+      min="0" 
+      max="{{system.aetherCap}}" 
+      class="aether-conserving-input" 
+      aria-label="Set Conserving Aether up to Capacity" />
+  </p>
+  <p>
+    <strong>Supply:</strong> 
+    <input 
+      type="number" 
+      value="{{system.aetherSupply}}" 
+      min="0" 
+      class="aether-supply-input" 
+      aria-label="Adjust Aether Supply" />
+  </p>
+</div>
+
+
+  <!-- Specialties Section -->
+  <div class="specialty-group">
+  <p class="light-specialty">
+    <strong>Light Specialty:</strong> {{system.lightActiveSpclty.name || "None"}}
+    <button class="assign-specialty" data-type="light" title="Assign Light Specialty" aria-label="Assign Light Specialty">Assign</button>
+  </p>
+  <p class="shadow-specialty">
+    <strong>Shadow Specialty:</strong> {{system.shadowActiveSpclty.name || "None"}}
+    <button class="assign-specialty" data-type="shadow" title="Assign Shadow Specialty" aria-label="Assign Shadow Specialty">Assign</button>
+  </p>
+</div>
+
+  <!-- Abilities -->
+  <div class="abilities-section">
+  <h3>Abilities</h3>
+  <ul>
+    {{#each system.abilities}}
+      <li>
+        <strong>{{this.name}}</strong>
+        <span class="ability-description">{{this.description}}</span>
+      </li>
+    {{else}}
+      <p>No abilities assigned.</p>
+    {{/each}}
+  </ul>
+</div>
+
+  <!-- Features -->
+<div class="features-section">
+  <h3>Features</h3>
+  <ul>
+    {{#each system.features}}
+      <li>
+        <strong>{{this.name}}</strong>
+        <span class="feature-description">{{this.description}}</span>
+      </li>
+    {{else}}
+      <p>No features assigned.</p>
+    {{/each}}
+  </ul>
+</div>
+
+
+  <!-- Bonds Section -->
+  <div class="bond-group">
+    <label class="bond-label" data-bond="1" title="Assign Actor to Bond 1" aria-label="Bond 1: Assign Actor">Bond 1</label>: {{system.bonds.bond1?.name || "None"}}
+    <br>
+    <label class="bond-label" data-bond="2" title="Assign Actor to Bond 2" aria-label="Bond 2: Assign Actor">Bond 2</label>: {{system.bonds.bond2?.name || "None"}}
+    <br>
+    <label class="bond-label" data-bond="3" title="Assign Actor to Bond 3" aria-label="Bond 3: Assign Actor">Bond 3</label>: {{system.bonds.bond3?.name || "None"}}
+  </div>
+</div>
+<!-- Loadout Section -->
+  <div class="loadout-section">
+    <h3>Loadout</h3>
+    <ul>
+      {{#each this.getLoadoutItems}}
+        <li>
+          <span>{{this.name}}</span>
+          <i class="fas fa-times remove-item" data-item-id="{{this.id}}" title="Remove from Loadout" aria-label="Remove {{this.name}} from Loadout"></i>
+        </li>
+      {{else}}
+        <p>No items assigned to Loadout.</p>
+      {{/each}}
+    </ul>
+  </div>
+
+  <!-- Clickable Inventory Icon -->
+  <div class="inventory-section">
+    <h3>Inventory</h3>
+    <i class="fas fa-box-open clickable-icon inventory-icon" title="View Unassigned Items" aria-label="View Unassigned Inventory"></i>
+  </div>
+</div>

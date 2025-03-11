@@ -1,0 +1,30 @@
+<div class="item-sheet">
+  <header class="item-header">
+    <h3 class="item-name">{{name}}</h3>
+  </header>
+  <div class="item-details">
+    <p><strong>Type:</strong> {{type}}</p>
+    <p><strong>Description:</strong></p>
+    <p>{{system.description || "No description provided."}}</p>
+
+    {{#ifEquals type "weapon"}}
+    <div class="weapon-stats">
+      <p><strong>Damage:</strong> {{system.damage}}</p>
+      <p><strong>Range:</strong> {{system.range}}</p>
+    </div>
+    {{/ifEquals}}
+
+    {{#ifEquals type "armor"}}
+    <div class="armor-stats">
+      <p><strong>Armor Rating:</strong> {{system.armorRating}}</p>
+    </div>
+    {{/ifEquals}}
+    
+    {{#ifEquals type "ability"}}
+    <div class="ability-stats">
+      <p><strong>AP Cost:</strong> {{system.cost.genAp}} General / {{system.cost.combatAp}} Combat</p>
+      <p><strong>Effect:</strong> {{system.effect}}</p>
+    </div>
+    {{/ifEquals}}
+  </div>
+</div>

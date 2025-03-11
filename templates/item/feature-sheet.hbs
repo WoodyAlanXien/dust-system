@@ -1,0 +1,21 @@
+<div class="item-sheet feature-sheet">
+  <header class="window-header flexrow">
+    <h4 class="window-title">{{name}}</h4>
+    <nav class="window-controls">
+      <a class="configure-feature" title="Configure Feature" aria-label="Configure Feature">
+        <i class="fas fa-cog"></i>
+      </a>
+      {{window-controls}}
+    </nav>
+  </header>
+
+  <header class="item-header">
+    <h3 class="item-name">{{name}}</h3>
+  </header>
+  <div class="item-details">
+    <p><strong>Description:</strong> {{system.description}}</p>
+    <p><strong>Aether Cost:</strong> {{system.aetherCost}}</p>
+    <p><strong>Action Point Cost:</strong> {{system.actionPointCost}}</p>
+    <p><strong>Effect:</strong> {{system.effect}}</p>
+  </div>
+</div>

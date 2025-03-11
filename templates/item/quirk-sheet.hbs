@@ -1,0 +1,47 @@
+<div class="quirk-sheet">
+    <header class="window-header flexrow">
+  <h4 class="window-title">{{name}}</h4>
+  <nav class="window-controls">
+    <a class="configure-quirk" title="Configure Quirk" aria-label="Configure Quirk">
+      <i class="fas fa-cog"></i>
+    </a>
+    {{window-controls}}
+  </nav>
+</header>
+  <header class="item-header">
+    <h3 class="item-name">{{name}}</h3>
+  </header>
+  <div class="item-details">
+    <p><strong>Description:</strong></p>
+    <p>{{system.description}}</p>
+    <p><strong>Effect:</strong> {{system.effect}}</p>
+    {{#if system.bonus}}
+      <p><strong>Bonus:</strong> +{{system.bonus}}</p>
+    {{/if}}
+  </div>
+  <!-- Optional: Add a button to trigger the quirk effect -->
+  <div class="item-controls">
+    <button class="trigger-quirk" title="Activate Quirk" aria-label="Activate Quirk">Activate</button>
+  </div>
+</div>
+<header class="window-header flexrow">
+  <h4 class="window-title">{{name}}</h4>
+  <nav class="window-controls">
+    <a class="configure-quirk" title="Configure Quirk" aria-label="Configure Quirk">
+      <i class="fas fa-cog"></i>
+    </a>
+    {{window-controls}}
+  </nav>
+</header>
+<div class="quirk-sheet">
+  <div class="item-details">
+    <p><strong>Description:</strong> {{system.description}}</p>
+    <p><strong>Effect:</strong> {{system.effect}}</p>
+    {{#if system.bonus}}
+      <p><strong>Bonus:</strong> +{{system.bonus}}</p>
+    {{/if}}
+  </div>
+  <div class="item-controls">
+    <button class="trigger-quirk" title="Activate Quirk" aria-label="Activate Quirk">Activate</button>
+  </div>
+</div>

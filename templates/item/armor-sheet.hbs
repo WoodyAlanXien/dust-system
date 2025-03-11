@@ -1,0 +1,25 @@
+<div class="item-sheet armor-sheet">
+    <header class="window-header flexrow">
+  <h4 class="window-title">{{name}}</h4>
+  <nav class="window-controls">
+    <a class="configure-armor" title="Configure Armor" aria-label="Configure Armor">
+      <i class="fas fa-cog"></i>
+    </a>
+    {{window-controls}}
+  </nav>
+</header>
+
+  <header class="item-header">
+    <h3 class="item-name">{{name}}</h3>
+  </header>
+  <div class="item-details">
+    <p><strong>Armor Level:</strong> Lv. {{system.level}}</p>
+    <p><strong>Quality:</strong> {{system.quality}}</p>
+    <p><strong>Armor Rating (AR):</strong> {{system.ar.notation}}</p>
+    <p><strong>Stress Reduction:</strong> {{system.stressReduction}}</p>
+    <p><strong>Critical Hit Bypass:</strong> {{#if system.criticalBypass}}Yes{{else}}No{{/if}}</p>
+    <p><strong>Special Effect:</strong> {{system.specialEffect}}</p>
+    <p><strong>Description:</strong></p>
+    <p>{{system.description}}</p>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="item-sheet archetype-sheet">
+  <header class="window-header flexrow">
+    <h4 class="window-title">{{name}}</h4>
+    <nav class="window-controls">
+      <a class="configure-archetype" title="Configure Archetype" aria-label="Configure Archetype">
+        <i class="fas fa-cog"></i>
+      </a>
+      {{window-controls}}
+    </nav>
+  </header>
+
+  <header class="item-header">
+    <h3 class="item-name">{{name}}</h3>
+  </header>
+  <div class="item-details">
+    <p><strong>Description:</strong> {{system.description}}</p>
+    <p><strong>Starting Items:</strong></p>
+    <ul>
+      <li><strong>Weapon:</strong> {{system.startingItems.weapon}}</li>
+      <li><strong>Gear:</strong> {{system.startingItems.gear}}</li>
+      <li><strong>Armor:</strong> {{system.startingItems.armor}}</li>
+    </ul>
+    <p><strong>Specialities:</strong></p>
+    <ul>
+      {{#each system.specialities}}
+        <li>{{this}}</li>
+      {{else}}
+        <p>No specialities available.</p>
+      {{/each}}
+    </ul>
+    <p><strong>Abilities:</strong></p>
+    <ul>
+      {{#each system.abilities}}
+        <li>{{this.description}}</li>
+      {{else}}
+        <p>No abilities available.</p>
+      {{/each}}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="gear-sheet">
+  <header class="item-header">
+    <h3 class="item-name">{{name}}</h3>
+    <p class="gear-category">{{system.gearCategory}}</p>
+  </header>
+  <div class="item-details">
+    <p><strong>Subtype:</strong> {{system.subtype}}</p>
+    <p><strong>Description:</strong> {{system.description}}</p>
+    <p><strong>Quantity:</strong> {{system.quantity}}</p>
+    {{#if system.specialProperties.length}}
+      <p><strong>Special Properties:</strong></p>
+      <ul>
+        {{#each system.specialProperties}}
+          <li>{{this.type}}{{#if this.effect}}: {{this.effect}}{{/if}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  </div>
+</div>

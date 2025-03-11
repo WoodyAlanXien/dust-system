@@ -1,0 +1,34 @@
+<div class="item-sheet weapon-sheet">
+    <header class="window-header flexrow">
+  <h4 class="window-title">{{name}}</h4>
+  <nav class="window-controls">
+    <a class="configure-weapon" title="Configure Weapon" aria-label="Configure Weapon">
+      <i class="fas fa-cog"></i>
+    </a>
+    {{window-controls}}
+  </nav>
+</header>
+
+  <header class="item-header">
+    <h3 class="item-name">{{name}}</h3>
+  </header>
+  <div class="item-details">
+    <p><strong>Default Skill:</strong> {{system.defaultSkill}}</p>
+    <p><strong>Combat AP Cost:</strong> {{system.combatApCost}}</p>
+    <p><strong>Durability:</strong> {{system.durability}}</p>
+    <p><strong>Range:</strong> {{system.range}}</p>
+    <p><strong>Stress Damage:</strong> {{system.stressDamage}}</p>
+    <p><strong>Probability Modifier:</strong> +{{system.probabilityModifier}}d8</p>
+    <p><strong>Special Properties:</strong></p>
+    <ul>
+      {{#each system.specialProperties}}
+        <li>
+          <strong>{{this.type}}:</strong> {{this.effect}}
+        </li>
+      {{else}}
+        <p>No special properties.</p>
+      {{/each}}
+    </ul>
+    <p><strong>Description:</strong> {{system.description}}</p>
+  </div>
+</div>

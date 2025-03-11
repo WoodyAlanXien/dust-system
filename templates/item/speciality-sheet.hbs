@@ -1,0 +1,22 @@
+<div class="item-sheet speciality-sheet">
+  <header class="window-header flexrow">
+    <h4 class="window-title">{{name}}</h4>
+    <nav class="window-controls">
+      <a class="configure-speciality" title="Configure Speciality" aria-label="Configure Speciality">
+        <i class="fas fa-cog"></i>
+      </a>
+      {{window-controls}}
+    </nav>
+  </header>
+
+  <header class="item-header">
+    <h3 class="item-name">{{name}}</h3>
+  </header>
+  <div class="item-details">
+    <p><strong>Type:</strong> {{system.type}}</p>
+    <p><strong>Aether Cost:</strong> {{system.aetherCost}}</p>
+    <p><strong>Action Point Cost:</strong> {{system.actionPointCost}}</p>
+    <p><strong>Description:</strong> {{system.description}}</p>
+    <p><strong>Effect:</strong> {{system.effect}}</p>
+  </div>
+</div>

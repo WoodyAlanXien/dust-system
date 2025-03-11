@@ -1,0 +1,23 @@
+<div class="item-sheet ability-sheet">
+  <header class="window-header flexrow">
+    <h4 class="window-title">{{name}}</h4>
+    <nav class="window-controls">
+      <a class="configure-ability" title="Configure Ability" aria-label="Configure Ability">
+        <i class="fas fa-cog"></i>
+      </a>
+      {{window-controls}}
+    </nav>
+  </header>
+
+  <header class="item-header">
+    <h3 class="item-name">{{name}}</h3>
+  </header>
+  <div class="item-details">
+    <p><strong>Archetype:</strong> {{system.archetype}}</p>
+    <p><strong>Discipline:</strong> {{system.discipline}}</p>
+    <p><strong>Aether Cost:</strong> {{system.aetherCost}}</p>
+    <p><strong>Action Point Cost:</strong> {{system.actionPointCost}}</p>
+    <p><strong>Description:</strong> {{system.description}}</p>
+    <p><strong>Effect:</strong> {{system.effect}}</p>
+  </div>
+</div>
