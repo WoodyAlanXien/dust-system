@@ -1,9 +1,0 @@
-/* multi-select.css */
-
-.dust-system multi-select .tags {
-    flex-wrap: wrap;
-  }
-  .dust-system multi-select .tags .tag {
-    cursor: pointer;
-  }
-  

@@ -1,9 +1,0 @@
-.polymorph {
-    /* Two Column Configurations */
-  }
-  .polymorph.two-column {
-    display: grid;
-    grid-template-columns: 45% 55%;
-    grid-gap: 0.4em;
-  }
-  
