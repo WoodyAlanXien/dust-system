@@ -1,0 +1,176 @@
+{
+    "attributes": {
+      "resilience": "Derived Value",
+      "tempRes": "value",
+      "tempNerve": "value",
+      "stress": "value",
+      "stressTolerance": "Derived Value",
+      "corruption": "value",
+      "trauma": "value",
+      "combatApAvail": "value",
+      "combatApTotal": "Derived Value",
+      "genApAvail": "value",
+      "genApTotal": "Derived Value",
+      "level": "Derived Value",
+      "unspentXp": "value",
+      "cumulativeXp": "value",
+      "aetherCap": "value",
+      "aetherConserve": "value",
+      "aetherSupply": "value",
+      "quirk": {
+        "type": "item",
+        "description": "References an item of type quirk."
+      },
+      "drive": {
+        "type": "item",
+        "description": "References an item of type drive."
+      },
+      "armorRating": "Derived Value",
+      "bonds": {
+        "bond1": {
+          "type": "actor.character",
+          "description": "References an actor of type character."
+        },
+        "bond1Lvl": "value",
+        "bond1Health": "value",
+        "bond2": {
+          "type": "actor.character",
+          "description": "References an actor of type character."
+        },
+        "bond2Lvl": "value",
+        "bond2Health": "value",
+        "bond3": {
+          "type": "actor.character",
+          "description": "References an actor of type character."
+        },
+        "bond3Lvl": "value",
+        "bond3Health": "value"
+      },
+      "loadout": {
+        "weapon1": {
+          "type": "item",
+          "description": "References an item of type weapon."
+        },
+        "weapon2": {
+          "type": "item",
+          "description": "References an item of type weapon."
+        },
+        "armor": {
+          "type": "item",
+          "description": "References an item of type armor."
+        },
+        "smItem1": {
+          "type": "item",
+          "description": "References a small item."
+        },
+        "smItem2": {
+          "type": "item",
+          "description": "References a small item."
+        },
+        "smItem3": {
+          "type": "item",
+          "description": "References a small item."
+        },
+        "mdItem1": {
+          "type": "item",
+          "description": "References a medium item."
+        },
+        "mdItem2": {
+          "type": "item",
+          "description": "References a medium item."
+        },
+        "mdItem3": {
+          "type": "item",
+          "description": "References a medium item."
+        },
+        "lgItem": {
+          "type": "item",
+          "description": "References a large item."
+        },
+        "expSlot1": {
+          "type": "item",
+          "description": "References an item for an experimental slot."
+        },
+        "expSlot2": {
+          "type": "item",
+          "description": "References an item for an experimental slot."
+        }
+      },
+      "activeSpclty": {
+        "light": {
+          "type": "item.speciality.light",
+          "description": "References a light specialty."
+        },
+        "shadow": {
+          "type": "item.speciality.shadow",
+          "description": "References a shadow specialty."
+        }
+      },
+      "availSpcltys": {
+        "type": "multiple item.speciality",
+        "description": "References multiple specialties available."
+      },
+      "abilities": {
+        "type": "multiple item.ability",
+        "description": "References multiple abilities."
+      },
+      "archetype": {
+        "type": "item.archetype",
+        "description": "References an archetype."
+      },
+      "upgrades": {
+        "type": "multiple item.upgrade",
+        "description": "References multiple upgrades."
+      },
+      "npcData": {
+      "type": "object",
+      "description": "Contains specific data for NPC actors.",
+      "attributes": {
+        "name": "value",
+        "type": "npc",
+        "combatBehavior": "value",
+        "abilities": "multiple item.ability"
+      }
+    },
+    "creatureData": {
+      "type": "object",
+      "description": "Contains specific data for creature actors.",
+      "attributes": {
+        "name": "value",
+        "type": "creature",
+        "naturalWeapons": "multiple item.weapon",
+        "armor": "value",
+        "abilities": "multiple item.ability"
+      }
+    },
+      "relentless": {
+        "clash": "Derived Value",
+        "push": "Derived Value",
+        "menace": "Derived Value",
+        "nerveCurrent": "Derived Value",
+        "nerveMax": "Derived Value"
+      },
+      "elusive": {
+        "maneuver": "Derived Value",
+        "control": "Derived Value",
+        "stealth": "Derived Value",
+        "nerveCurrent": "Derived Value",
+        "nerveMax": "Derived Value"
+      },
+      "charming": {
+        "sense": "Derived Value",
+        "influence": "Derived Value",
+        "deceive": "Derived Value",
+        "nerveCurrent": "Derived Value",
+        "nerveMax": "Derived Value"
+      },
+      "discreet": {
+        "notice": "Derived Value",
+        "focus": "Derived Value",
+        "invoke": "Derived Value",
+        "nerveCurrent": "Derived Value",
+        "nerveMax": "Derived Value"
+      }
+    }
+  }
+  

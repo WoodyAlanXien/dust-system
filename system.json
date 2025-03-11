@@ -1,419 +1,86 @@
 {
     "id": "dust-system",
-    "title": "DUST System",
-    "description": "Custom system for DUST",
-    "version": "1.0.0",
+    "title": "Dimensional Unification and Stabilization Taskforce (DUST)",
+    "description": "Updated system for DUST",
+    "version": "2.0.0",
     "compatibility": {
         "minimum": "12.331",
         "verified": "13.336"
     },
     "authors": ["Woody Alan Xien"],
-               
+    "data": {
+        "template": "template.json"
+    },
     "esmodules": [
-        "dust-system.mjs"
+        "dust-system.mjs",
+        "libs/mammoth.browser.js",
+        "libs/three.module.js",
+        "libs/cannon.js",
+        "modules/dust-actor.js",
+        "modules/dust-actor-sheet-option1.js",
+        "modules/dust-gear.js",
+        "modules/dust-item.js",
+        "modules/dust-weapon.js",
+        "modules/dust-weapon-sheet.js",
+        "modules/dust-quirk.js",
+        "modules/dust-quirk-sheet.js",
+        "modules/dust-drive.js",
+        "modules/dust-drive-sheet.js",
+        "modules/dust-dice-roller.js",
+        "modules/triggerSkillRoll.js"
     ],
     "styles": [
-        "dust-system.css"
+        "dust-system.css",
+        "styles/character-sheet-option1.css",
+        "styles/armor-styles.css",
+        "styles/gear-styles.css",
+        "styles/item-styles.css",
+        "styles/weapon-styles.css",
+        "styles/quirk-styles.css",
+        "styles/drive-styles.css",
+        "styles/ability-styles.css",
+        "styles/archetype-styles.css",
+        "styles/feature-styles.css",
+        "styles/speciality-styles.css",
+        "styles/upgrade-styles.css"
+
     ],
+    "scripts": [
+        "scripts/system-references.js"
+    ],
+    "templates": {
+        "actor": "templates/actor/character-sheet-option1.hbs",
+        "ability": "templates/item/ability-sheet.hbs",
+        "archetype": "templates/item/archetype-sheet.hbs",
+        "item": "templates/item/item-sheet.hbs",
+        "armor": "templates/item/armor-sheet.hbs",
+        "gear": "templates/item/gear-sheet.hbs",
+        "weapon": "templates/item/weapon-sheet.hbs",
+        "quirk": "templates/item/quirk-sheet.hbs",
+        "drive": "templates/item/drive-sheet.hbs",
+        "feature": "templates/item/feature-sheet.hbs",
+        "speciality": "templates/item/speciality-sheet.hbs",
+        "upgrade": "templates/item/upgrade-sheet.hbs"
+    },
     "documentTypes": {
-        "ActiveEffect": {
-            "enchantment": {}
-        },
         "Actor": {
-            "character": {
-                "attributes": {
-                    "stress": {
-            "type": "number",
-            "label": "Stress",
-            "default": 0
-          },
-          "corruption": {
-            "type": "number",
-            "label": "Corruption",
-            "default": 0
-          },
-          "trauma": {
-            "type": "number",
-            "label": "Trauma",
-            "default": 0
-          }
-                    "relentless":{
-                        "clash":{
-                            "type": "number",
-                            "label": "Clash",
-                            "default": 0
-                        },
-                        "push":{
-                            "type": "number",
-                            "label": "Push",
-                            "default": 0
-                        },
-                        "menace":{
-                            "type": "number",
-                            "label": "Menace",
-                            "default": 0
-                        },
-                    "elusive":{
-                        "maneuver":{
-                            "type": "number",
-                            "label": "Maneuver",
-                            "default": 0
-                        },
-                        "control":{
-                            "type": "number",
-                            "label": "Control",
-                            "default": 0
-                        },
-                        "stealth":{
-                            "type": "number",
-                            "label": "Stealth",
-                            "default": 0
-                        },
-                    "charming":{
-                        "sense":{
-                            "type": "number",
-                            "label": "Sense",
-                            "default": 0
-                        },
-                        "influence":{
-                            "type": "number",
-                            "label": "Influence",
-                            "default": 0
-                        },
-                        "deceive":{
-                            "type": "number",
-                            "label": "Deceive",
-                            "default": 0
-                        },
-                    "discreet":{
-                        "notice":{
-                            "type": "number",
-                            "label": "Notice",
-                            "default": 0
-                        },
-                        "focus":{
-                            "type": "number",
-                            "label": "Focus",
-                            "default": 0
-                        },
-                        "invoke":{
-                            "type": "number",
-                            "label": "Invoke",
-                            "default": 0
-                        },
-                "htmlFields": [
-                    "details.biography.value",
-                    "details.biography.public",
-                    "bastion.description"
-                ]
-            },
-            "npc": {
-                "htmlFields": [
-                    "details.biography.value",
-                    "details.biography.public"
-                ]
-            },
-            "vehicle": {
-                "htmlFields": [
-                    "details.biography.value",
-                    "details.biography.public"
-                ]
-            },
-            "group": {
-                "htmlFields": [
-                    "description.full",
-                    "description.summary"
-                ]
-            }
-        },
-        "ChatMessage": {
-            "rest": {},
-            "turn": {}
+            "character": {}
         },
         "Item": {
-            "weapon": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat",
-                    "unidentified.description"
-                ]
-            },
-            "gear": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat",
-                    "unidentified.description"
-                ]
-            },
-            "consumable": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat",
-                    "unidentified.description"
-                ]
-            },
-            "tool": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat",
-                    "unidentified.description"
-                ]
-            },
-            "loot": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat",
-                    "unidentified.description"
-                ]
-            },
-            "origin": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat"
-                ]
-            },
-            "drive": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat"
-                ]
-            },
-            "archetype": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat"
-                ]
-            },
-            "ability": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat"
-                ]
-            },
-            "feature": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat"
-                ]
-            },
-            "speciality": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat",
-                    "unidentified.description"
-                ]
-            },
-            "backpack": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat",
-                    "unidentified.description"
-                ]
-            },
-            "facility": {
-                "htmlFields": [
-                    "description.value",
-                    "description.chat"
-                ]
-            }
-        },
-        "JournalEntryPage": {
-            "class": {
-                "htmlFields": [
-                    "details.value",
-                    "details.additionalHitPoints",
-                    "description.additionalTraits",
-                    "description.additionalEquipment",
-                    "description.subclass"
-                ]
-            },
-            "map": {},
-            "rule": {
-                "htmlFields": [
-                    "tooltip"
-                ]
-            },
-            "spells": {},
-            "subclass": {
-                "htmlFields": [
-                    "details.value"
-                ]
-            }
+            "weapon": {},
+            "armor":{}, 
+            "quirk": {}, 
+            "drive": {},
+            "speciality": {},
+            "ability": {},
+            "archetype": {},
+            "gear": {},
+            "upgrade": {}
         }
     },
-      "packs": [
-    {
-      "label": "NPCs",
-      "type": "Actor",
-      "name": "npcs",
-      "path": "packs/npcs",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "SRD Rules",
-      "type": "Item",
-      "name": "rules",
-      "path": "packs/rules",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Archetypes",
-      "type": "Item",
-      "name": "archetype",
-      "path": "packs/archetype",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Quirks",
-      "type": "Item",
-      "name": "quirk",
-      "path": "packs/quirk",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Drives",
-      "type": "Item",
-      "name": "drive",
-      "path": "packs/drive",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Disciplines",
-      "type": "Item",
-      "name": "discipline",
-      "path": "packs/discipline",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Specialities",
-      "type": "Item",
-      "name": "speciality",
-      "path": "packs/speciality",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Features",
-      "type": "Item",
-      "name": "feature",
-      "path": "packs/feature",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Abilities",
-      "type": "Item",
-      "name": "abilitie",
-      "path": "packs/abilitie",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Gear",
-      "type": "Item",
-      "name": "gear",
-      "path": "packs/gear",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    }
-  ],
-  "packFolders": [
-    {
-      "name": "DUST SRD",
-      "sorting": "m",
-      "color":  "#cd2c1e",
-      "packs": [
-          "rules",
-          "npcs",
-          "archetype",
-          "quirk",
-          "drive",
-          "discipline",
-          "speciality",
-          "feature",
-          "ability",
-          "gear"
-
-      ]
-    }
-  ],
-  "languages": [
-        {
-          "lang": "en",
-          "name": "English",
-          "path": "lang/en.json",
-          "flags": {}
-        }
-      ],
-  "media": [
-        {
-            "type": "cover",
-            "loop": false,
-            "flags": {}
-        },
-        {
-            "type": "setup",
-            "url": "systems/dust-system/ui/official/dust-system-repo.jpg",
-            "thumbnail": "systems/dust-system/ui/official/dust-system-thumbnail.jpg"
-        }
-    ],
-  "socket": true,
-  "grid": {
-        "distance": 5,
-        "units": "ft"
-    },
-    "primaryTokenAttribute": "attributes.stress",
-    "background": "systems/dust-system/ui/official/dust-system-background.webp",
-    "flags": {
-        "dust-system": {
-            "sourceBooks": {
-                "SRD 3.1": "SOURCE.BOOK.SRD"
-            }
-        },
-        "needsMigrationVersion": "4.0.1",
-        "compatibleMigrationVersion": "0.8",
-        "hotReload": false
-    },    
-            "download": {
-            "source": "https://github.com/WoodyAlanXien/dust-system",
-            "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/system.json",
-            "download": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/dust-system.zip"
-        }
+    "download": {
+        "source": "https://github.com/WoodyAlanXien/dust-system",
+        "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/system.json",
+        "download": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/dust-system.zip"
     }
 }
