@@ -1,0 +1,43 @@
+/* Speciality Sheet Styles */
+.speciality-sheet {
+    font-family: "Arial", sans-serif;
+    padding: 10px;
+  }
+  
+  .speciality-sheet .item-header {
+    background-color: #777;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .speciality-sheet .item-details {
+    margin-top: 10px;
+  }
+  
+  .speciality-sheet .item-details p {
+    margin-bottom: 10px;
+  }
+  
+  .speciality-sheet .window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .speciality-sheet .window-header h4 {
+    font-size: 18px;
+  }
+  
+  .speciality-sheet a.configure-speciality {
+    cursor: pointer;
+  }
+  
+  .speciality-sheet a.configure-speciality i {
+    color: #777;
+  }
+  
+  .speciality-sheet a.configure-speciality:hover i {
+    color: #ffd700;
+  }
+  

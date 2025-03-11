@@ -1,0 +1,20 @@
+.armor-sheet {
+    padding: 1rem;
+    background: var(--dark-5);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+  }
+  
+  .armor-sheet .item-header {
+    text-align: center;
+  }
+  
+  .armor-sheet .item-details p {
+    margin: 0.5rem 0;
+    color: var(--text-light);
+  }
+  
+  .armor-sheet .item-details p strong {
+    color: var(--highlight);
+  }
+  

@@ -1,0 +1,35 @@
+.gear-sheet {
+    padding: 1rem;
+    background: var(--dark-5);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .gear-sheet .item-header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .gear-sheet .item-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--highlight);
+  }
+  
+  .gear-sheet .gear-category {
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+  
+  .gear-sheet .item-details p {
+    margin: 0.5rem 0;
+    color: var(--text-light);
+  }
+  
+  .gear-sheet .item-details ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    padding: 0;
+  }
+  

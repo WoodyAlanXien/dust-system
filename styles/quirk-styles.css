@@ -1,0 +1,39 @@
+/* styles/quirk-styles.css */
+.quirk-sheet {
+    background: var(--dark-5);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .quirk-sheet .item-header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .quirk-sheet .item-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--highlight);
+  }
+  .quirk-sheet .item-details p {
+    margin: 0.5rem 0;
+    color: var(--text-light);
+  }
+  .quirk-sheet .item-controls {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .quirk-sheet .item-controls button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--highlight);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .quirk-sheet .item-controls button:hover {
+    background-color: var(--hover-highlight);
+  }
+  

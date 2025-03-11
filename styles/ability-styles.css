@@ -1,0 +1,43 @@
+/* Ability Sheet Styles */
+.ability-sheet {
+    font-family: "Arial", sans-serif;
+    padding: 10px;
+  }
+  
+  .ability-sheet .item-header {
+    background-color: #444;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .ability-sheet .item-details {
+    margin-top: 10px;
+  }
+  
+  .ability-sheet .item-details p {
+    margin-bottom: 10px;
+  }
+  
+  .ability-sheet .window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ability-sheet .window-header h4 {
+    font-size: 18px;
+  }
+  
+  .ability-sheet a.configure-ability {
+    cursor: pointer;
+  }
+  
+  .ability-sheet a.configure-ability i {
+    color: #444;
+  }
+  
+  .ability-sheet a.configure-ability:hover i {
+    color: #28a745;
+  }
+  

@@ -1,0 +1,347 @@
+/* General Grid Layout */
+.sheet-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Two-column layout for larger screens */
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .character-image {
+    grid-column: span 1; /* Image occupies one column */
+  }
+  
+  .character-details {
+    grid-column: span 2; /* Details can adjust to take more space */
+  }
+  
+  .skills, .health-group, .specialty-group, .bond-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive column widths */
+    gap: 1rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .sheet-container {
+      grid-template-columns: 1fr; /* Single-column layout for smaller screens */
+    }
+  
+    .character-image, .character-details, .skills, .health-group, .specialty-group, .bond-group {
+      grid-column: span 1; /* Make all elements span full width */
+    }
+  }
+  
+/* Clickable Icons */
+.clickable-icon {
+    cursor: pointer;
+    color: var(--light-border);
+    transition: color 0.3s ease;
+  }
+  
+  .clickable-icon:hover {
+    color: var(--active-highlight);
+  }
+  
+  /* Buttons */
+  button.assign-specialty {
+    cursor: pointer;
+    background: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  button.assign-specialty:hover {
+    background: var(--button-bg-hover);
+    color: var(--button-text-hover);
+  }
+  
+  /* Tooltip Styling (Optional) */
+  [title] {
+    position: relative;
+  }
+  
+  [title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--tooltip-bg);
+    color: var(--tooltip-text);
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 1000;
+  }
+  
+  .loadout-section ul, .inventory-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .loadout-section li, .inventory-section li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .loadout-section .remove-item {
+    color: red;
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+  
+  .inventory-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--highlight);
+  }
+  
+  .inventory-icon:hover {
+    color: var(--hover-highlight);
+  }
+  
+  .aether-section {
+    border: 1px solid var(--light-border);
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    background: var(--dark-5);
+  }
+  
+  .aether-section h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+  
+  .aether-section input {
+    width: 4rem;
+    text-align: center;
+    margin-left: 0.5rem;
+  }
+  .health-display {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .health-display h4 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 2px;
+  }
+  
+  .grid-square {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--light-border);
+    background-color: var(--dark-5);
+  }
+  
+  .grid-square.filled {
+    background-color: var(--highlight);
+  }
+  
+  /* Trauma: Left to Right */
+  .trauma-grid .grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 squares in a row */
+  }
+  
+  /* Stress: Bottom to Top */
+  .stress-grid .grid {
+    grid-template-rows: repeat(auto-fill, 1fr); /* Stack squares vertically */
+  }
+  
+  .stress-grid .grid-square {
+    order: -@index; /* Reverse order to fill bottom to top */
+  }
+  
+  /* Corruption: Top to Bottom */
+  .corruption-grid .grid {
+    grid-template-rows: repeat(auto-fill, 1fr); /* Stack squares vertically */
+  }
+  
+  /* Light/Shadow Mode Backgrounds */
+.light-mode {
+    background-color: #f9f7f1; /* Light background */
+    color: #333; /* Dark text for contrast */
+  }
+  
+  .shadow-mode {
+    background-color: #1a1a2e; /* Dark background */
+    color: #ccc; /* Light text for contrast */
+  }
+  
+  /* Specialty Highlight */
+  .light-mode .specialty-group .light-specialty {
+    font-weight: bold;
+    color: #ffd700; /* Highlight for Light */
+  }
+  
+  .shadow-mode .specialty-group .shadow-specialty {
+    font-weight: bold;
+    color: #6495ed; /* Highlight for Shadow */
+  }
+  
+  /* Toggle Icon Styling */
+  .toggle-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .toggle-icon.fa-sun {
+    color: #ffd700; /* Gold for Light Mode */
+  }
+  
+  .toggle-icon.fa-moon {
+    color: #6495ed; /* Blue for Shadow Mode */
+  }
+
+  .resilience-container img,
+  .light-shadow-toggle img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .resilience-container img:hover,
+  .light-shadow-toggle img:hover {
+    transform: scale(1.1); /* Slight zoom-in effect */
+    filter: brightness(1.2); /* Lighten on hover */
+  }
+   
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .skill-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: 80px; /* Adjust based on your design */
+    text-align: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .skill-icon-container:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+  
+  .skill-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .skill-label {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+  
+  .abilities-section {
+    border: 1px solid var(--light-border);
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    background-color: var(--dark-5);
+  }
+  
+  .abilities-section h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+  
+  .abilities-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .abilities-section li {
+    margin-bottom: 1rem;
+  }
+  
+  .abilities-section .ability-description {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  .features-section {
+    border: 1px solid var(--light-border);
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    background-color: var(--dark-5);
+  }
+  
+  .features-section h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+  
+  .features-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .features-section li {
+    margin-bottom: 1rem;
+  }
+  
+  .features-section .feature-description {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+  
+  .action-points {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .action-points .combat-ap, .action-points .general-ap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ap-icons {
+    display: flex;
+    gap: 0.2rem;
+  }
+  
+  .ap-icons i {
+    font-size: 1.2rem;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  /* Combat AP Colors */
+  .red-ap {
+    color: red;
+  }
+  
+  .gray-ap {
+    color: gray;
+  }
+  
+  /* General AP Colors */
+  .blue-ap {
+    color: blue;
+  }
+  

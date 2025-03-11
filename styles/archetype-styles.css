@@ -1,0 +1,49 @@
+/* Archetype Sheet Styles */
+.archetype-sheet {
+    font-family: "Arial", sans-serif;
+    padding: 10px;
+  }
+  
+  .archetype-sheet .item-header {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .archetype-sheet .item-details {
+    margin-top: 10px;
+  }
+  
+  .archetype-sheet .item-details p,
+  .archetype-sheet .item-details ul {
+    margin-bottom: 10px;
+  }
+  
+  .archetype-sheet .item-details ul {
+    list-style-type: square;
+    padding-left: 20px;
+  }
+  
+  .archetype-sheet .window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .archetype-sheet .window-header h4 {
+    font-size: 18px;
+  }
+  
+  .archetype-sheet a.configure-archetype {
+    cursor: pointer;
+  }
+  
+  .archetype-sheet a.configure-archetype i {
+    color: #333;
+  }
+  
+  .archetype-sheet a.configure-archetype:hover i {
+    color: #007acc;
+  }
+  

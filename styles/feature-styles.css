@@ -1,0 +1,43 @@
+/* Feature Sheet Styles */
+.feature-sheet {
+    font-family: "Arial", sans-serif;
+    padding: 10px;
+  }
+  
+  .feature-sheet .item-header {
+    background-color: #555;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .feature-sheet .item-details {
+    margin-top: 10px;
+  }
+  
+  .feature-sheet .item-details p {
+    margin-bottom: 10px;
+  }
+  
+  .feature-sheet .window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .feature-sheet .window-header h4 {
+    font-size: 18px;
+  }
+  
+  .feature-sheet a.configure-feature {
+    cursor: pointer;
+  }
+  
+  .feature-sheet a.configure-feature i {
+    color: #555;
+  }
+  
+  .feature-sheet a.configure-feature:hover i {
+    color: #d9534f;
+  }
+  

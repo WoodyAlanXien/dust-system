@@ -1,0 +1,41 @@
+.item-sheet {
+    padding: 1rem;
+    background: var(--dark-5);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+  }
+  
+  .item-header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .item-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .item-details p {
+    margin: 0.5rem 0;
+  }
+  
+  .weapon-stats {
+    border-top: 1px solid var(--light-border);
+    padding-top: 0.5rem;
+  }
+  
+  .armor-stats {
+    border-top: 1px solid var(--light-border);
+    padding-top: 0.5rem;
+  }
+  
+  .ability-stats {
+    border-top: 1px solid var(--light-border);
+    padding-top: 0.5rem;
+  }
+  
+  .weapon-stats p, .armor-stats p, .ability-stats p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+  

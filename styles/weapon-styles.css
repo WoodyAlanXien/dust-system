@@ -1,0 +1,49 @@
+.weapon-sheet {
+    padding: 1rem;
+    background: var(--dark-5);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+  }
+  
+  .weapon-sheet .item-header {
+    text-align: center;
+  }
+  
+  .weapon-sheet .item-details p {
+    margin: 0.5rem 0;
+    color: var(--text-light);
+  }
+  
+  .weapon-sheet .item-details p strong {
+    color: var(--highlight);
+  }
+
+  .weapon-sheet ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  
+  .weapon-sheet ul li {
+    margin: 0.2rem 0;
+    padding: 0.2rem;
+    background: var(--dark-4);
+    border-radius: 4px;
+    color: var(--highlight);
+  }
+  
+  .weapon-sheet ul li strong {
+    color: var(--text-light);
+  }
+
+  .window-header .configure-weapon i {
+    font-size: 1.2rem;
+    color: var(--light-border);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .window-header .configure-weapon i:hover {
+    color: var(--highlight);
+  }
+  

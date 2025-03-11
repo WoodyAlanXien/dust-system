@@ -1,0 +1,43 @@
+/* Upgrade Sheet Styles */
+.upgrade-sheet {
+    font-family: "Arial", sans-serif;
+    padding: 10px;
+  }
+  
+  .upgrade-sheet .item-header {
+    background-color: #666;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .upgrade-sheet .item-details {
+    margin-top: 10px;
+  }
+  
+  .upgrade-sheet .item-details p {
+    margin-bottom: 10px;
+  }
+  
+  .upgrade-sheet .window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .upgrade-sheet .window-header h4 {
+    font-size: 18px;
+  }
+  
+  .upgrade-sheet a.configure-upgrade {
+    cursor: pointer;
+  }
+  
+  .upgrade-sheet a.configure-upgrade i {
+    color: #666;
+  }
+  
+  .upgrade-sheet a.configure-upgrade:hover i {
+    color: #5cb85c;
+  }
+  
