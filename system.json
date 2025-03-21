@@ -4,13 +4,16 @@
     "description": "Updated system for DUST",
     "version": "2.0.0",
     "compatibility": {
-        "minimum": "12.331",
-        "verified": "13.336"
+        "minimum": 12,
+        "verified": 13
     },
-    "authors": ["Woody Alan Xien"],
-    "data": {
-        "template": "template.json"
-    },
+    "authors": [
+        {
+            "name": "Woody Alan Xien",
+            "email": "zzyzzx.xien@gmail.com",
+            "discord": "WoodyAlanXienTTV"
+        }
+    ],
     "esmodules": [
         "dust-system.mjs",
         "libs/mammoth.browser.js",
@@ -43,33 +46,34 @@
         "styles/feature-styles.css",
         "styles/speciality-styles.css",
         "styles/upgrade-styles.css"
-
     ],
-    "scripts": [
-        "scripts/system-references.js"
+    "packs": [
+        {
+            "name": "monsters",
+            "label": "My Monsters",
+            "type": "Actor"
+        },
+        {
+            "name": "items",
+            "label": "My Items",
+            "type": "Item"
+        }
     ],
-    "templates": {
-        "actor": "templates/actor/character-sheet-option1.hbs",
-        "ability": "templates/item/ability-sheet.hbs",
-        "archetype": "templates/item/archetype-sheet.hbs",
-        "item": "templates/item/item-sheet.hbs",
-        "armor": "templates/item/armor-sheet.hbs",
-        "gear": "templates/item/gear-sheet.hbs",
-        "weapon": "templates/item/weapon-sheet.hbs",
-        "quirk": "templates/item/quirk-sheet.hbs",
-        "drive": "templates/item/drive-sheet.hbs",
-        "feature": "templates/item/feature-sheet.hbs",
-        "speciality": "templates/item/speciality-sheet.hbs",
-        "upgrade": "templates/item/upgrade-sheet.hbs"
-    },
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
     "documentTypes": {
         "Actor": {
             "character": {}
         },
         "Item": {
             "weapon": {},
-            "armor":{}, 
-            "quirk": {}, 
+            "armor": {},
+            "quirk": {},
             "drive": {},
             "speciality": {},
             "ability": {},
@@ -78,9 +82,13 @@
             "upgrade": {}
         }
     },
-    "download": {
-        "source": "https://github.com/WoodyAlanXien/dust-system",
+    "socket": false,
+    "initiative": "1d8",
+    "grid": {
+        "distance": 5,
+        "units": "ft"
+    },
+        "url": "https://github.com/WoodyAlanXien/dust-system",
         "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/current/download/system.json",
         "download": "https://github.com/WoodyAlanXien/dust-system/releases/current/download/dust-system.zip"
     }
-}
