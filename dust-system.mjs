@@ -55,89 +55,11 @@ Hooks.once("init", async function () {
     makeDefault: true
   });
 
-  //Actors.registerSheet('dust-system', DustActorSheetOption2, {
-  //  label: "DUST Character Sheet Option 2",
-  //  types: ["character"]
-  //});
-
-  //Actors.registerSheet('dust-system', DustActorSheetOption3, {
-  //  label: "DUST Character Sheet Option 3",
-  //  types: ["character"]
-  //});
-
-  //Actors.registerSheet('dust-system', DustActorSheetOption4, {
-  // label: "DUST Character Sheet Option 4",
-  //  types: ["character"]
-  //});
-
   // Preload Handlebars templates
   await preloadHandlebarsTemplates();
-});
-// Hooks initialization
-Hooks.once("init", async function () {
-  console.log("dust-system | Initializing Dust System");
-
-  // Register Actor sheets
-  Actors.registerSheet('dust-system', DustActorSheet, {
-    makeDefault: true,
-  });
-
-  // Register Item sheets
-  Items.registerSheet('dust-system', GearSheet, {
-    types: ["gear"],
-    makeDefault: true,
-  });
-
-  Items.registerSheet('dust-system', DriveSheet, {
-    types: ["drive"],
-    makeDefault: true,
-  });
-
-  Items.registerSheet('dust-system', QuirkSheet, {
-    types: ["quirk"],
-    makeDefault: true,
-  });
-
-  Items.registerSheet('dust-system', WeaponSheet, {
-    types: ["weapon"],
-    makeDefault: true,
-  });
-
-  Items.registerSheet('dust-system', WeaponSheet, {
-    types: ["armor"],
-    makeDefault: true,
-  });
-
-  Items.registerSheet('dust-system', SpecialitySheet, {
-    types: ["speciality"],
-    makeDefault: true,
-  });
-
-  Items.registerSheet('dust-system', AbilitySheet, {
-    types: ["ability"],
-    makeDefault: true,
-  });
-
-  Items.registerSheet('dust-system', ArchetypeSheet, {
-    types: ["archetype"],
-    makeDefault: true,
-  });
-
-  Items.registerSheet('dust-system', FeatureSheet, {
-    types: ["feature"],
-    makeDefault: true,
-  });
-
-  Items.registerSheet('dust-system', UpgradeSheet, {
-    types: ["upgrade"],
-    makeDefault: true,
-  });
 
   console.log("dust-system | All sheets registered successfully");
 });
-/**
- * Handlebars template preloading
- */
 
 Hooks.on('ready', function () {
   // Register font settings
