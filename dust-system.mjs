@@ -15,15 +15,15 @@ import { DustActorSheet } from "./modules/dust-actor-sheet-option1.js";
 //import { DustActorSheetOption3 } from "./modules/dust-actor-sheet-option3.js";
 //import { DustActorSheetOption4 } from "./modules/dust-actor-sheet-option4.js";
 // Import sheet classes
-import { GearSheet } from "./templates/item/dust-gear-sheet.js";
-import { DriveSheet } from "./templates/item/dust-drive-sheet.js";
-import { QuirkSheet } from "./templates/item/dust-quirk-sheet.js";
-import { WeaponSheet } from "./templates/item/dust-weapon-sheet.js";
-import { SpecialitySheet } from "./templates/item/dust-speciality-sheet.js";
-import { AbilitySheet } from "./templates/item/dust-ability-sheet.js";
-import { ArchetypeSheet } from "./templates/item/dust-archetype-sheet.js";
-import { FeatureSheet } from "./templates/item/dust-feature-sheet.js";
-import { UpgradeSheet } from "./templates/item/dust-upgrade-sheet.js";
+import { GearSheet } from "./modules/dust-gear-sheet.js";
+import { DriveSheet } from "./modules/dust-drive-sheet.js";
+import { QuirkSheet } from "./modules/dust-quirk-sheet.js";
+import { WeaponSheet } from "./modules/dust-weapon-sheet.js";
+import { SpecialitySheet } from "./modules/dust-speciality-sheet.js";
+import { AbilitySheet } from "./modules/dust-ability-sheet.js";
+import { ArchetypeSheet } from "./modules/dust-archetype-sheet.js";
+import { FeatureSheet } from "./modules/dust-feature-sheet.js";
+import { UpgradeSheet } from "./modules/dust-upgrade-sheet.js";
 
 /**
  * Initialize the DUST system
@@ -49,17 +49,84 @@ Hooks.once("init", async function () {
   Actors.unregisterSheet('core', ActorSheet);
 
   // Register custom actor sheets (four character sheet options)
-  Actors.registerSheet('dust-system', DustActorSheet, {
-    label: "DUST Character Sheet Option 1",
-    types: ["character"],
-    makeDefault: true
+  Actors.registerSheet('dust-system', DustActorSheet, { makeDefault: true
   });
 
-  // Preload Handlebars templates
-  await preloadHandlebarsTemplates();
+  //Actors.registerSheet('dust-system', DustActorSheetOption2, {
+  //  label: "DUST Character Sheet Option 2",
+  //  types: ["character"]
+  //});
+
+  //Actors.registerSheet('dust-system', DustActorSheetOption3, {
+  //  label: "DUST Character Sheet Option 3",
+  //  types: ["character"]
+  //});
+
+  //Actors.registerSheet('dust-system', DustActorSheetOption4, {
+  // label: "DUST Character Sheet Option 4",
+  //  types: ["character"]
+  //});
+
+ 
+
+
+  
+  // Register Item sheets
+  Items.registerSheet('dust-system', GearSheet, {
+    types: ["gear"],
+    makeDefault: true,
+  });
+
+  Items.registerSheet('dust-system', DriveSheet, {
+    types: ["drive"],
+    makeDefault: true,
+  });
+
+  Items.registerSheet('dust-system', QuirkSheet, {
+    types: ["quirk"],
+    makeDefault: true,
+  });
+
+  Items.registerSheet('dust-system', WeaponSheet, {
+    types: ["weapon"],
+    makeDefault: true,
+  });
+
+  Items.registerSheet('dust-system', WeaponSheet, {
+    types: ["armor"],
+    makeDefault: true,
+  });
+
+  Items.registerSheet('dust-system', SpecialitySheet, {
+    types: ["speciality"],
+    makeDefault: true,
+  });
+
+  Items.registerSheet('dust-system', AbilitySheet, {
+    types: ["ability"],
+    makeDefault: true,
+  });
+
+  Items.registerSheet('dust-system', ArchetypeSheet, {
+    types: ["archetype"],
+    makeDefault: true,
+  });
+
+  Items.registerSheet('dust-system', FeatureSheet, {
+    types: ["feature"],
+    makeDefault: true,
+  });
+
+  Items.registerSheet('dust-system', UpgradeSheet, {
+    types: ["upgrade"],
+    makeDefault: true,
+  });
 
   console.log("dust-system | All sheets registered successfully");
 });
+/**
+ * Handlebars template preloading
+ */
 
 Hooks.on('ready', function () {
   // Register font settings
@@ -115,7 +182,7 @@ function preloadFont(fontName, fontPath) {
     console.log(`Font preloaded: ${fontName} from ${fontPath}`);
   }
 }
-
+Hooks.once("init", () => {
   game.settings.register('dust-system', "fontSettingTooltips", {
     name: "Font for Tooltips and Notifications",
     hint: "Choose a font for tooltips and notifications.",
@@ -143,7 +210,7 @@ async function preloadHandlebarsTemplates() {
   ];
   return loadTemplates(templatePaths);
 }
-
+});
 // Register the system settings button
 Hooks.once("init", () => {
   game.settings.register('dust-system', "importHandbook", {
