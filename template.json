@@ -1,0 +1,180 @@
+{
+    "actor": {
+      "character": {
+        "type": "object",
+        "properties": {
+          "attributes": {
+            "type": "object",
+            "properties": {
+              "resilienceTotal": { "type": "number", "default": 0 },
+              "stress": { "type": "number", "default": 0 },
+              "stressTolerance": { "type": "number", "default": 0 },
+              "corruption": { "type": "number", "default": 0 },
+              "trauma": { "type": "number", "default": 0 },
+              "actionPoints": {
+                "type": "object",
+                "properties": {
+                  "used": { "type": "number", "default": 0 },
+                  "max": { "type": "number", "default": 0 }
+                }
+              },
+              "level": { "type": "number", "default": 0 },
+              "relentless": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "clash": { "type": "number", "default": 0 },
+                      "push": { "type": "number", "default": 0 },
+                      "menace": { "type": "number", "default": 0 },
+                      "nerveCurrent": { "type": "number", "default": 0 },
+                      "nerveMax": { "type": "number", "default": 0 },
+                      "temporaryNerve": { "type": "number", "default": 0 },
+                      "resilience": { "type": "number", "default": 0 },
+                      "temporaryResilience": { "type": "number", "default": 0 }
+                    }
+                  }
+                }
+              },
+              "elusive": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "maneuver": { "type": "number", "default": 0 },
+                      "control": { "type": "number", "default": 0 },
+                      "stealth": { "type": "number", "default": 0 },
+                      "nerveCurrent": { "type": "number", "default": 0 },
+                      "nerveMax": { "type": "number", "default": 0 },
+                      "temporaryNerve": { "type": "number", "default": 0 },
+                      "resilience": { "type": "number", "default": 0 },
+                      "temporaryResilience": { "type": "number", "default": 0 }
+                    }
+                  }
+                }
+              },
+              "charming": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "sense": { "type": "number", "default": 0 },
+                      "influence": { "type": "number", "default": 0 },
+                      "deceive": { "type": "number", "default": 0 },
+                      "nerveCurrent": { "type": "number", "default": 0 },
+                      "nerveMax": { "type": "number", "default": 0 },
+                      "temporaryNerve": { "type": "number", "default": 0 },
+                      "resilience": { "type": "number", "default": 0 },
+                      "temporaryResilience": { "type": "number", "default": 0 }
+                    }
+                  }
+                }
+              },
+              "discreet": {
+                "type": "object",
+                "properties": {
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "notice": { "type": "number", "default": 0 },
+                      "focus": { "type": "number", "default": 0 },
+                      "invoke": { "type": "number", "default": 0 },
+                      "nerveCurrent": { "type": "number", "default": 0 },
+                      "nerveMax": { "type": "number", "default": 0 },
+                      "temporaryNerve": { "type": "number", "default": 0 },
+                      "resilience": { "type": "number", "default": 0 },
+                      "temporaryResilience": { "type": "number", "default": 0 }
+                    }
+                  }
+                }
+              },
+              "xp": {
+                "type": "object",
+                "properties": {
+                  "cumulative": { "type": "number", "default": 0 },
+                  "current": { "type": "number", "default": 0 }
+                }
+              },
+              "aether": {
+                "type": "object",
+                "properties": {
+                  "capacity": { "type": "number", "default": 0 },
+                  "conserved": { "type": "number", "default": 0 },
+                  "supply": { "type": "number", "default": 0 }
+                }
+              },
+              "quirk": { "type": "string", "default": "none" },
+              "drive": { "type": "string", "default": "none" },
+              "playerObjective": { "type": "string", "default": "none" },
+              "characterObjectives": {
+                "type": "object",
+                "properties": {
+                  "objective1": { "type": "string", "default": "none" },
+                  "objective2": { "type": "string", "default": "none" },
+                  "objective3": { "type": "string", "default": "none" }
+                }
+              },
+              "bonds": {
+                "type": "object",
+                "properties": {
+                  "bond1": {
+                    "type": "object",
+                    "properties": {
+                      "character": { "type": "string", "default": "name" },
+                      "level": { "type": "number", "default": 0 },
+                      "health": { "type": "number", "default": 0 }
+                    }
+                  },
+                  "bond2": {
+                    "type": "object",
+                    "properties": {
+                      "character": { "type": "string", "default": "name" },
+                      "level": { "type": "number", "default": 0 },
+                      "health": { "type": "number", "default": 0 }
+                    }
+                  },
+                  "bond3": {
+                    "type": "object",
+                    "properties": {
+                      "character": { "type": "string", "default": "name" },
+                      "level": { "type": "number", "default": 0 },
+                      "health": { "type": "number", "default": 0 }
+                    }
+                  }
+                }
+              },
+              "loadout": {
+                "type": "object",
+                "properties": {
+                  "weapon1": { "type": "string", "default": "none" },
+                  "weapon2": { "type": "string", "default": "none" },
+                  "armor": {
+                    "type": "object",
+                    "properties": {
+                      "mundane": { "type": "string", "default": "none" },
+                      "phase": { "type": "string", "default": "none" },
+                      "advancedPhase": { "type": "string", "default": "none" }
+                    }
+                  },
+                  "smallItem1": { "type": "string", "default": "none" },
+                  "smallItem2": { "type": "string", "default": "none" },
+                  "smallItem3": { "type": "string", "default": "none" },
+                  "smallItem4": { "type": "string", "default": "none" },
+                  "mediumItem1": { "type": "string", "default": "none" },
+                  "mediumItem2": { "type": "string", "default": "none" },
+                  "mediumItem3": { "type": "string", "default": "none" },
+                  "largeItem": { "type": "string", "default": "none" },
+                  "expansionSlot1": { "type": "string", "default": "none" },
+                  "expansionSlot2": { "type": "string", "default": "none" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  

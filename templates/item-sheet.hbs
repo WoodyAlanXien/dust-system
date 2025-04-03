@@ -1,0 +1,204 @@
+<link rel="stylesheet" type="text/css" href="systems/dust-system/styles/item-sheet.css">
+
+<form class="sheet item-sheet" id="{{id}}" data-edit="{{editable}}" data-type="{{type}}">
+  <header class="sheet-header">
+    <div class="item-header">
+      {{!-- Item Image --}}
+      <img id="item-image" 
+           class="item-image" 
+           src="{{img}}" 
+           alt="{{name}}" 
+           {{#if editMode}}data-edit="img"{{/if}} />
+
+      {{!-- Item Name --}}
+      <h2>
+        {{#if editMode}}
+          <input type="text" name="name" value="{{name}}" />
+        {{else}}
+          {{name}}
+        {{/if}}
+      </h2>
+    </div>
+  </header>
+
+  <div class="sheet-body">
+    {{!-- Conditional Rendering Based on Item Type --}}
+    {{#ifEquals type "weapon"}}
+      <div class="weapon-stats">
+        <label for="weapon-description"><strong>Description:</strong></label>
+        {{#if editMode}}
+          <textarea id="weapon-description" name="system.description">{{system.description}}</textarea>
+        {{else}}
+          <span>{{system.description}}</span>
+        {{/if}}
+        <br>
+        <label for="weapon-type"><strong>Type:</strong></label>
+        {{#if editMode}}
+          <select id="weapon-type" name="system.type">
+            <option value="melee" {{#ifEquals system.type "melee"}}selected{{/ifEquals}}>Melee</option>
+            <option value="ranged" {{#ifEquals system.type "ranged"}}selected{{/ifEquals}}>Ranged</option>
+            <option value="magic" {{#ifEquals system.type "magic"}}selected{{/ifEquals}}>Magic</option>
+          </select>
+        {{else}}
+          <span>{{system.type}}</span>
+        {{/if}}
+        <br>
+        <label for="damage"><strong>Damage:</strong></label>
+        {{#if editMode}}
+          <input type="number" id="damage" name="system.damage" value="{{system.damage}}" />
+        {{else}}
+          <span>{{system.damage}}</span>
+        {{/if}}
+        <br>
+        <label for="durability"><strong>Durability:</strong></label>
+        {{#if editMode}}
+          <input type="number" id="durability" name="system.durability.current" value="{{system.durability.current}}" />
+          / <input type="number" id="durability-max" name="system.durability.max" value="{{system.durability.max}}" />
+        {{else}}
+          <span>{{system.durability.current}} / {{system.durability.max}}</span>
+        {{/if}}
+        <br>
+        <label for="range"><strong>Range:</strong></label>
+        {{#if editMode}}
+          <select id="range" name="system.range">
+            <option value="melee" {{#ifEquals system.range "melee"}}selected{{/ifEquals}}>Melee</option>
+            <option value="ranged" {{#ifEquals system.range "ranged"}}selected{{/ifEquals}}>Ranged</option>
+          </select>
+        {{else}}
+          <span>{{system.range}}</span>
+        {{/if}}
+        <br>
+        <label for="materials"><strong>Materials:</strong></label>
+        {{#if editMode}}
+          <input type="text" id="materials" name="system.materials" value="{{system.materials}}" />
+        {{else}}
+          <span>{{system.materials}}</span>
+        {{/if}}
+        <br>
+        <label for="properties"><strong>Properties:</strong></label>
+        {{#if editMode}}
+          <input type="text" id="properties" name="system.properties" value="{{system.properties}}" />
+        {{else}}
+          <span>{{system.properties}}</span>
+        {{/if}}
+      </div>
+    {{else}}
+      <p>Unknown item type: {{type}}</p>
+    {{/ifEquals}}
+    {{#ifEquals type "archetype"}}
+  <div class="archetype-stats">
+    <h3>Archetype: {{name}}</h3>
+
+    <label for="archetype-description"><strong>Description:</strong></label>
+    {{#if editMode}}
+      <textarea id="archetype-description" name="system.description">{{system.description}}</textarea>
+    {{else}}
+      <span>{{system.description}}</span>
+    {{/if}}
+    <br>
+
+    <label for="archetype-benefits"><strong>Benefits:</strong></label>
+    {{#if editMode}}
+      <textarea id="archetype-benefits" name="system.benefits">{{system.benefits}}</textarea>
+    {{else}}
+      <span>{{system.benefits}}</span>
+    {{/if}}
+    <br>
+
+    <label for="archetype-requirements"><strong>Requirements:</strong></label>
+    {{#if editMode}}
+      <textarea id="archetype-requirements" name="system.requirements">{{system.requirements}}</textarea>
+    {{else}}
+      <span>{{system.requirements}}</span>
+    {{/if}}
+    <br>
+
+    <label for="archetype-specialties"><strong>Specialties:</strong></label>
+    {{#if editMode}}
+      <textarea id="archetype-specialties" name="system.specialties">{{system.specialties}}</textarea>
+    {{else}}
+      <span>{{system.specialties}}</span>
+    {{/if}}
+    <br>
+
+    <label for="archetype-synergies"><strong>Bond Synergies:</strong></label>
+    {{#if editMode}}
+      <textarea id="archetype-synergies" name="system.synergies">{{system.synergies}}</textarea>
+    {{else}}
+      <span>{{system.synergies}}</span>
+    {{/if}}
+    <br>
+
+    <label for="archetype-disciplines"><strong>Disciplines:</strong></label>
+    {{#if editMode}}
+      <textarea id="archetype-disciplines" name="system.disciplines">{{system.disciplines}}</textarea>
+    {{else}}
+      <span>{{system.disciplines}}</span>
+    {{/if}}
+  </div>
+{{else}}
+  <p>Unknown item type: {{type}}</p>
+{{/ifEquals}}
+{{#ifEquals type "speciality"}}
+  <div class="speciality-stats">
+    <h3>Speciality: {{name}}</h3>
+
+    {{#ifEquals type "speciality"}}
+  <div class="speciality-category">
+    <label for="speciality-category"><strong>Category:</strong></label>
+    {{#if editMode}}
+      <select id="speciality-category" name="system.category">
+        <option value="light" {{#ifEquals system.category "light"}}selected{{/ifEquals}}>Light</option>
+        <option value="dark" {{#ifEquals system.category "dark"}}selected{{/ifEquals}}>Dark</option>
+      </select>
+    {{else}}
+      <span>{{system.category}}</span>
+    {{/if}}
+  </div>
+{{/ifEquals}}
+
+
+    <label for="speciality-description"><strong>Description:</strong></label>
+    {{#if editMode}}
+      <textarea id="speciality-description" name="system.description">{{system.description}}</textarea>
+    {{else}}
+      <span>{{system.description}}</span>
+    {{/if}}
+    <br>
+
+    <label for="speciality-effect"><strong>Effect:</strong></label>
+    {{#if editMode}}
+      <textarea id="speciality-effect" name="system.effect">{{system.effect}}</textarea>
+    {{else}}
+      <span>{{system.effect}}</span>
+    {{/if}}
+    <br>
+
+    <label for="speciality-requirements"><strong>Requirements:</strong></label>
+    {{#if editMode}}
+      <textarea id="speciality-requirements" name="system.requirements">{{system.requirements}}</textarea>
+    {{else}}
+      <span>{{system.requirements}}</span>
+    {{/if}}
+    <br>
+
+    <label for="speciality-cost"><strong>Cost:</strong></label>
+    {{#if editMode}}
+      <input type="text" id="speciality-cost" name="system.cost" value="{{system.cost}}" />
+    {{else}}
+      <span>{{system.cost}}</span>
+    {{/if}}
+    <br>
+  </div>
+{{else}}
+  <p>Unknown item type: {{type}}</p>
+{{/ifEquals}}
+
+  </div>
+
+  <footer class="sheet-footer">
+    {{#if editMode}}
+      <button type="submit">Save</button>
+    {{/if}}
+  </footer>
+</form>

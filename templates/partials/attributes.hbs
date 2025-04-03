@@ -1,0 +1,490 @@
+    
+  <!-- Purpose: Display the attributes of the character -->
+<div class="attributes">
+    <div class="attribute-group relentless-group">
+        <div class="attribute-group-header">
+            <h3>Relentless</h3><br>
+        </div>
+        <div class="attribute-container">
+            <div class="badge-container">
+                <div class="attribute">
+                    <label for="clash">Clash</label><br>
+                    <div class="badge-skill">
+                        <span 
+                            role="button" 
+                            aria-label="Roll Clash for Relentless" 
+                            tabindex="0"
+                            onclick="triggerRoll('attributes.relentless.attributes.clash', '{{actor.id}}', 'relentless')">
+                            {{actor.system.attributes.relentless.attributes.clash}}
+                        </span>
+                    </div>
+                </div>
+                <div class="attribute">
+                    <label for="push">Push</label><br>
+                    <div class="badge-skill">
+                        <span 
+                            role="button" 
+                            aria-label="Roll Push for Relentless" 
+                            tabindex="0"
+                            onclick="triggerRoll('attributes.relentless.attributes.push', '{{actor.id}}', 'relentless')">
+                            {{actor.system.attributes.relentless.attributes.push}}
+                        </span>
+                    </div>
+                </div>
+                <div class="attribute">
+                    <label for="menace">Menace</label><br>
+                    <div class="badge-skill">
+                        <span 
+                            role="button" 
+                            aria-label="Roll Menace for Relentless" 
+                            tabindex="0"
+                            onclick="triggerRoll('attributes.relentless.attributes.menace', '{{actor.id}}', 'relentless')">
+                            {{actor.system.attributes.relentless.attributes.menace}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rn-badge-container">
+            <div class="attribute">
+        <div class="nerve">
+            <label>Nerve</label><br>
+            <div class="icon-container">
+                <i 
+                    class="fa-solid fa-minus fa-2x" 
+                    data-action="minus" 
+                    data-attribute="relentless" 
+                    data-key="nerveCurrent" 
+                    role="button" 
+                    tabindex="0"
+                    aria-label="Decrease Relentless Nerve">
+                </i>
+                <span class="separator">/</span>
+                <i 
+                    class="fa-solid fa-plus fa-2x" 
+                    data-action="plus" 
+                    data-attribute="relentless" 
+                    data-key="nerveCurrent" 
+                    role="button" 
+                    tabindex="0"
+                    aria-label="Increase Relentless Nerve">
+                </i>
+            </div>
+            <div class="badge-nerve">
+                <span 
+                    id="nerveValueR" 
+                    role="status" 
+                    aria-live="polite">
+                    {{actor.system.attributes.relentless.attributes.nerveCurrent}}
+                </span>
+            </div>
+        </div>
+    </div>
+            <div class="rn-badge-container">
+          <div class="attribute">
+            <div class="temp-nerve">
+                <label>Temp Nerve</label><br>
+                <div class="icon-container">
+                    <i 
+                        class="fa-solid fa-minus fa-2x temp-nerve-minus-r" 
+                        data-action="minus" 
+                        data-attribute="relentless"
+                        data-key="temporaryNerve"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Decrease Temporary Relentless Nerve">
+                    </i>
+                    <span class="separator">/</span>
+                    <i 
+                        class="fa-solid fa-plus fa-2x temp-nerve-plus-r"
+                        data-action="plus" 
+                        data-attribute="relentless"
+                        data-key="temporaryNerve"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Increase Temporary Relentless Nerve">
+                    </i>
+                </div>
+                <div class="badge-tnerve">
+                    <span 
+                        id="tempNerveValueR" 
+                        role="status" 
+                        aria-live="polite">
+                        {{actor.system.attributes.relentless.attributes.temporaryNerve}}
+                    </span>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+
+
+            
+
+    <!-- Elusive Group -->
+<div class="attribute-group elusive-group">
+    <div class="attribute-group-header">
+        <h3>Elusive</h3><br>
+    </div>
+    <div class="attribute-container">
+        <div class="badge-container">
+            <div class="attribute">
+                <label for="maneuver">Maneuver</label><br>
+                <div class="badge-skill">
+                    <span 
+                        role="button" 
+                        aria-label="Roll Maneuver for Elusive" 
+                        tabindex="0"
+                        onclick="triggerRoll('attributes.elusive.attributes.maneuver', '{{actor.id}}', 'elusive')">
+                        {{actor.system.attributes.elusive.attributes.maneuver}}
+                    </span>
+                </div>
+            </div>
+            <div class="attribute">
+                <label for="control">Control</label><br>
+                <div class="badge-skill">
+                    <span 
+                        role="button" 
+                        aria-label="Roll Control for Elusive" 
+                        tabindex="0"
+                        onclick="triggerRoll('attributes.elusive.attributes.control', '{{actor.id}}', 'elusive')">
+                        {{actor.system.attributes.elusive.attributes.control}}
+                    </span>
+                </div>
+            </div>
+            <div class="attribute">
+                <label for="stealth">Stealth</label><br>
+                <div class="badge-skill">
+                    <span 
+                        role="button" 
+                        aria-label="Roll Stealth for Elusive" 
+                        tabindex="0"
+                        onclick="triggerRoll('attributes.elusive.attributes.stealth', '{{actor.id}}', 'elusive')">
+                        {{actor.system.attributes.elusive.attributes.stealth}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rn-badge-container">
+      <div class="attribute">
+        <div class="nerve">
+            <label>Nerve</label><br>
+            <div class="icon-container">
+                    <i 
+                        class="fa-solid fa-minus fa-2x nerve-minus-e" 
+                        data-action="minus" 
+                        data-attribute="elusive"
+                        data-key="nerveCurrent"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Decrease Elusive Nerve">
+                    </i>
+                    <span class="separator">/</span>
+                    <i 
+                        class="fa-solid fa-plus fa-2x nerve-plus-e" 
+                        data-action="plus" 
+                        data-attribute="elusive"
+                        data-key="nerveCurrent"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Increase Elusive Nerve">
+                    </i>
+                </div>
+                
+            <div class="badge-nerve">
+                <span 
+                    id="nerveValueE" 
+                    role="status" 
+                    aria-live="polite">
+                    {{actor.system.attributes.elusive.attributes.nerveCurrent}}
+                </span>
+            </div>
+        </div>
+        </div>
+        
+    <div class="rn-badge-container">
+      <div class="attribute">
+        <div class="temp-nerve">
+            <label>Temp Nerve</label><br>
+            <div class="icon-container">
+                    <i 
+                        class="fa-solid fa-minus fa-2x temp-nerve-minus-e" 
+                        data-action="minus" 
+                        data-attribute="elusive"
+                        data-key="temporaryNerve"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Decrease Temporary Elusive Nerve">
+                    </i>
+                    <span class="separator">/</span>
+                    <i 
+                        class="fa-solid fa-plus fa-2x temp-nerve-plus-e" 
+                        data-action="plus" 
+                        data-attribute="elusive"
+                        data-key="temporaryNerve"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Increase Temporary Elusive Nerve">
+                    </i>
+                </div>
+            <div class="badge-tnerve">
+                <span 
+                    id="tempNerveValueE" 
+                    role="status" 
+                    aria-live="polite">
+                    {{actor.system.attributes.elusive.attributes.temporaryNerve}}
+                </span>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>  
+     
+
+<!-- Charming Group -->
+<div class="attribute-group charming-group">
+    <div class="attribute-group-header">
+        <h3>Charming</h3><br>
+    </div>
+    <div class="attribute-container">
+        <div class="badge-container">
+            <div class="attribute">
+                <label for="sense">Sense</label><br>
+                <div class="badge-skill">
+                    <span 
+                        role="button" 
+                        aria-label="Roll Sense for Charming" 
+                        tabindex="0"
+                        onclick="triggerRoll('attributes.charming.attributes.sense', '{{actor.id}}', 'charming')">
+                        {{actor.system.attributes.charming.attributes.sense}}
+                    </span>
+                </div>
+            </div>
+            <div class="attribute">
+                <label for="influence">Influence</label><br>
+                <div class="badge-skill">
+                    <span 
+                        role="button" 
+                        aria-label="Roll Influence for Charming" 
+                        tabindex="0"
+                        onclick="triggerRoll('attributes.charming.attributes.influence', '{{actor.id}}', 'charming')">
+                        {{actor.system.attributes.charming.attributes.influence}}
+                    </span>
+                </div>
+            </div>
+            <div class="attribute">
+                <label for="deceive">Deceive</label><br>
+                <div class="badge-skill">
+                    <span 
+                        role="button" 
+                        aria-label="Roll Deceive for Charming" 
+                        tabindex="0"
+                        onclick="triggerRoll('attributes.charming.attributes.deceive', '{{actor.id}}', 'charming')">
+                        {{actor.system.attributes.charming.attributes.deceive}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rn-badge-container">
+      <div class="attribute">
+        <div class="nerve">
+            <label>Nerve</label><br>
+            <div class="icon-container">
+                    <i 
+                        class="fa-solid fa-minus fa-2x nerve-minus-c" 
+                        data-action="minus" 
+                        data-attribute="charming"
+                        data-key="nerveCurrent"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Decrease Charming Nerve">
+                    </i>
+                    <span class="separator">/</span>
+                    <i 
+                        class="fa-solid fa-plus fa-2x nerve-plus-c" 
+                        data-action="plus" 
+                        data-attribute="charming"
+                        data-key="nerveCurrent"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Increase Charming Nerve">
+                    </i>
+                </div>
+            <div class="badge-nerve">
+                <span 
+                    id="nerveValueC" 
+                    role="status" 
+                    aria-live="polite">
+                    {{actor.system.attributes.charming.attributes.nerveCurrent}}
+                </span>
+            </div>
+        </div>
+        </div>
+       
+    <div class="rn-badge-container">
+      <div class="attribute">
+        <div class="temp-nerve">
+            <label>Temp Nerve</label><br>
+            <div class="icon-container">
+                    <i 
+                        class="fa-solid fa-minus fa-2x temp-nerve-minus-c" 
+                        data-action="minus" 
+                        data-attribute="charming"
+                        data-key="temporaryNerve"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Decrease Temporary Charming Nerve">
+                    </i>
+                    <span class="separator">/</span>
+                    <i 
+                        class="fa-solid fa-plus fa-2x temp-nerve-plus-c" 
+                        data-action="plus" 
+                        data-attribute="charming"
+                        data-key="temporaryNerve"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Increase Temporary Charming Nerve">
+                    </i>
+                </div>
+            <div class="badge-tnerve">
+                <span 
+                    id="tempNerveValueC" 
+                    role="status" 
+                    aria-live="polite">
+                    {{actor.system.attributes.charming.attributes.temporaryNerve}}
+                </span>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+       
+
+<!-- Discreet Group -->
+<div class="attribute-group discreet-group">
+    <div class="attribute-group-header">
+        <h3>Discreet</h3><br>
+    </div>
+    <div class="attribute-container">
+        <div class="badge-container">
+            <div class="attribute">
+                <label for="notice">Notice</label><br>
+                <div class="badge-skill">
+                    <span 
+                        role="button" 
+                        aria-label="Roll Notice for Discreet" 
+                        tabindex="0"
+                        onclick="triggerRoll('attributes.discreet.attributes.notice', '{{actor.id}}', 'discreet')">
+                        {{actor.system.attributes.discreet.attributes.notice}}
+                    </span>
+                </div>
+            </div>
+            <div class="attribute">
+                <label for="focus">Focus</label><br>
+                <div class="badge-skill">
+                    <span 
+                        role="button" 
+                        aria-label="Roll Focus for Discreet" 
+                        tabindex="0"
+                        onclick="triggerRoll('attributes.discreet.attributes.focus', '{{actor.id}}', 'discreet')">
+                        {{actor.system.attributes.discreet.attributes.focus}}
+                    </span>
+                </div>
+            </div>
+            <div class="attribute">
+                <label for="invoke">Invoke</label><br>
+                <div class="badge-skill">
+                    <span 
+                        role="button" 
+                        aria-label="Roll Invoke for Discreet" 
+                        tabindex="0"
+                        onclick="triggerRoll('attributes.discreet.attributes.invoke', '{{actor.id}}', 'discreet')">
+                        {{actor.system.attributes.discreet.attributes.invoke}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rn-badge-container">
+      <div class="attribute">
+        <div class="nerve">
+            <label>Nerve</label><br>
+            <div class="icon-container">
+                    <i 
+                        class="fa-solid fa-minus fa-2x nerve-minus-d" 
+                        data-action="minus" 
+                        data-attribute="discreet"
+                        data-key="nerveCurrent"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Decrease Discreet Nerve">
+                    </i>
+                    <span class="separator">/</span>
+                    <i 
+                        class="fa-solid fa-plus fa-2x nerve-plus-d" 
+                        data-action="plus" 
+                        data-attribute="discreet"
+                        data-key="nerveCurrent"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Increase Discreet Nerve">
+                    </i>
+                </div>
+            <div class="badge-nerve">
+                <span 
+                    id="nerveValueD" 
+                    role="status" 
+                    aria-live="polite">
+                    {{actor.system.attributes.discreet.attributes.nerveCurrent}}
+                </span>
+            </div>
+        </div>
+        </div>
+        
+    <div class="rn-badge-container">
+      <div class="attribute">
+        <div class="temp-nerve">
+            <label>Temp Nerve</label><br>
+            <div class="icon-container">
+                    <i 
+                        class="fa-solid fa-minus fa-2x temp-nerve-minus-d" 
+                        data-action="minus" 
+                        data-attribute="discreet"
+                        data-key="temporaryNerve"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Decrease Temporary Discreet Nerve">
+                    </i>
+                    <span class="separator">/</span>
+                    <i 
+                        class="fa-solid fa-plus fa-2x temp-nerve-plus-d" 
+                        data-action="plus" 
+                        data-attribute="discreet"
+                        data-key="temporaryNerve"
+                        role="button" 
+                        tabindex="0"
+                        aria-label="Increase Temporary Discreet Nerve">
+                    </i>
+                </div>
+            <div class="badge-tnerve">
+                <span 
+                    id="tempNerveValueD" 
+                    role="status" 
+                    aria-live="polite">
+                    {{actor.system.attributes.discreet.attributes.temporaryNerve}}
+                </span>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+       
+
+<!-- Include your JavaScript file -->
+<script src="systems/dust-system/scripts/attributes.js"></Script>

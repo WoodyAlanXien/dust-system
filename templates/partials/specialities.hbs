@@ -1,0 +1,55 @@
+<div class="specialities">
+  <section class="speciality-section">
+    <div class="sheet-content" id="specialityView">
+      {{#if editMode}}
+        <div class="light-speciality">
+          <strong>Light Speciality:</strong>
+          <select name="system.attributes.specialities.light" class="equip-speciality-slot" data-slot="light">
+            <option value="">Select a Light Speciality</option>
+            {{#each actor.items}}
+              {{#if (eq this.type "speciality")}}
+                {{#if (eq this.system.category "light")}} <!-- Check for Light Speciality -->
+                  <option value="{{this.id}}" {{#if (eq ../actor.system.attributes.specialities.light this.id)}}selected{{/if}}>
+                    {{this.name}}
+                  </option>
+                {{/if}}
+              {{/if}}
+            {{/each}}
+          </select>
+        </div>
+        <div class="shadow-speciality">
+          <strong>Shadow Speciality:</strong>
+          <select name="system.attributes.specialities.dark" class="equip-speciality-slot" data-slot="dark">
+            <option value="">Select a Shadow Speciality</option>
+            {{#each actor.items}}
+              {{#if (eq this.type "speciality")}}
+                {{#if (eq this.system.category "shadow")}} <!-- Check for Dark Speciality -->
+                  <option value="{{this.id}}" {{#if (eq ../actor.system.attributes.specialities.dark this.id)}}selected{{/if}}>
+                    {{this.name}}
+                  </option>
+                {{/if}}
+              {{/if}}
+            {{/each}}
+          </select>
+        </div>
+      {{else}}
+        <div class="light-speciality">
+          <strong>Light Speciality:</strong>
+          {{#if actor.system.attributes.specialities.light}}
+            {{getSpecialityProperties actor.system.attributes.specialities.light actor.items}}
+          {{else}}
+            None
+          {{/if}}
+        </div>
+        <div class="shadow-speciality">
+          <strong>Shadow Speciality:</strong>
+          {{#if actor.system.attributes.specialities.dark}}
+            {{getSpecialityProperties actor.system.attributes.specialities.dark actor.items}}
+          {{else}}
+            None
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  </section>
+</div>

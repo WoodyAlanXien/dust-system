@@ -1,0 +1,27 @@
+<div class="weapon-stats">
+  <label for="weapon-type"><strong>Type:</strong></label>
+  {{#if editMode}}
+    <select id="weapon-type" name="system.type">
+      <option value="melee" {{#ifEquals system.type "melee"}}selected{{/ifEquals}}>Melee</option>
+      <option value="ranged" {{#ifEquals system.type "ranged"}}selected{{/ifEquals}}>Ranged</option>
+      <option value="magic" {{#ifEquals system.type "magic"}}selected{{/ifEquals}}>Magic</option>
+    </select>
+  {{else}}
+    <span><strong>{{system.type}}</strong></span>
+  {{/if}}
+
+  <label for="weapon-damage"><strong>Damage:</strong></label>
+  {{#if editMode}}
+    <input type="number" id="weapon-damage" name="system.damage" value="{{system.damage}}" />
+  {{else}}
+    <span><strong>{{system.damage}}</strong></span>
+  {{/if}}
+
+  <label for="weapon-durability"><strong>Durability:</strong></label>
+  {{#if editMode}}
+    <input type="number" id="weapon-durability" name="system.durability.current" value="{{system.durability.current}}" />
+    / <input type="number" id="weapon-durability-max" name="system.durability.max" value="{{system.durability.max}}" />
+  {{else}}
+    <span><strong>{{system.durability.current}} / {{system.durability.max}}</strong></span>
+  {{/if}}
+</div>

@@ -1,0 +1,95 @@
+<form class="sheet" id="{{id}}" data-edit="{{editable}}" data-type="{{type}}">
+  <!-- Existing code for loadout weapons -->
+  <div id="loadout" class="tab-content" data-tab="loadout">
+    <div class="weapons">
+      <h2>Wielded Weapons</h2>
+      <section class="weapon-section">
+        <div class="sheet-content" id="loadoutView">
+          {{#if editMode}}
+            <div>
+              <strong>Weapon Slot 1:</strong>
+              <select name="system.attributes.loadout.weapon1" class="equip-weapon-slot" data-slot="weapon1">
+                <option value="">Select a Weapon</option>
+                {{#each actor.items}}
+                  {{#if (eq this.type "weapon")}}
+                    <option value="{{this.id}}" {{#if (eq ../actor.system.attributes.loadout.weapon1 this.id)}}selected{{/if}}>
+                      {{this.name}}
+                    </option>
+                  {{/if}}
+                {{/each}}
+              </select>
+            </div>
+            <div>
+              <strong>Weapon Slot 2:</strong>
+              <select name="system.attributes.loadout.weapon2" class="equip-weapon-slot" data-slot="weapon2">
+                <option value="">Select a Weapon</option>
+                {{#each actor.items}}
+                  {{#if (eq this.type "weapon")}}
+                    <option value="{{this.id}}" {{#if (eq ../actor.system.attributes.loadout.weapon2 this.id)}}selected{{/if}}>
+                      {{this.name}}
+                    </option>
+                  {{/if}}
+                {{/each}}
+              </select>
+            </div>
+          {{else}}
+            <div>
+              <strong>Weapon Slot 1:</strong>
+              {{#if actor.system.attributes.loadout.weapon1}}
+                {{getWeaponProperties actor.system.attributes.loadout.weapon1 actor.items}}
+              {{else}}
+                None
+              {{/if}}
+            </div>
+            <div>
+              <strong>Weapon Slot 2:</strong>
+              {{#if actor.system.attributes.loadout.weapon2}}
+                {{getWeaponProperties actor.system.attributes.loadout.weapon2 actor.items}}
+              {{else}}
+                None
+              {{/if}}
+            </div>
+          {{/if}}
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer class="sheet-footer">
+    {{#if editMode}}
+      <button type="submit" class="save-button">Save</button>
+    {{/if}}
+  </footer>
+</form>
+
+
+
+<!-- Include your JavaScript file -->
+<script src="systems/dust-system/scripts/loadout.js">
+
+Hooks.on("renderActorSheet", (app, html) => {
+  html.find(".save-button").on("click", async (event) => {
+    event.preventDefault(); // Prevent form's default behavior
+
+    const form = html.find("form")[0]; // Reference the form
+    const formData = new FormData(form); // Retrieve form data
+
+    // Prepare data to update
+    const updateData = {
+      "system.attributes.loadout.weapon1": formData.get("system.attributes.loadout.weapon1") || null, // Use `null` if empty
+      "system.attributes.loadout.weapon2": formData.get("system.attributes.loadout.weapon2") || null, // Use `null` if empty
+    };
+
+    try {
+      // Update actor with the new data
+      await app.object.update(updateData);
+      ui.notifications.info("Character successfully updated!");
+    } catch (error) {
+      console.error("Failed to save character data:", error);
+      ui.notifications.error("An error occurred while saving data. Check the console for details.");
+    }
+  });
+});
+
+
+
+</Script>

@@ -1,6 +1,6 @@
 {
     "id": "dust-system",
-    "title": "DUST System",
+    "title": "Dimensional Unification and Stabilization Taskforce (DUST)",
     "description": "Custom system for DUST",
     "version": "1.0.0",
     "compatibility": {
@@ -8,13 +8,30 @@
         "verified": "13.336"
     },
     "authors": ["Woody Alan Xien"],
-               
+    "data": {
+        "template": "template.json"
+    },
     "esmodules": [
-        "dust-system.mjs"
-    ],
+        "dust-system.mjs",        
+        "libs/mammoth.browser.js"
+            ],
     "styles": [
-        "dust-system.css"
+        "dust-system.css",
+        "styles/weapon.css",
+        "styles/item-sheet.css"
+        ],
+    "scripts": [
+        "scripts/helpers.js",
+        "scripts/trigger-roll.mjs",
+        "scripts/loadout.js",
+        "scripts/attributes.js" ,
+        "module/weapon.js",
+        "module/item.js",
+        "module/item-sheet.js"      
     ],
+    "templates": {
+    "item": "templates/item-sheet.hbs"
+},
     "documentTypes": {
         "ActiveEffect": {
             "enchantment": {}
@@ -22,90 +39,406 @@
         "Actor": {
             "character": {
                 "attributes": {
+                    "resilienceTotal": {
+                        "type": "number",
+                        "label": "Total Resilience"
+                    },
                     "stress": {
-            "type": "number",
-            "label": "Stress",
-            "default": 0
-          },
-          "corruption": {
-            "type": "number",
-            "label": "Corruption",
-            "default": 0
-          },
-          "trauma": {
-            "type": "number",
-            "label": "Trauma",
-            "default": 0
-          }
-                    "relentless":{
-                        "clash":{
+                        "type": "number",
+                        "label": "Stress"
+                        
+                    },
+                    "stressTolerance": {
+                        "type": "number",
+                        "label": "Stress Tolerance"
+                        
+                    },
+                    "corruption": {
+                        "type": "number",
+                        "label": "Corruption"
+                        
+                    },
+                    "trauma": {
+                        "type": "number",
+                        "label": "Trauma"
+                        
+                    },
+                    "generalAp": {
+                        "value":{
                             "type": "number",
-                            "label": "Clash",
-                            "default": 0
+                            "label": "Action Points"
                         },
-                        "push":{
+                        "max": {
                             "type": "number",
-                            "label": "Push",
-                            "default": 0
-                        },
-                        "menace":{
+                            "label": "Max Action Points"
+                        }
+                        
+                    },
+                    "combatAp": {
+                        "value":{
                             "type": "number",
-                            "label": "Menace",
-                            "default": 0
+                            "label": "Action Points"
                         },
-                    "elusive":{
-                        "maneuver":{
+                        "max": {
                             "type": "number",
-                            "label": "Maneuver",
-                            "default": 0
-                        },
-                        "control":{
+                            "label": "Max Action Points"
+                        }
+                        
+                    },
+                    "level": {
+                        "type": "number",
+                        "label": "Character Level"
+                        
+                    },
+                    "relentless": {
+                        "attributes": {
+                        "clash": {
                             "type": "number",
-                            "label": "Control",
-                            "default": 0
+                            "label": "Clash"
+                            
                         },
-                        "stealth":{
+                        "push": {
                             "type": "number",
-                            "label": "Stealth",
-                            "default": 0
+                            "label": "Push"
+                            
                         },
-                    "charming":{
-                        "sense":{
+                        "menace": {
                             "type": "number",
-                            "label": "Sense",
-                            "default": 0
+                            "label": "Menace"
+                            
                         },
-                        "influence":{
+                        "nerve": {
+                            "value":{
                             "type": "number",
-                            "label": "Influence",
-                            "default": 0
-                        },
-                        "deceive":{
+                            "label": "Current Nerve Points"
+                            },
+                            "max": {
                             "type": "number",
-                            "label": "Deceive",
-                            "default": 0
-                        },
-                    "discreet":{
-                        "notice":{
+                            "label": "Max Nerve Points"
+                            }
+                        },            
+                        "temporaryNerve": {
                             "type": "number",
-                            "label": "Notice",
-                            "default": 0
+                            "label": "Temporary Relentless Nerve"
+                            
                         },
-                        "focus":{
+                        "resilience": {
                             "type": "number",
-                            "label": "Focus",
-                            "default": 0
-                        },
-                        "invoke":{
+                            "label": "Relentless Resilience"
+                            
+                        }
+                    }
+                    },
+                    "elusive": {
+                        "attributes": {
+                        "maneuver": {
                             "type": "number",
-                            "label": "Invoke",
-                            "default": 0
+                            "label": "Maneuver"
+                            
                         },
+                        "control": {
+                            "type": "number",
+                            "label": "Control"
+                            
+                        },
+                        "stealth": {
+                            "type": "number",
+                            "label": "Stealth"
+                            
+                        },
+                        "nerve": {
+                            "value":{
+                            "type": "number",
+                            "label": "Current Nerve Points"
+                            },
+                            "max": {
+                            "type": "number",
+                            "label": "Max Nerve Points"
+                            }
+                        },        
+                        "resilience": {
+                            "type": "number",
+                            "label": "Elusive Resilience"
+                            
+                        }
+                    }
+                    },
+                    "charming": {
+                        "attributes": {
+                        "sense": {
+                            "type": "number",
+                            "label": "Sense"
+                            
+                        },
+                        "influence": {
+                            "type": "number",
+                            "label": "Influence"
+                            
+                        },
+                        "deceive": {
+                            "type": "number",
+                            "label": "Deceive"
+                            
+                        },
+                        "nerve": {
+                            "value":{
+                            "type": "number",
+                            "label": "Current Nerve Points"
+                            },
+                            "max": {
+                            "type": "number",
+                            "label": "Max Nerve Points"
+                            }
+                        },        
+                        "temporaryNerve": {
+                            "type": "number",
+                            "label": "Temporary Charming Nerve"
+                            
+                        },
+                        "resilience": {
+                            "type": "number",
+                            "label": "Charming Resilience"
+                            
+                        }
+                    }
+                    },
+                    "discreet": {
+                        "attributes": {
+                        "notice": {
+                            "type": "number",
+                            "label": "Notice"
+                            
+                        },
+                        "focus": {
+                            "type": "number",
+                            "label": "Focus"
+                            
+                        },
+                        "invoke": {
+                            "type": "number",
+                            "label": "Invoke"
+                            
+                        },
+                        "nerve": {
+                            "value":{
+                            "type": "number",
+                            "label": "Current Nerve Points"
+                            },
+                            "max": {
+                            "type": "number",
+                            "label": "Max Nerve Points"
+                            }
+                        },        
+                        "temporaryNerve": {
+                            "type": "number",
+                            "label": "Temporary Discreet Nerve"
+                            
+                        },
+                        "resilience": {
+                            "type": "number",
+                            "label": "Discreet Resilience"
+                            
+                        }
+                    }
+                    },
+                    "xp": {
+                        "cumulative": {
+                            "type": "number",
+                            "label": "Cumulative XP"
+                            
+                        },
+                        "current": {
+                            "type": "number",
+                            "label": "Current XP"
+                            
+                        }
+                    },
+                    "aether": {
+                        "capacity": {
+                            "type": "number",
+                            "label": "Aether Capacity"
+                            
+                        },
+                        "conserved": {
+                            "type": "number",
+                            "label": "Conserved Aether"
+                            
+                        },
+                        "supply": {
+                            "type": "number",
+                            "label": "Supply"
+                            
+                        }
+                    },
+                    "quirk": {
+                        "type": "string",
+                        "label": "Quirk",
+                        "default": ""
+                    },
+                    "drive": {
+                        "type": "string",
+                        "label": "Drive",
+                        "default": ""
+                    },
+                    "playerObjective": {
+                        "type": "string",
+                        "label": "Player Objective",
+                        "default": ""
+                    },
+                    "characterObjectives": {
+                        "objective1": {
+                            "type": "string",
+                            "label": "Character Objective 1",
+                            "default": ""
+                        },
+                        "objective2": {
+                            "type": "string",
+                            "label": "Character Objective 2",
+                            "default": ""
+                        },
+                        "objective3": {
+                            "type": "string",
+                            "label": "Character Objective 3",
+                            "default": ""
+                        }
+                    },
+                    "bonds": {
+                        "bond1": {
+                            "character": {
+                                "type": "string",
+                                "label": "Bond Character 1",
+                                "default": "name"
+                            },
+                            "level": {
+                                "type": "number",
+                                "label": "Bond Level 1",
+                                "default": 0
+                            },
+                            "health": {
+                                "type": "number",
+                                "label": "Bond Health 1",
+                                "default": 0
+                            }
+                        },
+                        "bond2": {
+                            "character": {
+                                "type": "string",
+                                "label": "Bond Character 2",
+                                "default": "name"
+                            },
+                            "level": {
+                                "type": "number",
+                                "label": "Bond Level 2",
+                                "default": 0
+                            },
+                            "health": {
+                                "type": "number",
+                                "label": "Bond Health 2",
+                                "default": 0
+                            }
+                        },
+                        "bond3": {
+                            "character": {
+                                "type": "string",
+                                "label": "Bond Character 3",
+                                "default": "name"
+                            },
+                            "level": {
+                                "type": "number",
+                                "label": "Bond Level 3",
+                                "default": 0
+                            },
+                            "health": {
+                                "type": "number",
+                                "label": "Bond Health 3",
+                                "default": 0
+                            }
+                        }
+                    },
+                    "loadout": {
+                        "weapon1": {
+                            "type": "string",
+                            "label": "Wielded Weapon 1",
+                            "default": ""
+                        },
+                        "weapon2": {
+                            "type": "string",
+                            "label": "Wielded Weapon 2",
+                            "default": ""
+                        },
+                        "armor": {
+                            "mundane": {
+                             "type": "string",
+                             "label": "Mundane Armor",
+                             "default": 0
+                            },                    
+                            "phase": {
+                             "type": "string",
+                             "label": "Phase Armor",
+                             "default": 0
+                            },
+                            "advancedPhase": {
+                             "type": "string",
+                             "label": "Advanced Phase Armor",
+                             "default": 0
+                            }
+                        },
+                        "smallItem1":{
+                            "type": "string",
+                            "label": "Small Item 1",
+                            "default": ""
+                        },
+                        "smallItem2":{
+                            "type": "string",
+                            "label": "Small Item 2",
+                            "default": ""
+                        },
+                        "smallItem3":{
+                            "type": "string",
+                            "label": "Small Item 3",
+                            "default": ""
+                        },
+                        "smallItem4":{
+                            "type": "string",
+                            "label": "Small Item 4",
+                            "default": ""
+                        },
+                        "mediumItem1":{
+                            "type": "string",
+                            "label": "Medium Item 1",
+                            "default": ""
+                        },
+                        "mediumItem2":{
+                            "type": "string",
+                            "label": "Medium Item 2",
+                            "default": ""
+                        },
+                        "mediumItem3":{
+                            "type": "string",
+                            "label": "Medium Item 3",
+                            "default": ""
+                        },
+                        "largeItem":{
+                            "type": "string",
+                            "label": "Large Item",
+                            "default": ""
+                        },
+                        "expansionSlot1":{
+                            "type": "string",
+                            "label": "Exspansion Slot 1",
+                            "default": ""
+                        },
+                        "expansionSlot2":{
+                            "type": "string",
+                            "label": "Exspansion Slot 2",
+                            "default": ""
+                        }
+                    }
+                },
                 "htmlFields": [
                     "details.biography.value",
-                    "details.biography.public",
-                    "bastion.description"
-                ]
+                    "details.biography.public"
+                    ]
             },
             "npc": {
                 "htmlFields": [
@@ -241,147 +574,146 @@
             }
         }
     },
-      "packs": [
-    {
-      "label": "NPCs",
-      "type": "Actor",
-      "name": "npcs",
-      "path": "packs/npcs",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "SRD Rules",
-      "type": "Item",
-      "name": "rules",
-      "path": "packs/rules",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Archetypes",
-      "type": "Item",
-      "name": "archetype",
-      "path": "packs/archetype",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Quirks",
-      "type": "Item",
-      "name": "quirk",
-      "path": "packs/quirk",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Drives",
-      "type": "Item",
-      "name": "drive",
-      "path": "packs/drive",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Disciplines",
-      "type": "Item",
-      "name": "discipline",
-      "path": "packs/discipline",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Specialities",
-      "type": "Item",
-      "name": "speciality",
-      "path": "packs/speciality",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Features",
-      "type": "Item",
-      "name": "feature",
-      "path": "packs/feature",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Abilities",
-      "type": "Item",
-      "name": "abilitie",
-      "path": "packs/abilitie",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "label": "Gear",
-      "type": "Item",
-      "name": "gear",
-      "path": "packs/gear",
-      "system": "dust-system",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    }
-  ],
-  "packFolders": [
-    {
-      "name": "DUST SRD",
-      "sorting": "m",
-      "color":  "#cd2c1e",
-      "packs": [
-          "rules",
-          "npcs",
-          "archetype",
-          "quirk",
-          "drive",
-          "discipline",
-          "speciality",
-          "feature",
-          "ability",
-          "gear"
-
-      ]
-    }
-  ],
-  "languages": [
+    "packs": [
         {
-          "lang": "en",
-          "name": "English",
-          "path": "lang/en.json",
-          "flags": {}
+            "label": "NPCs",
+            "type": "Actor",
+            "name": "npcs",
+            "path": "packs/npcs",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "LIMITED",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "SRD Rules",
+            "type": "JournalEntry",
+            "name": "rules",
+            "path": "packs/rules",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Archetypes",
+            "type": "Item",
+            "name": "archetype",
+            "path": "packs/archetype",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Quirks",
+            "type": "Item",
+            "name": "quirk",
+            "path": "packs/quirk",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Drives",
+            "type": "Item",
+            "name": "drive",
+            "path": "packs/drive",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Disciplines",
+            "type": "Item",
+            "name": "discipline",
+            "path": "packs/discipline",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Specialities",
+            "type": "Item",
+            "name": "speciality",
+            "path": "packs/speciality",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Features",
+            "type": "Item",
+            "name": "feature",
+            "path": "packs/feature",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Abilities",
+            "type": "Item",
+            "name": "abilitie",
+            "path": "packs/abilitie",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Gear",
+            "type": "Item",
+            "name": "gear",
+            "path": "packs/gear",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
         }
-      ],
-  "media": [
+    ],
+    "packFolders": [
+        {
+            "name": "DUST SRD",
+            "sorting": "m",
+            "color": "#cd2c1e",
+            "packs": [
+                "rules",
+                "npcs",
+                "archetype",
+                "quirk",
+                "drive",
+                "discipline",
+                "speciality",
+                "feature",
+                "ability",
+                "gear"
+            ]
+        }
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json",
+            "flags": {}
+        }
+    ],
+    "media": [
         {
             "type": "cover",
             "loop": false,
@@ -389,17 +721,17 @@
         },
         {
             "type": "setup",
-            "url": "systems/dust-system/ui/official/dust-system-repo.jpg",
-            "thumbnail": "systems/dust-system/ui/official/dust-system-thumbnail.jpg"
+            "url": "systems/dust-system/ui/dust-system-repo.jpg",
+            "thumbnail": "systems/dust-system/ui/dust-system-thumbnail.jpg"
         }
     ],
-  "socket": true,
-  "grid": {
+    "socket": true,
+    "grid": {
         "distance": 5,
         "units": "ft"
     },
     "primaryTokenAttribute": "attributes.stress",
-    "background": "systems/dust-system/ui/official/dust-system-background.webp",
+    "background": "systems/dust-system/ui/dust-system-background.webp",
     "flags": {
         "dust-system": {
             "sourceBooks": {
@@ -409,11 +741,10 @@
         "needsMigrationVersion": "4.0.1",
         "compatibleMigrationVersion": "0.8",
         "hotReload": false
-    },    
-            "download": {
-            "source": "https://github.com/WoodyAlanXien/dust-system",
-            "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/system.json",
-            "download": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/dust-system.zip"
-        }
+    },
+    "download": {
+        "source": "https://github.com/WoodyAlanXien/dust-system",
+        "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/system.json",
+        "download": "https://github.com/WoodyAlanXien/dust-system/releases/latest/download/dust-system.zip"
     }
 }
