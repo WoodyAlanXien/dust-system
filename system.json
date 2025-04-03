@@ -81,7 +81,7 @@
     },
     
         "url": "https://github.com/WoodyAlanXien/dust-system",
-        "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/current/download/system.json",
-        "download": "https://github.com/WoodyAlanXien/dust-system/releases/current/download/dust-system.zip"
+        "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/system.json",
+        "download": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/dust-system.zip"
     }
 
