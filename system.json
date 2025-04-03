@@ -666,8 +666,8 @@
         {
             "label": "Abilities",
             "type": "Item",
-            "name": "abilitie",
-            "path": "packs/abilitie",
+            "name": "abilities",
+            "path": "packs/abilities",
             "system": "dust-system",
             "ownership": {
                 "PLAYER": "OBSERVER",
