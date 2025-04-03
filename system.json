@@ -7,7 +7,9 @@
         "minimum": "12.331",
         "verified": "13.336"
     },
-    "authors": ["Woody Alan Xien"],
+    "authors": [{
+        "name": "Woody Alan Xien"
+}],
     "data": {
         "template": "template.json"
     },
