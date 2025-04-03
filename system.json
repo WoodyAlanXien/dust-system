@@ -742,9 +742,8 @@
         "compatibleMigrationVersion": "0.8",
         "hotReload": false
     },
-    "download": {
-        "url": "https://github.com/WoodyAlanXien/dust-system",
-        "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/system.json",
-        "download": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/dust-system.zip"
-    }
+    "url": "https://github.com/WoodyAlanXien/dust-system",
+    "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/system.json",
+    "download": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/dust-system.zip"
+    
 }
