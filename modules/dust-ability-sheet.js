@@ -34,49 +34,55 @@ export class AbilitySheet extends ItemSheet {
     /**
      * Open a configuration dialog for the ability.
      */
-    _openConfigurationDialog() {
-      new Dialog({
-        title: "Configure Ability",
-        content: `
-          <form>
-            <div class="form-group">
-              <label for="archetype">Archetype:</label>
-              <input type="text" id="archetype" name="archetype" value="${this.object.system.archetype}" />
-            </div>
-            <div class="form-group">
-              <label for="discipline">Discipline:</label>
-              <input type="text" id="discipline" name="discipline" value="${this.object.system.discipline}" />
-            </div>
-            <div class="form-group">
-              <label for="aether-cost">Aether Cost:</label>
-              <input type="number" id="aether-cost" name="aether-cost" value="${this.object.system.aetherCost}" min="0" />
-            </div>
-            <div class="form-group">
-              <label for="action-point-cost">Action Point Cost:</label>
-              <input type="number" id="action-point-cost" name="action-point-cost" value="${this.object.system.actionPointCost}" min="0" />
-            </div>
-            <div class="form-group">
-              <label for="description">Description:</label>
-              <textarea id="description" name="description">${this.object.system.description}</textarea>
-            </div>
-            <div class="form-group">
-              <label for="effect">Effect:</label>
-              <textarea id="effect" name="effect">${this.object.system.effect}</textarea>
-            </div>
-          </form>
-        `,
-        buttons: {
-          save: {
-            label: "Save Changes",
-            callback: (html) => this._updateAbilityAttributes(html),
-          },
-          cancel: {
-            label: "Cancel",
-          },
-        },
-        default: "save",
-      }).render(true);
-    }
+    // ...existing code...
+_openConfigurationDialog() {
+  new Dialog({
+    title: "Configure Ability",
+    content: `
+      <form>
+        <div class="form-group">
+          <label for="archetype">Archetype:</label>
+          <select id="archetype" name="archetype">
+            <option value="Warden" ${this.object.system.archetype === "Warden" ? "selected" : ""}>Warden</option>
+            <option value="Agent" ${this.object.system.archetype === "Agent" ? "selected" : ""}>Agent</option>
+            <option value="Professor" ${this.object.system.archetype === "Professor" ? "selected" : ""}>Professor</option>
+            <option value="Magi" ${this.object.system.archetype === "Magi" ? "selected" : ""}>Magi</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="discipline">Discipline:</label>
+          <input type="text" id="discipline" name="discipline" value="${this.object.system.discipline}" />
+        </div>
+        <div class="form-group">
+          <label for="aether-cost">Aether Cost:</label>
+          <input type="number" id="aether-cost" name="aether-cost" value="${this.object.system.aetherCost}" min="0" />
+        </div>
+        <div class="form-group">
+          <label for="action-point-cost">Action Point Cost:</label>
+          <input type="number" id="action-point-cost" name="action-point-cost" value="${this.object.system.actionPointCost}" min="0" />
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description">${this.object.system.description}</textarea>
+        </div>
+        <div class="form-group">
+          <label for="effect">Effect:</label>
+          <textarea id="effect" name="effect">${this.object.system.effect}</textarea>
+        </div>
+      </form>
+    `,
+    buttons: {
+      save: {
+        label: "Save Changes",
+        callback: (html) => this._updateAbilityAttributes(html),
+      },
+      cancel: {
+        label: "Cancel",
+      },
+    },
+    default: "save",
+  }).render(true);
+}
   
     /**
      * Update the ability attributes based on the configuration dialog input.
