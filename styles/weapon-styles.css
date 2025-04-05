@@ -11,8 +11,8 @@
   
   .weapon-sheet .item-details p {
     margin: 0.5rem 0;
-    color: var(--text-light);
-  }
+    color: #fff; /* Changed from var(--text-light) to white */
+}
   
   .weapon-sheet .item-details p strong {
     color: var(--highlight);
