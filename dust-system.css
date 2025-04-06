@@ -48,14 +48,6 @@ h1, h2, .custom-header {
   }
 }
 
-/* Sheet Layout */
-.sheet {
-  padding: 10px;
-  border-radius: 8px;
-  background-image: url('ui/dust-system-background.png');
-  background-size: cover;
-  background-position: center;
-  }
 
 
 /* Form Elements */
