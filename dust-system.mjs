@@ -8,8 +8,7 @@ import './scripts/helpers.js';
 import { DustActorConfig } from './module/actor-config.js';
 import './libs/mammoth.browser.js';
 import { preloadTemplates } from "./module/preloadTemplates.js";
-
-
+import { DustActorSheet2 } from './module/dust-character-sheet-2.js';
 
 
 
@@ -30,6 +29,7 @@ Hooks.once('init', async function() {
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet('dust-system', DustActorSheet, { makeDefault: true });
+  Actors.registerSheet('dust-system', DustActorSheet2, {makeDefault: false});
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('dust-system', DustItemSheet, { makeDefault: true });
 }),
@@ -47,6 +47,26 @@ Hooks.once("init", () => {
           await importHandbook();
       }
   });
+});
+
+Hooks.once("init", () => {
+  Actor.prototype.assignActiveSpclty = async function(type) {
+    if (type === "light") {
+      await this.update({
+        "system.lightActiveSpclty.highlighted": true,
+        "system.shadowActiveSpclty.highlighted": false
+      });
+      ui.notifications.info("Light Specialty assigned.");
+    } else if (type === "shadow") {
+      await this.update({
+        "system.lightActiveSpclty.highlighted": false,
+        "system.shadowActiveSpclty.highlighted": true
+      });
+      ui.notifications.info("Shadow Specialty assigned.");
+    } else {
+      ui.notifications.warn("Invalid specialty type.");
+    }
+  };
 });
 
 // Function to handle the handbook import process

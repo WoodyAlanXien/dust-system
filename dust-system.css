@@ -3,7 +3,7 @@
 /* Headers and Titles */
 h1, h2, .custom-header {
   font-family: var(--header-font, Arial);
-  color: #333;
+  color: #000000;
   font-size: 2rem; /* Adjust size for emphasis */
 }
 
@@ -17,14 +17,7 @@ h1, h2, .custom-header {
   padding: 10px;
   border-radius: 5px;
 }
-/* Sheet Layout */
-.sheet {
-  padding: 10px;
-  border-radius: 8px;
-  background-image: url('ui/dust-system-background.png');
-  background-size: cover;
-  background-position: center;
-  }
+
 
 /* Combined Heartbeat and Forward Rotation Animation */
 #pause img {
@@ -55,6 +48,15 @@ h1, h2, .custom-header {
   }
 }
 
+/* Sheet Layout */
+.sheet {
+  padding: 10px;
+  border-radius: 8px;
+  background-image: url('ui/dust-system-background.png');
+  background-size: cover;
+  background-position: center;
+  
+  }
 
 
 /* Form Elements */

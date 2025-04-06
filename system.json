@@ -19,6 +19,7 @@
             ],
     "styles": [
         "dust-system.css",
+        "styles/character-sheet.css",
         "styles/weapon.css",
         "styles/item-sheet.css"
         ],
