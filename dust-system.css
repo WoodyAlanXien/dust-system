@@ -17,7 +17,14 @@ h1, h2, .custom-header {
   padding: 10px;
   border-radius: 5px;
 }
-
+/* Sheet Layout */
+.sheet {
+  padding: 10px;
+  border-radius: 8px;
+  background-image: url('ui/dust-system-background.png');
+  background-size: cover;
+  background-position: center;
+  }
 
 /* Combined Heartbeat and Forward Rotation Animation */
 #pause img {
