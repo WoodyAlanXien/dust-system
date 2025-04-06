@@ -28,8 +28,8 @@ Hooks.once('init', async function() {
 
   // Register sheet application classes
   Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('dust-system', DustActorSheet, { makeDefault: true });
-  Actors.registerSheet('dust-system', DustActorSheet2, {makeDefault: false});
+  Actors.registerSheet('dust-system', DustActorSheet, { makeDefault: false });
+  Actors.registerSheet('dust-system', DustActorSheet2, {makeDefault: true});
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('dust-system', DustItemSheet, { makeDefault: true });
 }),
