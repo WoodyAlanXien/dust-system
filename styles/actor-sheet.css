@@ -4,6 +4,7 @@
   background-image: url('/systems/dust-system/ui/banner-character.png');
   background-size: cover;
   background-position: center;
+  filter: brightness(1.2); /* Adjust the brightness as needed */
   }
 
   .sheet-container.shadow-mode {

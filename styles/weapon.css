@@ -2,7 +2,7 @@
     border: 1px solid #ccc;
     padding: 1em;
     margin: 1em 0;
-    background-color: #f9f9f9;
+    background-color: #f9f9f97e;
     border-radius: 5px;
   }
   
@@ -38,7 +38,11 @@
   .sheet-body {
     padding: 10px;
   border-radius: 8px;
+  font-family: var(--tooltip-font, Verdana), sans-serif;
+  color: #000000;
   background-image: url('/systems/dust-system/ui/banner-item-dark.png');
   background-size: cover;
   background-position: center;
+  background-color: #ffffff69;
+  filter: brightness(1.2); /* Adjust the brightness as needed */
   }

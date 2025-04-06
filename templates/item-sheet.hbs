@@ -83,8 +83,7 @@
         {{/if}}
       </div>
     {{else}}
-      <p>Unknown item type: {{type}}</p>
-    {{/ifEquals}}
+      
     {{#ifEquals type "archetype"}}
   <div class="archetype-stats">
     <h3>Archetype: {{name}}</h3>
@@ -137,8 +136,7 @@
     {{/if}}
   </div>
 {{else}}
-  <p>Unknown item type: {{type}}</p>
-{{/ifEquals}}
+  
 {{#ifEquals type "speciality"}}
   <div class="speciality-stats">
     <h3>Speciality: {{name}}</h3>
@@ -193,6 +191,9 @@
 {{else}}
   <p>Unknown item type: {{type}}</p>
 {{/ifEquals}}
+{{/ifEquals}}
+{{/ifEquals}}
+
 
   </div>
 
@@ -202,3 +203,7 @@
     {{/if}}
   </footer>
 </form>
+{{!-- End of item-sheet.hbs --}}
+{{!-- This is a template for a character sheet in a tabletop RPG system. It includes sections for weapons, archetypes, and specialties, with conditional rendering based on the item type. --}}
+
+{{!-- Note: The above code is a simplified version and may require additional context or data to function correctly in the actual system. --}}

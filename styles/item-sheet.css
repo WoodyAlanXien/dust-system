@@ -4,7 +4,7 @@
     background-image: url('/systems/dust-system/ui/banner-item-dark.png');
     background-repeat: no-repeat; /* Ensures no tiling of the image */
     background-position: center;
-    background-color: #82bbf88e;
+    filter: brightness(1.2); /* Adjust the brightness as needed */
     gap: 15px;
     height: 100%; /* Ensures the background covers the full height of the sheet */
     width: 100%; /* Ensures the background covers the full width of the sheet */
@@ -25,7 +25,7 @@
   .sheet-header h1 {
     font-size: 1.5em;
     margin: 0;
-    color: #ffcc00;
+    color: #000000;
   }
   
   .sheet-header .toggle-edit {
@@ -101,14 +101,15 @@
   }
   
   .item-image {
-    max-width: 150px;
-    max-height: 150px;
+    width: auto; 
+    height: auto;
+    max-width: 100%; /* Ensures the image doesn't exceed the container width */
     margin: 0 auto;
     display: block;
     border-radius: 8px;
     border: 2px solid #444;
     background-color: #222;
-  }
+}
   
   .item-image[title="Click to select image"] {
     cursor: pointer;

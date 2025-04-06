@@ -1,0 +1,310 @@
+<link rel="stylesheet" type="text/css" href="systems/dust-system/styles/character-sheet.css">
+
+<header class="window-header flexrow">
+  <h4 class="window-title">{{name}}</h4>
+  <nav class="window-controls">
+    <a class="light-shadow-toggle" title="Toggle Light/Shadow" aria-label="Toggle Light/Shadow">
+      <i class="fas fa-sun toggle-icon" data-mode="light"></i> <!-- Default to light mode -->
+    </a>
+    <a class="configure-character" title="Configure Character" aria-label="Configure Character">
+      <i class="fas fa-gear"></i>
+    </a>
+    {{window-controls}}
+  </nav>
+</header>
+
+<div class="dust-sheet character-sheet-option1">
+  <div class="sheet-container">
+    
+            <!-- Character Image and Details -->
+      <div class="character-image">
+        <img src="{{this.actor.img}}" alt="Character Image" class="image-clickable" title="Click to Change Image" aria-label="Click to Change Character Image" />
+      </div>
+      <div class="character-details">
+        <h1 class="character-name">{{name}}</h1>
+        <p><strong>Archetype:</strong> {{getAssignedArchetype actor.items}}</p>
+        <p><strong>Quirk:</strong> {{getAssignedQuirk actor.items}}</p>
+        <p><strong>Drive:</strong> {{getAssignedDrive actor.items}}</p>
+        <p><strong>Action Points:</strong></p>
+        <div class="action-points">
+          <!-- Combat Action Points -->
+          <div class="combat-ap">
+            <p>Combat AP:</p>
+            <div class="ap-icons">
+              {{#each (range 0 actor.system.attributes.combatAp.max)}}
+              <i class="fas fa-square {{#if (gt actor.system.attributes.combatAp.value @index)}}red-ap{{else}}gray-ap{{/if}}"></i>
+              {{/each}}
+            </div>
+          </div>
+
+          <!-- General Action Points -->
+          <div class="general-ap">
+            <p>General AP:</p>
+              <div class="ap-icons">
+                {{#each (range 0 actor.system.attributes.generalAp.max)}}
+                <i class="fas fa-square {{#if (gt actor.system.attributes.generalAp.value @index)}}blue-ap{{else}}gray-ap{{/if}}"></i>
+                {{/each}}
+              </div>
+          </div>
+        </div>
+        <p><strong>Level:</strong> {{this.actor.system.attributes.level}}</p>
+<p><strong>XP:</strong> 
+  {{#if this.actor.system.attributes.xp.current}}{{this.actor.system.attributes.xp.current}}{{else}}0{{/if}} / 
+  {{#if this.actor.system.attributes.xp.cumulative}}{{this.actor.system.attributes.xp.cumulative}}{{else}}0{{/if}}
+</p>
+        <a class="purchase-upgrade-icon" title="Purchase Upgrade" aria-label="Purchase Upgrade">
+          <i class="fas fa-shopping-cart clickable-icon" title="Purchase Upgrade" aria-label="Purchase Upgrade"></i>
+        </a>
+        <a class="light-shadow-toggle" title="Toggle Light/Shadow" aria-label="Toggle Light/Shadow">
+      <i class="fas fa-sun toggle-icon" data-mode="light"></i> <!-- Default to light mode -->
+    </a>
+    <a class="configure-character" title="Configure Character" aria-label="Configure Character">
+      <i class="fas fa-gear"></i>
+    </a>
+    <a class="inventory-icon" title="Assign Inventory" aria-label="Assign Inventory">
+      <i class="fas fa-box-open"></i>
+      </a>
+      <a class="inventory-icon2" title="View Inventory" aria-label="View Inventory">
+      <i class="fas fa-box"></i>
+      </a>
+      </div>
+      </div>
+         
+
+    <div class="resilience-section">
+      <h3>Resilience</h3>
+      <div class="resilience-container">
+        <!-- Resilience -->
+        <a class="resilience-icon" data-tooltip="Resilience" title="Click to roll for Resilience">
+    <i class="fas fa-heart clickable-resilience" 
+       data-resilience="{{system.attributes.resilienceTotal}}" 
+       data-tempres="{{system.attributes.tempRes}}" 
+       aria-label="Click to roll for Resilience"></i>
+</a>
+            <span>
+              {{#if system.resilience}}
+  {{system.resilience}}
+{{else}}
+  0
+{{/if}}
+            </span>
+        </div>
+
+        
+        
+      <!-- Skills Section -->
+      <div class="skills">
+        <h3>Skills</h3>
+        <div class="skills-container">
+          {{#each system.skills}}
+          <div class="skill-icon-container" data-skill="{{@key}}" data-value="{{this}}" title="Roll {{@key}}">
+            <img 
+              src="ui/icons/skill.webp" 
+              alt="{{@key}} Icon" 
+              class="skill-icon clickable-skill" 
+              aria-label="Roll {{@key}}" />
+              <span class="skill-label">{{@key}}: {{this}}
+              </span>
+          </div>
+          {{/each}}
+        </div>
+
+      <!-- Trauma (range 4) -->
+<div class="trauma-grid">
+  <h4>
+    Trauma
+    <i class="fas fa-minus trauma-decrement" aria-label="Decrease Trauma"></i>
+    <i class="fas fa-plus trauma-increment" aria-label="Increase Trauma"></i>
+  </h4>
+  <div class="grid">
+    {{#each (range 0 actor.system.attributes.trauma)}}
+      <i class="fas fa-square"></i>
+    {{/each}}
+    {{#each (range actor.system.attributes.trauma 4)}}
+      <i class="far fa-square"></i>
+    {{/each}}
+  </div>
+</div>
+
+<!-- Stress (range 20) -->
+<div class="stress-grid">
+  <h4>
+    Stress
+    <i class="fas fa-minus stress-decrement" aria-label="Decrease Stress"></i>
+    <i class="fas fa-plus stress-increment" aria-label="Increase Stress"></i>
+  </h4>
+  <div class="grid">
+    {{#each (range 0 actor.system.attributes.stress)}}
+      <i class="fas fa-square"></i>
+    {{/each}}
+    {{#each (range actor.system.attributes.stress 20)}}
+      <i class="far fa-square"></i>
+    {{/each}}
+    Stress Tolerance: {{actor.system.attributes.stressTolerance}}
+  </div>
+</div>
+
+<!-- Corruption (range 20) -->
+<div class="corruption-grid">
+  <h4>
+    Corruption
+    <i class="fas fa-minus corruption-decrement" aria-label="Decrease Corruption"></i>
+    <i class="fas fa-plus corruption-increment" aria-label="Increase Corruption"></i>
+  </h4>
+  <div class="grid corruption">
+    {{#each (range 0 actor.system.attributes.corruption)}}
+      <i class="far fa-square"></i>
+    {{/each}}
+    {{#each (range actor.system.attributes.corruption 20)}}
+      <i class="fas fa-square"></i>
+    {{/each}}
+  </div>
+</div>
+
+      <!-- aether -->
+<div class="aether-section">
+  <h3>Aether</h3>
+  <p>
+    <strong>Capacity:</strong> {{this.actor.system.attributes.aether.capacity}}
+    <i class="fas fa-info-circle" title="Aether Capacity is upgradable by items." aria-label="Aether Capacity is upgradable by items."></i>
+  </p>
+  <p>
+    <strong>Conserving:</strong>
+    <i class="fas fa-minus aether-conserving-decrement" aria-label="Decrease Conserving Aether"></i>
+    <span class="aether-conserving-value">{{this.actor.system.attributes.aether.conserved}}</span>
+    <i class="fas fa-plus aether-conserving-increment" aria-label="Increase Conserving Aether"></i>
+  </p>
+  <p>
+    <strong>Supply:</strong>
+    <i class="fas fa-minus aether-supply-decrement" aria-label="Decrease Aether Supply"></i>
+    <span class="aether-supply-value">{{this.actor.system.attributes.aether.supply}}</span>
+    <i class="fas fa-plus aether-supply-increment" aria-label="Increase Aether Supply"></i>
+  </p>
+</div>
+
+
+      <!-- Specialties Section -->
+      <div class="specialty-group">
+        <p class="light-specialty">
+          <strong>Light Specialty:</strong> 
+          <ul>
+    {{#each actor.items}}
+      {{#ifEquals this.type "speciality"}}
+        {{#if this.system.isAssigned}}
+{{#ifEquals this.system.category "light"}}
+  {{#if this.system.isAssigned}}
+    <li class="{{#if (and (eq ../actor.system.mode "light") ../actor.system.lightActiveSpclty.highlighted)}}highlighted-specialty{{/if}}">
+      <strong>{{this.name}}</strong> – {{this.system.description}}
+      <i class="fas fa-times unassign-specialty" data-item-id="{{this.id}}" title="Unassign Light Specialty" aria-label="Unassign Light Specialty"></i>
+    </li>
+  {{/if}}
+{{/ifEquals}}
+        {{/if}}
+      {{/ifEquals}}
+    {{/each}}
+  </ul>
+        </p>
+        <p class="shadow-specialty">
+          <strong>Shadow Specialty:</strong> <ul>
+    {{#each actor.items}}
+      {{#ifEquals this.type "speciality"}}
+        {{#if this.system.isAssigned}}
+{{#ifEquals this.system.category "dark"}}
+  {{#if this.system.isAssigned}}
+    <li class="{{#if (and (eq ../actor.system.mode "shadow") ../actor.system.shadowActiveSpclty.highlighted)}}highlighted-specialty{{/if}}">
+      <strong>{{this.name}}</strong> – {{this.system.description}}
+      <i class="fas fa-times unassign-specialty" data-item-id="{{this.id}}" title="Unassign Shadow Specialty" aria-label="Unassign Shadow Specialty"></i>
+    </li>
+  {{/if}}
+{{/ifEquals}}        {{/if}}
+      {{/ifEquals}}
+    {{/each}}
+  </ul>
+        </p>
+      </div>
+
+      <!-- Abilities -->
+      <div class="abilities-section">
+        <h3>Abilities</h3>
+          <ul>
+            {{#each system.abilities}}
+            <li>
+            <strong>{{this.name}}</strong>
+            <span class="ability-description">{{this.description}}</span>
+            </li>
+            {{else}}
+            <p>No abilities assigned.</p>
+            {{/each}}
+          </ul>
+      </div>
+
+      <!-- Features -->
+      <div class="features-section">
+        <h3>Features</h3>
+          <ul>
+          {{#each system.features}}
+          <li>
+          <strong>{{this.name}}</strong>
+          <span class="feature-description">{{this.description}}</span>
+          </li>
+          {{else}}
+          <p>No features assigned.</p>
+          {{/each}}
+          </ul>
+      </div>
+
+
+      <!-- Bonds Section -->
+      <div class="bond-group">
+        <label class="bond-label" data-bond="1" title="Assign Actor to Bond 1" aria-label="Bond 1: Assign Actor">Bond 1</label>: {{#if system.attributes.bonds.bond1}}
+  {{system.attributes.bonds.bond1.name}}
+{{else}}
+  None
+{{/if}}
+        <br>
+        <label class="bond-label" data-bond="2" title="Assign Actor to Bond 2" aria-label="Bond 2: Assign Actor">Bond 2</label>: {{#if system.attributes.bonds.bond2}}
+  {{system.attributes.bonds.bond2.name}}
+{{else}}
+  None
+{{/if}}
+        <br>
+        <label class="bond-label" data-bond="3" title="Assign Actor to Bond 3" aria-label="Bond 3: Assign Actor">Bond 3</label>: {{#if system.attributes.bonds.bond3}}
+  {{system.attributes.bonds.bond3.name}}
+{{else}}
+  None
+{{/if}}
+      </div>
+  </div>
+<!-- Loadout Section -->
+<div class="loadout-section">
+  <h3>Loadout</h3>
+  <ul>
+    {{#each actor.items}}
+      {{#if this.system.isAssigned}}
+        {{#ifEquals this.type "weapon"}}
+          <li>
+            <span>{{this.name}}</span>
+            <i class="fas fa-times remove-item" data-item-id="{{this.id}}" title="Remove from Loadout" aria-label="Remove {{this.name}} from Loadout"></i>
+          </li>
+        {{/ifEquals}}
+        {{#ifEquals this.type "armor"}}
+          <li>
+            <span>{{this.name}}</span>
+            <i class="fas fa-times remove-item" data-item-id="{{this.id}}" title="Remove from Loadout" aria-label="Remove {{this.name}} from Loadout"></i>
+          </li>
+        {{/ifEquals}}
+      {{/if}}
+    {{/each}}
+    {{!-- If no assigned weapons or armor are found, show a message --}}
+    {{#unless (anyAssignedWeapons actor.items)}}
+      {{#unless (anyAssignedArmor actor.items)}}
+        <p>No items assigned to Loadout.</p>
+      {{/unless}}
+    {{/unless}}
+  </ul>
+</div>
+
+  
+</div>
+</div>
+{{!-- End of character-sheet-option1.hbs --}}

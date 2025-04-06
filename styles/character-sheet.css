@@ -1,0 +1,197 @@
+/* Default Light Mode */
+.dust-sheet.light-mode {
+    background-color: #00c8ff6b;
+    color: #333333;
+  }
+  
+  /* Shadow Mode */
+  .dust-sheet.shadow-mode {
+    background-color: #3b05058c;
+    color: #cccccc;
+  }
+
+/* Highlighted Active Specialty */
+.specialty-group li.highlighted-specialty {
+    background-color: rgba(212, 212, 212, 0.2); /* light yellow background */
+    border-left: 3px solid rgb(0, 0, 0);
+    font-weight: bold;
+    padding-left: 5px;
+  }
+
+/* Basic reset and font settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Window Header */
+  .window-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .window-header .window-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .window-controls a {
+    margin-left: 10px;
+    text-decoration: none;
+  }
+  
+  /* Sheet Container */
+  .dust-sheet {
+    padding: 15px;
+  }
+  
+  .sheet-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Adjust alignment as needed */
+  }
+  
+  /* Character Image and Details */
+  .character-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+  }
+  
+  .character-details {
+    margin-left: 20px;
+  }
+  
+  .character-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Action Points */
+  .action-points {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  .ap-icons i {
+    margin: 2px;
+    font-size: 16px;
+  }
+  
+  /* Resilience Section */
+  .resilience-section {
+    margin-top: 20px;
+  }
+  
+  .resilience-section span {
+    margin-left: 10px;
+  }
+  
+  /* Skills Section */
+  .skills {
+    margin-top: 20px;
+  }
+  
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .skill-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .skill-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Trauma, Stress, and Corruption Grids */
+  .trauma-grid,
+  .stress-grid,
+  .corruption-grid {
+    margin-top: 20px;
+  }
+  
+  .trauma-grid h4,
+  .stress-grid h4,
+  .corruption-grid h4 {
+    margin-bottom: 10px;
+  }
+  
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  /* Aether Section */
+  .aether-section {
+    margin-top: 20px;
+  }
+  
+  .aether-section p {
+    margin-bottom: 10px;
+  }
+  
+  .aether-section i {
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  /* Specialties Section */
+  .specialty-group {
+    margin-top: 20px;
+  }
+  
+  .specialty-group ul {
+    list-style: none;
+    padding-left: 10px;
+  }
+  
+  .specialty-group li {
+    margin-bottom: 5px;
+  }
+  
+  /* Loadout Section */
+  .loadout-section {
+    margin-top: 20px;
+  }
+  
+  .loadout-section ul {
+    list-style: none;
+    padding-left: 10px;
+  }
+  
+  .loadout-section li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .loadout-section li i {
+    cursor: pointer;
+  }
+  
