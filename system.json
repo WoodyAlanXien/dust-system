@@ -8,32 +8,41 @@
         "verified": "13.336"
     },
     "authors": [{
-        "name": "Woody Alan Xien"
-}],
-    "data": {
-        "template": "template.json"
+        "name": "Woody Alan Xien - VTT Development"
     },
+    {
+        "name": "Patrick - System Development"
+}],
     "esmodules": [
-        "dust-system.mjs",        
-        "libs/mammoth.browser.js"
+        "dust-system.mjs",
+        "scripts/trigger-roll.mjs",        
+        "libs/mammoth.browser.js",
+        "module/weapon.js",
+        "module/item.js",
+        "module/item-sheet.js" 
             ],
     "styles": [
         "dust-system.css",
         "styles/character-sheet.css",
-        "styles/weapon.css",
         "styles/item-sheet.css"
         ],
     "scripts": [
         "scripts/helpers.js",
-        "scripts/trigger-roll.mjs",
         "scripts/loadout.js",
-        "scripts/attributes.js" ,
-        "module/weapon.js",
-        "module/item.js",
-        "module/item-sheet.js"      
+        "scripts/attributes.js"      
     ],
     "templates": {
-    "item": "templates/item-sheet.hbs"
+    "item": "templates/item/item-sheet.hbs",
+    "weapon": "templates/item/weapon-sheet.hbs",
+    "ability": "templates/item/ability-sheet.hbs",
+    "feature": "templates/item/feature-sheet.hbs",
+    "speciality": "templates/item/speciality-sheet.hbs",
+    "archetype": "templates/item/archetype-sheet.hbs",
+    "drive": "templates/item/drive-sheet.hbs",
+    "quirk": "templates/item/quirk-sheet.hbs",
+    "gear": "templates/item/gear-sheet.hbs",
+    "armor": "templates/item/armor-sheet.hbs",
+    "upgrade": "templates/item/upgrade-sheet.hbs"
 },
     "documentTypes": {
         "ActiveEffect": {
@@ -546,7 +555,7 @@
                     "unidentified.description"
                 ]
             },
-            "facility": {
+            "quirk": {
                 "htmlFields": [
                     "description.value",
                     "description.chat"

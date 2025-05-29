@@ -478,31 +478,30 @@ export async function rollDicePool(attributeValue, nervePoints, tempNervePoints,
     if (game.dice3d) await game.dice3d.showForRoll(roll);
 
     // Handle exploding 8s
-let explodingRolls = totalRolls.filter(r => r === 8);
-while (explodingRolls.length > 0) {
-  const count = explodingRolls.length;
+    let explodingRolls = totalRolls.filter(r => r === 8);
+    while (explodingRolls.length > 0) {
+      const count = explodingRolls.length;
 
-  // Ensure the dice limit isn't exceeded
-  if (totalRolls.length + count > 15) {
-    ui.notifications.error("Exploding dice exceeded the 15-dice limit.");
-    break;
-  }
-  if (game.dice3d) await game.dice3d.showForRoll(roll);
+      // Ensure the dice limit isn't exceeded
+      if (totalRolls.length + count > 15) {
+        ui.notifications.error("Exploding dice exceeded the 15-dice limit.");
+        break;
+      }
+      if (game.dice3d) await game.dice3d.showForRoll(roll);
 
-  // Roll for each exploding 8
-  let additionalRolls = await new Roll(`${count}d8`).roll({ async: true });
-  if (!additionalRolls || !additionalRolls.dice || !additionalRolls.dice[0]) {
-    ui.notifications.error("Error in exploding dice roll.");
-    break;
-  }
+      // Roll for each exploding 8
+      let additionalRolls = await new Roll(`${count}d8`).evaluate({ async: true });
+      if (!additionalRolls || !additionalRolls.dice || !additionalRolls.dice[0]) {
+        ui.notifications.error("Error in exploding dice roll.");
+        break;
+      }
 
-  // Add only the results of the new rolls
-  totalRolls = totalRolls.concat(additionalRolls.dice[0].results.map(r => r.result));
+      // Add only the results of the new rolls
+      totalRolls = totalRolls.concat(additionalRolls.dice[0].results.map(r => r.result));
 
-  // Re-check for new explosions only in these additional rolls
-  explodingRolls = additionalRolls.dice[0].results.filter(r => r === 8);
-}
-
+      // Re-check for new explosions only in these additional rolls
+      explodingRolls = additionalRolls.dice[0].results.filter(r => r === 8);
+    }
   }
 
   // Process roll results
@@ -517,7 +516,7 @@ while (explodingRolls.length > 0) {
   function categorizeRolls(totalRolls) {
     const results = {};
     Object.entries(ROLL_RESULTS).forEach(([key, range]) => {
-      results[key] = totalRolls.filter(r => range.includes(r)).length;
+      results[key] = totalRolls.filter((r) => range.includes(r)).length;
     });
     return results;
   }
