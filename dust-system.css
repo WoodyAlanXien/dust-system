@@ -3,7 +3,7 @@
 /* Headers and Titles */
 h1, h2, .custom-header {
   font-family: var(--header-font, Arial);
-  color: #333;
+  color: #000000;
   font-size: 2rem; /* Adjust size for emphasis */
 }
 
@@ -55,6 +55,7 @@ h1, h2, .custom-header {
   background-image: url('ui/dust-system-background.png');
   background-size: cover;
   background-position: center;
+  
   }
 
 

@@ -1,87 +1,767 @@
 {
     "id": "dust-system",
     "title": "Dimensional Unification and Stabilization Taskforce (DUST)",
-    "description": "Updated system for DUST",
-    "version": "2.0.0",
+    "description": "Custom system for DUST",
+    "version": "1.0.3",
     "compatibility": {
         "minimum": "12.331",
         "verified": "13.336"
     },
     "authors": [{
         "name": "Woody Alan Xien"
-}
-],
-    
-    
-    
+}],
+    "data": {
+        "template": "template.json"
+    },
     "esmodules": [
-        "dust-system.mjs",
+        "dust-system.mjs",        
         "libs/mammoth.browser.js",
-        "modules/dust-actor.js",
-        "modules/dust-actor-sheet-option1.js",
-        "modules/dust-gear.js",
-        "modules/dust-item.js",
-        "modules/dust-weapon.js",
-        "modules/dust-weapon-sheet.js",
-        "modules/dust-quirk.js",
-        "modules/dust-quirk-sheet.js",
-        "modules/dust-drive.js",
-        "modules/dust-drive-sheet.js",
-        "modules/dust-dice-roller.js",
-        "modules/triggerSkillRoll.js"
-    ],
+        "module/actor.js",
+        "module/item.js",
+        "module/item-sheet.js",
+        "module/actor-sheet.js",
+        "module/actor-config.js",
+        "module/dust-character-sheet-2.js",
+        "module/weapon.js",
+        "module/rules.js",
+        "module/templates.js",
+        "module/triggerSkillRoll.js",
+        "module/trigger-roll.mjs"
+            ],
     "styles": [
         "dust-system.css",
-        "styles/character-sheet-option1.css",
-        "styles/armor-styles.css",
-        "styles/gear-styles.css",
-        "styles/item-styles.css",
-        "styles/weapon-styles.css",
-        "styles/quirk-styles.css",
-        "styles/drive-styles.css",
-        "styles/ability-styles.css",
-        "styles/archetype-styles.css",
-        "styles/feature-styles.css",
-        "styles/speciality-styles.css",
-        "styles/upgrade-styles.css"
-
-    ],
+        "styles/actor-config.css",
+        "styles/actor-sheet.css",
+        "styles/character-sheet.css",
+        "styles/weapon.css",
+        "styles/item-sheet.css"
+        ],
     "scripts": [
-        "scripts/system-references.js"
+        "scripts/helpers.js",
+        
+        "scripts/attributes.js"    
     ],
     "templates": {
-        "actor": "templates/actor/character-sheet-option1.hbs",
-        "ability": "templates/item/ability-sheet.hbs",
-        "archetype": "templates/item/archetype-sheet.hbs",
-        "item": "templates/item/item-sheet.hbs",
-        "armor": "templates/item/armor-sheet.hbs",
-        "gear": "templates/item/gear-sheet.hbs",
-        "weapon": "templates/item/weapon-sheet.hbs",
-        "quirk": "templates/item/quirk-sheet.hbs",
-        "drive": "templates/item/drive-sheet.hbs",
-        "feature": "templates/item/feature-sheet.hbs",
-        "speciality": "templates/item/speciality-sheet.hbs",
-        "upgrade": "templates/item/upgrade-sheet.hbs"
-    },
+    "item": "templates/item-sheet.hbs"
+},
     "documentTypes": {
+        "ActiveEffect": {
+            "enchantment": {}
+        },
         "Actor": {
-            "character": {}
+            "character": {
+                "attributes": {
+                    "resilienceTotal": {
+                        "type": "number",
+                        "label": "Total Resilience"
+                    },
+                    "stress": {
+                        "type": "number",
+                        "label": "Stress"
+                        
+                    },
+                    "stressTolerance": {
+                        "type": "number",
+                        "label": "Stress Tolerance"
+                        
+                    },
+                    "corruption": {
+                        "type": "number",
+                        "label": "Corruption"
+                        
+                    },
+                    "trauma": {
+                        "type": "number",
+                        "label": "Trauma"
+                        
+                    },
+                    "generalAp": {
+                        "value":{
+                            "type": "number",
+                            "label": "Action Points"
+                        },
+                        "max": {
+                            "type": "number",
+                            "label": "Max Action Points"
+                        }
+                        
+                    },
+                    "combatAp": {
+                        "value":{
+                            "type": "number",
+                            "label": "Action Points"
+                        },
+                        "max": {
+                            "type": "number",
+                            "label": "Max Action Points"
+                        }
+                        
+                    },
+                    "level": {
+                        "type": "number",
+                        "label": "Character Level"
+                        
+                    },
+                    "relentless": {
+                        "attributes": {
+                        "clash": {
+                            "type": "number",
+                            "label": "Clash"
+                            
+                        },
+                        "push": {
+                            "type": "number",
+                            "label": "Push"
+                            
+                        },
+                        "menace": {
+                            "type": "number",
+                            "label": "Menace"
+                            
+                        },
+                        "nerve": {
+                            "value":{
+                            "type": "number",
+                            "label": "Current Nerve Points"
+                            },
+                            "max": {
+                            "type": "number",
+                            "label": "Max Nerve Points"
+                            }
+                        },            
+                        "temporaryNerve": {
+                            "type": "number",
+                            "label": "Temporary Relentless Nerve"
+                            
+                        },
+                        "resilience": {
+                            "type": "number",
+                            "label": "Relentless Resilience"
+                            
+                        }
+                    }
+                    },
+                    "elusive": {
+                        "attributes": {
+                        "maneuver": {
+                            "type": "number",
+                            "label": "Maneuver"
+                            
+                        },
+                        "control": {
+                            "type": "number",
+                            "label": "Control"
+                            
+                        },
+                        "stealth": {
+                            "type": "number",
+                            "label": "Stealth"
+                            
+                        },
+                        "nerve": {
+                            "value":{
+                            "type": "number",
+                            "label": "Current Nerve Points"
+                            },
+                            "max": {
+                            "type": "number",
+                            "label": "Max Nerve Points"
+                            }
+                        },        
+                        "resilience": {
+                            "type": "number",
+                            "label": "Elusive Resilience"
+                            
+                        }
+                    }
+                    },
+                    "charming": {
+                        "attributes": {
+                        "sense": {
+                            "type": "number",
+                            "label": "Sense"
+                            
+                        },
+                        "influence": {
+                            "type": "number",
+                            "label": "Influence"
+                            
+                        },
+                        "deceive": {
+                            "type": "number",
+                            "label": "Deceive"
+                            
+                        },
+                        "nerve": {
+                            "value":{
+                            "type": "number",
+                            "label": "Current Nerve Points"
+                            },
+                            "max": {
+                            "type": "number",
+                            "label": "Max Nerve Points"
+                            }
+                        },        
+                        "temporaryNerve": {
+                            "type": "number",
+                            "label": "Temporary Charming Nerve"
+                            
+                        },
+                        "resilience": {
+                            "type": "number",
+                            "label": "Charming Resilience"
+                            
+                        }
+                    }
+                    },
+                    "discreet": {
+                        "attributes": {
+                        "notice": {
+                            "type": "number",
+                            "label": "Notice"
+                            
+                        },
+                        "focus": {
+                            "type": "number",
+                            "label": "Focus"
+                            
+                        },
+                        "invoke": {
+                            "type": "number",
+                            "label": "Invoke"
+                            
+                        },
+                        "nerve": {
+                            "value":{
+                            "type": "number",
+                            "label": "Current Nerve Points"
+                            },
+                            "max": {
+                            "type": "number",
+                            "label": "Max Nerve Points"
+                            }
+                        },        
+                        "temporaryNerve": {
+                            "type": "number",
+                            "label": "Temporary Discreet Nerve"
+                            
+                        },
+                        "resilience": {
+                            "type": "number",
+                            "label": "Discreet Resilience"
+                            
+                        }
+                    }
+                    },
+                    "xp": {
+                        "cumulative": {
+                            "type": "number",
+                            "label": "Cumulative XP"
+                            
+                        },
+                        "current": {
+                            "type": "number",
+                            "label": "Current XP"
+                            
+                        }
+                    },
+                    "aether": {
+                        "capacity": {
+                            "type": "number",
+                            "label": "Aether Capacity"
+                            
+                        },
+                        "conserved": {
+                            "type": "number",
+                            "label": "Conserved Aether"
+                            
+                        },
+                        "supply": {
+                            "type": "number",
+                            "label": "Supply"
+                            
+                        }
+                    },
+                    "quirk": {
+                        "type": "string",
+                        "label": "Quirk",
+                        "default": ""
+                    },
+                    "drive": {
+                        "type": "string",
+                        "label": "Drive",
+                        "default": ""
+                    },
+                    "playerObjective": {
+                        "type": "string",
+                        "label": "Player Objective",
+                        "default": ""
+                    },
+                    "characterObjectives": {
+                        "objective1": {
+                            "type": "string",
+                            "label": "Character Objective 1",
+                            "default": ""
+                        },
+                        "objective2": {
+                            "type": "string",
+                            "label": "Character Objective 2",
+                            "default": ""
+                        },
+                        "objective3": {
+                            "type": "string",
+                            "label": "Character Objective 3",
+                            "default": ""
+                        }
+                    },
+                    "bonds": {
+                        "bond1": {
+                            "character": {
+                                "type": "string",
+                                "label": "Bond Character 1",
+                                "default": "name"
+                            },
+                            "level": {
+                                "type": "number",
+                                "label": "Bond Level 1",
+                                "default": 0
+                            },
+                            "health": {
+                                "type": "number",
+                                "label": "Bond Health 1",
+                                "default": 0
+                            }
+                        },
+                        "bond2": {
+                            "character": {
+                                "type": "string",
+                                "label": "Bond Character 2",
+                                "default": "name"
+                            },
+                            "level": {
+                                "type": "number",
+                                "label": "Bond Level 2",
+                                "default": 0
+                            },
+                            "health": {
+                                "type": "number",
+                                "label": "Bond Health 2",
+                                "default": 0
+                            }
+                        },
+                        "bond3": {
+                            "character": {
+                                "type": "string",
+                                "label": "Bond Character 3",
+                                "default": "name"
+                            },
+                            "level": {
+                                "type": "number",
+                                "label": "Bond Level 3",
+                                "default": 0
+                            },
+                            "health": {
+                                "type": "number",
+                                "label": "Bond Health 3",
+                                "default": 0
+                            }
+                        }
+                    },
+                    "loadout": {
+                        "weapon1": {
+                            "type": "string",
+                            "label": "Wielded Weapon 1",
+                            "default": ""
+                        },
+                        "weapon2": {
+                            "type": "string",
+                            "label": "Wielded Weapon 2",
+                            "default": ""
+                        },
+                        "armor": {
+                            "mundane": {
+                             "type": "string",
+                             "label": "Mundane Armor",
+                             "default": 0
+                            },                    
+                            "phase": {
+                             "type": "string",
+                             "label": "Phase Armor",
+                             "default": 0
+                            },
+                            "advancedPhase": {
+                             "type": "string",
+                             "label": "Advanced Phase Armor",
+                             "default": 0
+                            }
+                        },
+                        "smallItem1":{
+                            "type": "string",
+                            "label": "Small Item 1",
+                            "default": ""
+                        },
+                        "smallItem2":{
+                            "type": "string",
+                            "label": "Small Item 2",
+                            "default": ""
+                        },
+                        "smallItem3":{
+                            "type": "string",
+                            "label": "Small Item 3",
+                            "default": ""
+                        },
+                        "smallItem4":{
+                            "type": "string",
+                            "label": "Small Item 4",
+                            "default": ""
+                        },
+                        "mediumItem1":{
+                            "type": "string",
+                            "label": "Medium Item 1",
+                            "default": ""
+                        },
+                        "mediumItem2":{
+                            "type": "string",
+                            "label": "Medium Item 2",
+                            "default": ""
+                        },
+                        "mediumItem3":{
+                            "type": "string",
+                            "label": "Medium Item 3",
+                            "default": ""
+                        },
+                        "largeItem":{
+                            "type": "string",
+                            "label": "Large Item",
+                            "default": ""
+                        },
+                        "expansionSlot1":{
+                            "type": "string",
+                            "label": "Exspansion Slot 1",
+                            "default": ""
+                        },
+                        "expansionSlot2":{
+                            "type": "string",
+                            "label": "Exspansion Slot 2",
+                            "default": ""
+                        }
+                    }
+                },
+                "htmlFields": [
+                    "details.biography.value",
+                    "details.biography.public"
+                    ]
+            },
+            "npc": {
+                "htmlFields": [
+                    "details.biography.value",
+                    "details.biography.public"
+                ]
+            },
+            "vehicle": {
+                "htmlFields": [
+                    "details.biography.value",
+                    "details.biography.public"
+                ]
+            },
+            "group": {
+                "htmlFields": [
+                    "description.full",
+                    "description.summary"
+                ]
+            }
+        },
+        "ChatMessage": {
+            "rest": {},
+            "turn": {}
         },
         "Item": {
-            "weapon": {},
-            "armor":{}, 
-            "quirk": {}, 
-            "drive": {},
-            "speciality": {},
-            "ability": {},
-            "archetype": {},
-            "gear": {},
-            "upgrade": {}
+            "weapon": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat",
+                    "unidentified.description"
+                ]
+            },
+            "gear": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat",
+                    "unidentified.description"
+                ]
+            },
+            "consumable": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat",
+                    "unidentified.description"
+                ]
+            },
+            "tool": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat",
+                    "unidentified.description"
+                ]
+            },
+            "loot": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat",
+                    "unidentified.description"
+                ]
+            },
+            "origin": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat"
+                ]
+            },
+            "drive": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat"
+                ]
+            },
+            "quirk": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat"
+                ]
+            },
+            "archetype": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat"
+                ]
+            },
+            "ability": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat"
+                ]
+            },
+            "feature": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat"
+                ]
+            },
+            "speciality": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat",
+                    "unidentified.description"
+                ]
+            },
+            "backpack": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat",
+                    "unidentified.description"
+                ]
+            },
+            "facility": {
+                "htmlFields": [
+                    "description.value",
+                    "description.chat"
+                ]
+            }
+        },
+        "JournalEntryPage": {
+            "class": {
+                "htmlFields": [
+                    "details.value",
+                    "details.additionalHitPoints",
+                    "description.additionalTraits",
+                    "description.additionalEquipment",
+                    "description.subclass"
+                ]
+            },
+            "map": {},
+            "rule": {
+                "htmlFields": [
+                    "tooltip"
+                ]
+            },
+            "spells": {},
+            "subclass": {
+                "htmlFields": [
+                    "details.value"
+                ]
+            }
         }
     },
+    "packs": [
+        {
+            "label": "NPCs",
+            "type": "Actor",
+            "name": "npcs",
+            "path": "packs/npcs",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "LIMITED",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "SRD Rules",
+            "type": "JournalEntry",
+            "name": "rules",
+            "path": "packs/rules",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Archetypes",
+            "type": "Item",
+            "name": "archetype",
+            "path": "packs/archetype",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Quirks",
+            "type": "Item",
+            "name": "quirk",
+            "path": "packs/quirk",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Drives",
+            "type": "Item",
+            "name": "drive",
+            "path": "packs/drive",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Disciplines",
+            "type": "Item",
+            "name": "discipline",
+            "path": "packs/discipline",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Specialities",
+            "type": "Item",
+            "name": "speciality",
+            "path": "packs/speciality",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Features",
+            "type": "Item",
+            "name": "feature",
+            "path": "packs/feature",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Abilities",
+            "type": "Item",
+            "name": "abilities",
+            "path": "packs/abilities",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        },
+        {
+            "label": "Gear",
+            "type": "Item",
+            "name": "gear",
+            "path": "packs/gear",
+            "system": "dust-system",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
+        }
+    ],
+    "packFolders": [
+        {
+            "name": "DUST SRD",
+            "sorting": "m",
+            "color": "#cd2c1e",
+            "packs": [
+                "rules",
+                "npcs",
+                "archetype",
+                "quirk",
+                "drive",
+                "discipline",
+                "speciality",
+                "feature",
+                "abilities",
+                "gear"
+            ]
+        }
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json",
+            "flags": {}
+        }
+    ],
+    "media": [
+        {
+            "type": "cover",
+            "loop": false,
+            "flags": {}
+        },
+        {
+            "type": "setup",
+            "url": "systems/dust-system/ui/dust-system-repo.jpg",
+            "thumbnail": "systems/dust-system/ui/dust-system-thumbnail.jpg"
+        }
+    ],
+    "socket": true,
+    "grid": {
+        "distance": 5,
+        "units": "ft"
+    },
+    "primaryTokenAttribute": "attributes.stress",
+    "background": "systems/dust-system/ui/dust-system-background.webp",
+    "flags": {
+        "dust-system": {
+            "sourceBooks": {
+                "SRD 3.1": "SOURCE.BOOK.SRD"
+            }
+        },
+        "needsMigrationVersion": "4.0.1",
+        "compatibleMigrationVersion": "0.8",
+        "hotReload": false
+    },
+    "url": "https://github.com/WoodyAlanXien/dust-system",
+    "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/system.json",
+    "download": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/dust-system.zip"
     
-        "url": "https://github.com/WoodyAlanXien/dust-system",
-        "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/system.json",
-        "download": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/dust-system.zip"
-    }
-
+}
