@@ -1,0 +1,7 @@
+2025/06/05-21:53:08.275 b2c8 Recovering log #101
+2025/06/05-21:53:08.307 b2c8 Delete type=0 #101
+2025/06/05-21:53:08.307 b2c8 Delete type=3 #99
+2025/06/05-21:56:41.858 10858 Level-0 table #106: started
+2025/06/05-21:56:41.858 10858 Level-0 table #106: 0 bytes OK
+2025/06/05-21:56:41.870 10858 Delete type=0 #104
+2025/06/05-21:56:41.882 10858 Manual compaction at level-0 from '!items!F4TGUAmLGr9eHv1I' @ 72057594037927935 : 1 .. '!items!qLlVV1Ve8N8suOZ0' @ 0 : 0; will stop at (end)

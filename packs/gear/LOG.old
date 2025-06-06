@@ -1,0 +1,8 @@
+2025/06/05-21:53:08.527 fce0 Recovering log #24
+2025/06/05-21:53:08.559 fce0 Delete type=0 #24
+2025/06/05-21:53:08.559 fce0 Delete type=3 #22
+2025/06/05-21:56:41.950 10858 Level-0 table #29: started
+2025/06/05-21:56:41.950 10858 Level-0 table #29: 0 bytes OK
+2025/06/05-21:56:41.973 10858 Delete type=0 #27
+2025/06/05-21:56:42.010 10858 Manual compaction at level-0 from '!folders!sv95m9tXPj8daVIE' @ 72057594037927935 : 1 .. '!items!zIPMoladMAMcgf2n' @ 0 : 0; will stop at (end)
+2025/06/05-21:56:42.010 10858 Manual compaction at level-1 from '!folders!sv95m9tXPj8daVIE' @ 72057594037927935 : 1 .. '!items!zIPMoladMAMcgf2n' @ 0 : 0; will stop at (end)
