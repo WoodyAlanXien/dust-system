@@ -1,0 +1,283 @@
+<link rel="stylesheet" type="text/css" href="systems/dust-system/styles/actor-config.css">
+
+<form>
+  
+  <!-- Stress and Tolerance -->
+  <div class="form-group">
+    <label for="data.attributes.stress">Stress</label>
+    <input type="number" name="data.attributes.stress" value="{{data.attributes.stress}}">
+  </div>
+  <div class="form-group">
+    <label for="data.attributes.stressTolerance">Stress Tolerance</label>
+    <input type="number" name="data.attributes.stressTolerance" value="{{data.attributes.stressTolerance}}">
+  </div>
+
+  <!-- Corruption and Trauma -->
+  <div class="form-group">
+    <label for="data.attributes.corruption">Corruption</label>
+    <input type="number" name="data.attributes.corruption" value="{{data.attributes.corruption}}">
+  </div>
+  <div class="form-group">
+    <label for="data.attributes.trauma">Trauma</label>
+    <input type="number" name="data.attributes.trauma" value="{{data.attributes.trauma}}">
+  </div>
+
+  <!-- Action Points and Level -->
+  <div class="form-group">
+    <label for="data.attributes.actionPoints">Action Points</label>
+    <input type="number" name="data.attributes.actionPoints.used" value="{{data.attributes.actionPoints.used}}">
+  </div>
+  <div class="form-group">
+    <label for="data.attributes.level">Character Level</label>
+    <input type="number" name="data.attributes.level" value="{{data.attributes.level}}">
+  </div>
+
+  <!-- Relentless Attributes -->
+  <fieldset>
+    <legend>Relentless</legend>
+    <div class="form-group">
+      <label for="data.attributes.relentless.clash">Clash</label>
+      <input type="number" name="data.attributes.relentless.clash" value="{{data.attributes.relentless.clash}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.relentless.push">Push</label>
+      <input type="number" name="data.attributes.relentless.push" value="{{data.attributes.relentless.push}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.relentless.menace">Menace</label>
+      <input type="number" name="data.attributes.relentless.menace" value="{{data.attributes.relentless.menace}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.relentless.nerve">Relentless Nerve</label>
+      <input type="number" name="data.attributes.relentless.nerve" value="{{data.attributes.relentless.nerve}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.relentless.temporaryNerve">Temporary Relentless Nerve</label>
+      <input type="number" name="data.attributes.relentless.temporaryNerve" value="{{data.attributes.relentless.temporaryNerve}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.relentless.resilience">Relentless Resilience</label>
+      <input type="number" name="data.attributes.relentless.resilience" value="{{data.attributes.relentless.resilience}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.relentless.temporaryResilience">Temporary Relentless Resilience</label>
+      <input type="number" name="data.attributes.relentless.temporaryResilience" value="{{data.attributes.relentless.temporaryResilience}}">
+    </div>
+  </fieldset>
+
+  <!-- Elusive Attributes -->
+  <fieldset>
+    <legend>Elusive</legend>
+    <div class="form-group">
+      <label for="data.attributes.elusive.maneuver">Maneuver</label>
+      <input type="number" name="data.attributes.elusive.maneuver" value="{{data.attributes.elusive.maneuver}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.elusive.control">Control</label>
+      <input type="number" name="data.attributes.elusive.control" value="{{data.attributes.elusive.control}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.elusive.stealth">Stealth</label>
+      <input type="number" name="data.attributes.elusive.stealth" value="{{data.attributes.elusive.stealth}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.elusive.nerve">Elusive Nerve</label>
+      <input type="number" name="data.attributes.elusive.nerve" value="{{data.attributes.elusive.nerve}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.elusive.temporaryNerve">Temporary Elusive Nerve</label>
+      <input type="number" name="data.attributes.elusive.temporaryNerve" value="{{data.attributes.elusive.temporaryNerve}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.elusive.resilience">Elusive Resilience</label>
+      <input type="number" name="data.attributes.elusive.resilience" value="{{data.attributes.elusive.resilience}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.elusive.temporaryResilience">Temporary Elusive Resilience</label>
+      <input type="number" name="data.attributes.elusive.temporaryResilience" value="{{data.attributes.elusive.temporaryResilience}}">
+    </div>
+  </fieldset>
+
+  <!-- Charming Attributes -->
+  <fieldset>
+    <legend>Charming</legend>
+    <div class="form-group">
+      <label for="data.attributes.charming.sense">Sense</label>
+      <input type="number" name="data.attributes.charming.sense" value="{{data.attributes.charming.sense}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.charming.influence">Influence</label>
+      <input type="number" name="data.attributes.charming.influence" value="{{data.attributes.charming.influence}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.charming.deceive">Deceive</label>
+      <input type="number" name="data.attributes.charming.deceive" value="{{data.attributes.charming.deceive}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.charming.nerve">Charming Nerve</label>
+      <input type="number" name="data.attributes.charming.nerve" value="{{data.attributes.charming.nerve}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.charming.temporaryNerve">Temporary Charming Nerve</label>
+      <input type="number" name="data.attributes.charming.temporaryNerve" value="{{data.attributes.charming.temporaryNerve}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.charming.resilience">Charming Resilience</label>
+      <input type="number" name="data.attributes.charming.resilience" value="{{data.attributes.charming.resilience}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.charming.temporaryResilience">Temporary Charming Resilience</label>
+      <input type="number" name="data.attributes.charming.temporaryResilience" value="{{data.attributes.charming.temporaryResilience}}">
+    </div>
+  </fieldset>
+
+  <!-- Discreet Attributes -->
+  <fieldset>
+    <legend>Discreet</legend>
+    <div class="form-group">
+      <label for="data.attributes.discreet.notice">Notice</label>
+      <input type="number" name="data.attributes.discreet.notice" value="{{data.attributes.discreet.notice}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.discreet.focus">Focus</label>
+      <input type="number" name="data.attributes.discreet.focus" value="{{data.attributes.discreet.focus}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.discreet.invoke">Invoke</label>
+      <input type="number" name="data.attributes.discreet.invoke" value="{{data.attributes.discreet.invoke}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.discreet.nerve">Discreet Nerve</label>
+      <input type="number" name="data.attributes.discreet.nerve" value="{{data.attributes.discreet.nerve}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.discreet.temporaryNerve">Temporary Discreet Nerve</label>
+      <input type="number" name="data.attributes.discreet.temporaryNerve" value="{{data.attributes.discreet.temporaryNerve}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.discreet.resilience">Discreet Resilience</label>
+      <input type="number" name="data.attributes.discreet.resilience" value="{{data.attributes.discreet.resilience}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.discreet.temporaryResilience">Temporary Discreet Resilience</label>
+      <input type="number" name="data.attributes.discreet.temporaryResilience" value="{{data.attributes.discreet.temporaryResilience}}">
+    </div>
+  </fieldset>
+
+  <!-- XP -->
+  <div class="form-group">
+    <label for="data.attributes.xp.cumulative">Cumulative XP</label>
+    <input type="number" name="data.attributes.xp.cumulative" value="{{data.attributes.xp.cumulative}}">
+  </div>
+  <div class="form-group">
+    <label for="data.attributes.xp.current">Current XP</label>
+    <input type="number" name="data.attributes.xp.current" value="{{data.attributes.xp.current}}">
+  </div>
+
+  <!-- Aether -->
+  <div class="form-group">
+    <label for="data.attributes.aether.capacity">Aether Capacity</label>
+    <input type="number" name="data.attributes.aether.capacity" value="{{data.attributes.aether.capacity}}">
+  </div>
+  <div class="form-group">
+    <label for="data.attributes.aether.conserved">Conserved Aether</label>
+    <input type="number" name="data.attributes.aether.conserved" value="{{data.attributes.aether.conserved}}">
+  </div>
+  <div class="form-group">
+    <label for="data.attributes.aether.supply">Supply</label>
+    <input type="number" name="data.attributes.aether.supply" value="{{data.attributes.aether.supply}}">
+  </div>
+
+  <!-- Quirk and Drive -->
+  <div class="form-group">
+    <label for="data.attributes.quirk">Quirk</label>
+    <input type="text" name="data.attributes.quirk" value="{{data.attributes.quirk}}">
+  </div>
+  <div class="form-group">
+    <label for="data.attributes.drive">Drive</label>
+    <input type="text" name="data.attributes.drive" value="{{data.attributes.drive}}">
+  </div>
+
+  <!-- Player Objective -->
+  <div class="form-group">
+    <label for="data.attributes.playerObjective">Player Objective</label>
+    <input type="text" name="data.attributes.playerObjective" value="{{data.attributes.playerObjective}}">
+  </div>
+
+  <!-- Character Objectives -->
+  <fieldset>
+    <legend>Character Objectives</legend>
+    <div class="form-group">
+      <label for="data.attributes.characterObjectives.objective1">Character Objective 1</label>
+      <input type="text" name="data.attributes.characterObjectives.objective1" value="{{data.attributes.characterObjectives.objective1}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.characterObjectives.objective2">Character Objective 2</label>
+      <input type="text" name="data.attributes.characterObjectives.objective2" value="{{data.attributes.characterObjectives.objective2}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.characterObjectives.objective3">Character Objective 3</label>
+      <input type="text" name="data.attributes.characterObjectives.objective3" value="{{data.attributes.characterObjectives.objective3}}">
+    </div>
+  </fieldset>
+
+  <!-- Bonds -->
+  <fieldset>
+    <legend>Bonds</legend>
+    <div class="form-group">
+      <label for="data.attributes.bonds.bond1.character">Bond Character 1</label>
+      <input type="text" name="data.attributes.bonds.bond1.character" value="{{data.attributes.bonds.bond1.character}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.bonds.bond1.level">Bond Level 1</label>
+      <input type="number" name="data.attributes.bonds.bond1.level" value="{{data.attributes.bonds.bond1.level}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.bonds.bond1.health">Bond Health 1</label>
+      <input type="number" name="data.attributes.bonds.bond1.health" value="{{data.attributes.bonds.bond1.health}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.bonds.bond2.character">Bond Character 2</label>
+      <input type="text" name="data.attributes.bonds.bond2.character" value="{{data.attributes.bonds.bond2.character}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.bonds.bond2.level">Bond Level 2</label>
+      <input type="number" name="data.attributes.bonds.bond2.level" value="{{data.attributes.bonds.bond2.level}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.bonds.bond2.health">Bond Health 2</label>
+      <input type="number" name="data.attributes.bonds.bond2.health" value="{{data.attributes.bonds.bond2.health}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.bonds.bond3.character">Bond Character 3</label>
+      <input type="text" name="data.attributes.bonds.bond3.character" value="{{data.attributes.bonds.bond3.character}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.bonds.bond3.level">Bond Level 3</label>
+      <input type="number" name="data.attributes.bonds.bond3.level" value="{{data.attributes.bonds.bond3.level}}">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.bonds.bond3.health">Bond Health 3</label>
+      <input type="number" name="data.attributes.bonds.bond3.health" value="{{data.attributes.bonds.bond3.health}}">
+    </div>
+  </fieldset>
+
+  <!-- Armor -->
+  <fieldset>
+    <legend>Armor</legend>
+    <div class="form-group">
+      <label for="data.attributes.armor.mundane">Mundane Armor</label>
+      <input type="number" name="data.attributes.armor.mundane" value="{{data.attributes.armor.mundane}}" max="3">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.armor.phase">Phase Armor</label>
+      <input type="number" name="data.attributes.armor.phase" value="{{data.attributes.armor.phase}}" max="3">
+    </div>
+    <div class="form-group">
+      <label for="data.attributes.armor.advancedPhase">Advanced Phase Armor</label>
+      <input type="number" name="data.attributes.armor.advancedPhase" value="{{data.attributes.armor.advancedPhase}}" max="3">
+    </div>
+  </fieldset>
+
+  <button type="submit">Save</button>
+</form>

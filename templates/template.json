@@ -1,0 +1,120 @@
+    { 
+       "actor": {
+        "types": ["character", "npc"],
+        "character": {
+            "attributes": {
+                "resilienceTotal": "",
+                "stress": "0",
+                "stressTolerance": "0",
+                "corruption": "0",
+                "trauma": "0",
+                "level": "0",
+                "xp": "0",
+                "quirk": "0",
+                "drive": "0",
+                "playerObjective": "0",
+                "actionPoints": {
+                    "used": "3",
+                    "max": "3" 
+                },
+                "aether": {
+                    "capacity": "3",
+                    "conserved": "0",
+                    "supply": "0"
+                },
+                "characterObjectives": { 
+                    "objective1": "none",
+                    "objective2": "none",
+                    "objective3": "none" 
+                },
+                "bonds": { 
+                    "bond1": {
+                        "character": "name",
+                        "level": "0",
+                        "health": "0"
+                    },
+                    "bond2": {
+                        "character": "name",
+                        "level": "0",
+                        "health": "0"
+                    },
+                    "bond3": {
+                        "character": "name",
+                        "level": "0",
+                        "health": "0"
+                    }
+                },
+                "loadout": {
+                    "weapon1": "none",
+                    "weapo2": "none",
+                    "armor": {
+                        "mundane": "none",
+                        "phase": "none",
+                        "advancedPhase": "none"
+                    },
+                    "smallItem1": "none",
+                    "smallItem2": "none",
+                    "smallItem3": "none",
+                    "smallItem4": "none",
+                    "mediumItem1": "none",
+                    "mediumItem2": "none",
+                    "mediumItem3": "none",
+                    "largeItem": "none",
+                    "expansionSlot1": "none",
+                    "expansionSlot2": "none"
+                },
+                "relentless": {
+                    "attributes": {
+                        "clash": "0",
+                        "push": "0",
+                        "menace": "0",
+                        "nerveCurrent": "0",
+                        "nerveMax": "0",
+                        "temporaryNerve": "0",
+                        "resilience": "0",
+                        "temporaryResilience": "0"
+                    }
+                },
+                "elusive": {
+                    "attributes": {
+                        "maneuver": "0",
+                        "control": "0",
+                        "stealth": "0",
+                        "nerveCurrent": "0",
+                        "nerveMax": "0",
+                        "temporaryNerve": "0",
+                        "resilience": "0",
+                        "temporaryResilience": "0"
+                    }
+                },
+                "charming": {
+                    "attributes": {
+                        "sense": "0",
+                        "influence": "0",
+                        "deceive": "0",
+                        "nerveCurrent": "0",
+                        "nerveMax": "0",
+                        "temporaryNerve": "0",
+                        "resilience": "0",
+                        "temporaryResilience": "0"
+                    }
+                },
+                "discreet": {
+                    "attributes": {
+                        "notice": "0",
+                        "focus": "0",
+                        "invoke": "0",
+                        "nerveCurrent": "0",
+                        "nerveMax": "0",
+                        "temporaryNerve": "0",
+                        "resilience": "0",
+                        "temporaryResilience": "0"
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+

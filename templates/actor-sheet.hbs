@@ -1,0 +1,411 @@
+<link rel="stylesheet" type="text/css" href="systems/dust-system/styles/actor-sheet.css">
+{{!-- New window bar container for icons --}}
+<div class="window-titlebar">
+  <div class="window-controls">
+    <i class="fas fa-wrench gear-icon" title="Configure Actor" role="button" tabindex="0">Configure Actor</i>
+    <i class="fa-solid fa-sun toggle-icon" title="Switch to Shadow Mode">Light/Shadow Mode</i>
+  </div>
+</div>
+{{!-- Purpose: The main template for the character sheet --}}
+
+<form class="sheet-container">
+    <div class="asheet-header-name">
+      <strong>{{actor.name}}</strong>
+          </div>
+    <div class="header-grid">
+      <div class="header-column">
+        <div class="character-portrait">
+          <img src="{{actor.img}}" alt="Character Portrait" />
+        </div>
+      </div>
+      <div class="header-column">
+        <div class="character-info">
+          <div><strong>Team Name:</strong> {{actor.system.teamName}}</div>
+          <div><strong>Archetype:</strong> {{actor.system.archetype}}</div>
+          <div><strong>Appearance:</strong> {{actor.system.appearance}}</div>
+          <div><strong>Origin:</strong> {{actor.system.origin}}</div>
+          <div><strong>Starting Connection:</strong> {{actor.system.startingConnection}}</div>
+          <div><strong>Character Level:</strong> {{actor.system.attributes.level}}</div>
+          <div class="attribute">
+        <div class="resilience">
+          <label>Total Resilience:</label>
+    <div class="badge" 
+     role="button" 
+     aria-label="Roll Total Resilience" 
+     tabindex="0" 
+     onclick="resilienceRoll('attributes', '{{actor.id}}', 'resilienceTotal')">
+    <span id="totalResilience">{{actor.system.attributes.resilienceTotal}}</span>
+</div>
+  </div>
+  </div>
+        </div>
+      </div>
+      <div class="header-column">
+      <div class="character-info">
+  <div>
+    <strong>ST:</strong> <span id="stressTolerance">{{actor.system.attributes.stressTolerance}}</span>
+    <span class="st-minus clickable">[-]</span>
+    <span class="st-plus clickable">[+]</span>
+  </div>
+  <div>
+    <strong>Stress:</strong> <span id="stress">{{actor.system.attributes.stress}}</span>
+    <span class="stress-minus clickable">[-]</span>
+    <span class="stress-plus clickable">[+]</span>
+  </div>
+  <div>
+    <strong>Corruption:</strong> <span id="corruption">{{actor.system.attributes.corruption}}</span>
+    <span class="corruption-minus clickable">[-]</span>
+    <span class="corruption-plus clickable">[+]</span>
+  </div>
+  <div>
+    <strong>Trauma:</strong> <span id="trauma">{{actor.system.attributes.trauma}}</span>
+    <span class="trauma-minus clickable">[-]</span>
+    <span class="trauma-plus clickable">[+]</span>
+  </div>
+  <div>
+    <strong>General Action Points:</strong> <span id="gactionPointsv">{{actor.system.attributes.generalAp.value}}</span>
+    / <span id="gactionPointsMax">{{actor.system.attributes.generalAp.max}}</span>
+      </div>
+      <div>
+    <strong>Combat Action Points:</strong> <span id="cactionPointsv">{{actor.system.attributes.combatAp.value}}</span>
+    / <span id="gactionPointsMax">{{actor.system.attributes.combatAp.max}}</span>
+      </div>
+  <div>
+    <strong>Experience Points:</strong> <span id="xpCurrent">{{actor.system.attributes.xp.current}}</span>
+    / <span id="xpCumulative">{{actor.system.attributes.xp.cumulative}}</span>
+      </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet-body">
+    <!-- Attributes Section -->
+    <h2>Attributes</h2>
+
+
+      <section class="attributes">
+      <div class="sheet-content">
+        {{> "systems/dust-system/templates/partials/attributes.hbs"}}
+      </div>
+    </section>
+
+  <!-- Specialities Section -->
+    <h2>Specialities</h2>
+
+
+      <section class="specialities">
+      <div class="sheet-content">
+        {{> "systems/dust-system/templates/partials/specialities.hbs"}}
+      </div>
+    </section>
+
+    <!-- Features Section -->
+          <h2>Features</h2>
+      <section class="features-section">
+      <div class="sheet-content">
+        {{> "systems/dust-system/templates/partials/features.hbs"}}
+      </div>
+    </section>
+
+    <!-- Loadout Section -->
+    <h2>Loadout</h2>
+      <section class="loadout-section">
+      <div class="sheet-content">
+        {{> "systems/dust-system/templates/partials/loadout.hbs"}}
+      </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <h2>Objectives</h2>
+    <section class="objectives-section">
+      <div class="sheet-content">
+        {{> "systems/dust-system/templates/partials/objectives.hbs"}}
+      </div>
+    </section>
+
+    <!-- Notes Section -->
+    <h2>Notes</h2>
+    <section class="notes-section">
+      <div class="sheet-content">
+        {{> "systems/dust-system/templates/partials/notes.hbs"}}
+      </div>
+    </section>
+  </div>
+</form>
+
+<!-- Items Section -->
+<h2>Items</h2>
+<section class="items-section">
+  <div class="sheet-content">
+    {{#each actor.items}}
+      <div class="item" data-item-id="{{this.id}}">
+        <strong>Name:</strong> {{this.name}} <br />
+        <strong>Type:</strong> {{this.type}} <br />
+        <strong>Description:</strong> {{this.system.description.value}} <br />
+        <i class="fa-solid fa-trash delete-icon clickable" title="Remove Item"></i>
+      </div>
+    {{else}}
+      <div>No items available.</div>
+    {{/each}}
+  </div>
+</section>
+
+
+
+<script>
+  Hooks.on("renderActorSheet", (app, html, data) => {
+    const actor = app.object; // Get the actor object
+
+    // Function to update attribute values
+    const updateAttribute = (key, increment) => {
+        const currentValue = actor.system.attributes[key] || 0;
+        const newValue = currentValue + increment;
+        if (newValue >= 0) { // Prevent negative values
+            actor.update({ [`system.attributes.${key}`]: newValue });
+            html.find(`#${key}`).text(newValue);
+        } else {
+            ui.notifications.warn(`${key.replace(/([A-Z])/g, " $1")} cannot be negative.`);
+        }
+    };
+
+    // Add click event listeners for each attribute
+    html.find(".st-minus").on("click", () => updateAttribute("stressTolerance", -1));
+    html.find(".st-plus").on("click", () => updateAttribute("stressTolerance", 1));
+
+    html.find(".stress-minus").on("click", () => updateAttribute("stress", -1));
+    html.find(".stress-plus").on("click", () => updateAttribute("stress", 1));
+
+    html.find(".corruption-minus").on("click", () => updateAttribute("corruption", -1));
+    html.find(".corruption-plus").on("click", () => updateAttribute("corruption", 1));
+
+    html.find(".trauma-minus").on("click", () => updateAttribute("trauma", -1));
+    html.find(".trauma-plus").on("click", () => updateAttribute("trauma", 1));
+
+    html.find(".ap-used-minus").on("click", () => updateAttribute("actionPoints.used", -1));
+    html.find(".ap-used-plus").on("click", () => updateAttribute("actionPoints.used", 1));
+
+    html.find(".xp-current-minus").on("click", () => updateAttribute("xp.current", -1));
+    html.find(".xp-current-plus").on("click", () => updateAttribute("xp.current", 1));
+});
+
+
+</script>
+<script>
+        
+ async function resilienceRoll() {
+  // Dynamically retrieve the actor
+  const actor = game.user.character || canvas.tokens.controlled[0]?.actor;
+
+  if (!actor) {
+    ui.notifications.error("No actor is currently selected or assigned.");
+    return;
+  }
+
+  // Explicitly retrieve the resilienceTotal from character data
+  const resilienceTotal = actor.system?.attributes?.resilienceTotal;
+  if (typeof resilienceTotal !== "number") {
+    ui.notifications.error("Invalid resilience value or not found in character data.");
+    return;
+  }
+
+  try {
+    // Determine the dice roll formula
+    let diceCount = resilienceTotal > 0 ? resilienceTotal : 2; // Default to 2d8 for "keep lowest" case
+    let rollFormula = resilienceTotal > 0 ? `${diceCount}d8kh` : `2d8kl`; // Use keep highest or lowest
+
+    // Execute the roll
+    let roll = await new Roll(rollFormula).roll({ async: true });
+
+    // Add Dice So Nice visualization support
+    if (game.dice3d) {
+      await game.dice3d.showForRoll(roll); // Display the roll visually if Dice So Nice is enabled
+    }
+
+    // Gather roll results
+    const rolledValues = roll.dice[0]?.results.map(r => r.result) || [];
+    const rolledValuesString = rolledValues.join(", ");
+
+    // Categorize roll results
+    const results = {
+      criticalFailures: rolledValues.filter(v => v === 1).length,
+      failures: rolledValues.filter(v => [2, 3].includes(v)).length,
+      mixedSuccesses: rolledValues.filter(v => [4, 5].includes(v)).length,
+      successes: rolledValues.filter(v => [6, 7].includes(v)).length,
+      criticalSuccesses: rolledValues.filter(v => v === 8).length
+    };
+
+    // Create a color-coded chat message
+    const chatMessage = `
+      <strong>Roll Results (Resilience - ${resilienceTotal > 0 ? "Keeping the Highest" : "Keeping the Lowest"}):</strong><br>
+      <span style="font-weight: bold; color: black;">Rolled Values:</span> [${rolledValuesString}]<br>
+      <span style="font-weight: bold; color: black;">Critical Failures:</span> 
+      <span class="fa-stack" style="font-size: 1em; line-height: 1;">
+        <i class="fa-solid fa-dice-d8 fa-stack-2x" style="color: red;"></i>
+        <span class="fa-stack-2x" style="color: black; font-weight: bold;">${results.criticalFailures}</span>
+      </span><br>
+      <span style="font-weight: bold; color: black;">Failures:</span> 
+      <span class="fa-stack" style="font-size: 1em; line-height: 1;">
+        <i class="fa-solid fa-dice-d8 fa-stack-2x" style="color: orange;"></i>
+        <span class="fa-stack-2x" style="color: black; font-weight: bold;">${results.failures}</span>
+      </span><br>
+      <span style="font-weight: bold; color: black;">Mixed Successes:</span> 
+      <span class="fa-stack" style="font-size: 1em; line-height: 1;">
+        <i class="fa-solid fa-dice-d8 fa-stack-2x" style="color: #f1c40f;"></i>
+        <span class="fa-stack-2x" style="color: black; font-weight: bold;">${results.mixedSuccesses}</span>
+      </span><br>
+      <span style="font-weight: bold; color: black;">Successes:</span> 
+      <span class="fa-stack" style="font-size: 1em; line-height: 1;">
+        <i class="fa-solid fa-dice-d8 fa-stack-2x" style="color: lightgreen;"></i>
+        <span class="fa-stack-2x" style="color: black; font-weight: bold;">${results.successes}</span>
+      </span><br>
+      <span style="font-weight: bold; color: black;">Critical Successes:</span> 
+      <span class="fa-stack" style="font-size: 1em; line-height: 1;">
+        <i class="fa-solid fa-dice-d8 fa-stack-2x" style="color: green;"></i>
+        <span class="fa-stack-2x" style="color: black; font-weight: bold;">${results.criticalSuccesses}</span>
+      </span><br>
+    `;
+
+    // Send the message to chat
+    ChatMessage.create({
+      content: chatMessage,
+      speaker: ChatMessage.getSpeaker({ actor }),
+    });
+
+    // Log to console for debugging
+    console.log("Roll Results:", {
+      resilienceTotal,
+      rolledValues,
+      results
+    });
+
+  } catch (error) {
+    ui.notifications.error("An error occurred during the roll.");
+    console.error("Error in triggerRoll:", error);
+  }
+}
+
+// Register the function globally
+window.triggerRoll = triggerRoll;
+
+console.log("Custom dice logic with Dice So Nice support for triggerRoll.js loaded successfully!");
+
+
+
+    </script>
+    <script>
+      Hooks.on("renderActorSheet", (app, html, data) => {
+  // Handle item deletion
+  html.find(".delete-icon").on("click", function () {
+    // Get the item ID from the icon's parent div
+    const itemId = $(this).closest(".item").data("item-id");
+
+    // Retrieve the actor from the sheet's app
+    const actor = app.object;
+
+    // Confirm and delete the item
+    if (itemId) {
+      actor.deleteEmbeddedDocuments("Item", [itemId])
+        .then(() => {
+          ui.notifications.info("Item successfully removed.");
+        })
+        .catch(error => {
+          console.error("Failed to remove item:", error);
+          ui.notifications.error("Failed to remove item. Check the console for more details.");
+        });
+    } else {
+      ui.notifications.warn("No item ID found.");
+    }
+  });
+});
+
+</script>
+<script>
+  Hooks.on("renderActorSheet", (app, html) => {
+  // Add event listener for mode toggle
+  html.find(".toggle-icon").on("click", function () {
+    const icon = $(this);
+
+    // Check current mode and toggle
+    if (icon.hasClass("fa-sun")) {
+      // Switch to Shadow Mode
+      icon.removeClass("fa-sun").addClass("fa-moon");
+      icon.attr("title", "Switch to Light Mode");
+
+      // Perform additional actions for Shadow Mode
+      console.log("Switched to Shadow Mode");
+      // Example: app.actor.update({ "system.mode": "shadow" });
+
+    } else if (icon.hasClass("fa-moon")) {
+      // Switch to Light Mode
+      icon.removeClass("fa-moon").addClass("fa-sun");
+      icon.attr("title", "Switch to Shadow Mode");
+
+      // Perform additional actions for Light Mode
+      console.log("Switched to Light Mode");
+      // Example: app.actor.update({ "system.mode": "light" });
+    }
+  });
+});
+Hooks.on("renderActorSheet", (app, html) => {
+  const actor = app.actor;
+
+  // Set initial mode based on actor data
+  const mode = actor.system.mode || "light"; // Default to Light Mode
+  const icon = html.find(".toggle-icon");
+  if (mode === "shadow") {
+    icon.removeClass("fa-sun").addClass("fa-moon");
+    icon.attr("title", "Switch to Light Mode");
+  }
+
+  // Toggle mode on click and update actor data
+  icon.on("click", async function () {
+    if (icon.hasClass("fa-sun")) {
+      await actor.update({ "system.mode": "shadow" });
+      icon.removeClass("fa-sun").addClass("fa-moon");
+      icon.attr("title", "Switch to Light Mode");
+      console.log("Switched to Shadow Mode");
+    } else {
+      await actor.update({ "system.mode": "light" });
+      icon.removeClass("fa-moon").addClass("fa-sun");
+      icon.attr("title", "Switch to Shadow Mode");
+      console.log("Switched to Light Mode");
+    }
+  });
+});
+Hooks.on("renderActorSheet", (app, html) => {
+  // Find the sheet container
+  const sheetContainer = html.find(".sheet-container");
+
+  // Check the current mode from actor data
+  const isShadowMode = app.actor.system.mode === "shadow"; // Example system field storing mode
+
+  // Apply the appropriate class
+  if (isShadowMode) {
+    sheetContainer.addClass("shadow-mode");
+  } else {
+    sheetContainer.removeClass("shadow-mode");
+  }
+
+  // Add event listener for mode toggle (if icon is clicked)
+  html.find(".toggle-icon").on("click", async function () {
+    if (sheetContainer.hasClass("shadow-mode")) {
+      // Switch to Light Mode
+      await app.actor.update({ "system.mode": "light" });
+      console.log("Switched to Light Mode");
+
+    } else {
+      // Switch to Shadow Mode
+      await app.actor.update({ "system.mode": "shadow" });
+      console.log("Switched to Shadow Mode");
+    }
+
+    // Force rerender of the sheet to apply changes immediately
+    app.render(false);
+  });
+});
+
+</script>
+

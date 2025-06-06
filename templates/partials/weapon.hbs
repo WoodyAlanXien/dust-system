@@ -1,0 +1,97 @@
+<div class="weapon-stats">
+  <!-- Edit Toggle -->
+  {{#unless editMode}}
+    <div class="weapon-edit-toggle" style="text-align: right; margin-bottom: 5px;">
+      <i class="fas fa-cog" title="Enable Edit Mode" onclick="toggleWeaponEditMode()"></i>
+    </div>
+  {{/unless}}
+  
+  <!-- Weapon Type -->
+  <label for="weapon-type"><strong>Type:</strong></label>
+  {{#if editMode}}
+    <select id="weapon-type" name="system.type">
+      <option value="melee" {{#ifEquals system.type "melee"}}selected{{/ifEquals}}>Melee</option>
+      <option value="ranged" {{#ifEquals system.type "ranged"}}selected{{/ifEquals}}>Ranged</option>
+      <option value="magic" {{#ifEquals system.type "magic"}}selected{{/ifEquals}}>Magic</option>
+    </select>
+  {{else}}
+    <span><strong>{{system.type}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Material -->
+  <label for="weapon-material"><strong>Material:</strong></label>
+  {{#if editMode}}
+    <select id="weapon-material" name="system.material">
+      <option value="wood" {{#ifEquals system.material "wood"}}selected{{/ifEquals}}>Wood</option>
+      <option value="metal" {{#ifEquals system.material "metal"}}selected{{/ifEquals}}>Metal</option>
+      <option value="leather" {{#ifEquals system.material "leather"}}selected{{/ifEquals}}>Leather</option>
+      <option value="bone" {{#ifEquals system.material "bone"}}selected{{/ifEquals}}>Bone</option>
+      <option value="crystal" {{#ifEquals system.material "crystal"}}selected{{/ifEquals}}>Crystal</option>
+      <option value="gold" {{#ifEquals system.material "gold"}}selected{{/ifEquals}}>Gold</option>
+      <option value="silver" {{#ifEquals system.material "silver"}}selected{{/ifEquals}}>Silver</option>
+      <option value="arcane" {{#ifEquals system.material "arcane"}}selected{{/ifEquals}}>Arcane</option>
+      <option value="advanced" {{#ifEquals system.material "advanced"}}selected{{/ifEquals}}>Advanced</option>
+    </select>
+  {{else}}
+    <span><strong>{{system.material}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Form -->
+  <label for="weapon-form"><strong>Form:</strong></label>
+  {{#if editMode}}
+    <select id="weapon-form" name="system.form">
+      <option value="blade" {{#ifEquals system.form "blade"}}selected{{/ifEquals}}>Blade</option>
+      <option value="hammer" {{#ifEquals system.form "hammer"}}selected{{/ifEquals}}>Hammer</option>
+      <option value="pistol" {{#ifEquals system.form "pistol"}}selected{{/ifEquals}}>Pistol</option>
+      <option value="rifle" {{#ifEquals system.form "rifle"}}selected{{/ifEquals}}>Rifle</option>
+      <option value="wand" {{#ifEquals system.form "wand"}}selected{{/ifEquals}}>Wand</option>
+      <option value="other" {{#ifEquals system.form "other"}}selected{{/ifEquals}}>Other</option>
+    </select>
+  {{else}}
+    <span><strong>{{system.form}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Modifier -->
+  <label for="weapon-modifier"><strong>Modifier:</strong></label>
+  {{#if editMode}}
+    <select id="weapon-modifier" name="system.modifier">
+      <option value="incendiary" {{#ifEquals system.modifier "incendiary"}}selected{{/ifEquals}}>Incendiary</option>
+      <option value="cold" {{#ifEquals system.modifier "cold"}}selected{{/ifEquals}}>Cold</option>
+      <option value="poison" {{#ifEquals system.modifier "poison"}}selected{{/ifEquals}}>Poison</option>
+      <option value="acid" {{#ifEquals system.modifier "acid"}}selected{{/ifEquals}}>Acid</option>
+      <option value="shock" {{#ifEquals system.modifier "shock"}}selected{{/ifEquals}}>Shock</option>
+      <option value="none" {{#ifEquals system.modifier "none"}}selected{{/ifEquals}}>None</option>
+    </select>
+  {{else}}
+    <span><strong>{{system.modifier}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Damage -->
+  <label for="weapon-damage"><strong>Damage:</strong></label>
+  {{#if editMode}}
+    <input type="number" id="weapon-damage" name="system.damage" value="{{system.damage}}" />
+  {{else}}
+    <span><strong>{{system.damage}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Durability -->
+  <label for="weapon-durability"><strong>Durability:</strong></label>
+  {{#if editMode}}
+    <input type="number" id="weapon-durability" name="system.durability.current" value="{{system.durability.current}}" />
+    / <input type="number" id="weapon-durability-max" name="system.durability.max" value="{{system.durability.max}}" />
+  {{else}}
+    <span><strong>{{system.durability.current}} / {{system.durability.max}}</strong></span>
+  {{/if}}
+</div>
+
+<script> 
+    function toggleWeaponEditMode() {
+    // Implementation depends on your system structure.
+    // For example, you could set a flag and re-render the item sheet:
+    const sheetElement = document.querySelector('.item-sheet');
+    sheetElement.dataset.edit = true;
+    // Trigger a re-render or refresh the sheet UI as needed.
+    console.log("Weapon edit mode enabled");
+  }
+  </script>
+

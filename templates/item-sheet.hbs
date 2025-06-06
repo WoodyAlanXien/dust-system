@@ -1,0 +1,226 @@
+<link rel="stylesheet" type="text/css" href="systems/dust-system/styles/item-sheet.css">
+
+<form class="sheet item-sheet" id="{{id}}" data-edit="{{editable}}" data-type="{{type}}">
+  <header class="sheet-header">
+    <div class="item-header">
+      {{!-- Item Image --}}
+      <img id="item-image" 
+           class="item-image" 
+           src="{{img}}" 
+           alt="{{name}}" 
+           {{#if editMode}}data-edit="img"{{/if}} />
+
+      {{!-- Item Name --}}
+      <h2>
+        {{#if editMode}}
+          <input type="text" name="name" value="{{name}}" />
+        {{else}}
+          {{name}}
+        {{/if}}
+      </h2>
+    </div>
+  </header>
+
+  <div class="sheet-body">
+    {{!-- Conditional Rendering Based on Item Type --}}
+    {{#ifEquals type "weapon"}}
+      <div class="weapon-stats">
+   
+  <!-- Weapon Type -->
+  <label for="weapon-type"><strong>Type:</strong></label>
+  {{#if editMode}}
+    <select id="weapon-type" name="system.type">
+      <option value="melee" {{#ifEquals system.type "melee"}}selected{{/ifEquals}}>Melee</option>
+      <option value="ranged" {{#ifEquals system.type "ranged"}}selected{{/ifEquals}}>Ranged</option>
+      <option value="magic" {{#ifEquals system.type "magic"}}selected{{/ifEquals}}>Magic</option>
+    </select>
+  {{else}}
+    <span><strong>{{system.type}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Material -->
+  <label for="weapon-material"><strong>Material:</strong></label>
+  {{#if editMode}}
+    <select id="weapon-material" name="system.material">
+      <option value="wood" {{#ifEquals system.material "wood"}}selected{{/ifEquals}}>Wood</option>
+      <option value="metal" {{#ifEquals system.material "metal"}}selected{{/ifEquals}}>Metal</option>
+      <option value="leather" {{#ifEquals system.material "leather"}}selected{{/ifEquals}}>Leather</option>
+      <option value="bone" {{#ifEquals system.material "bone"}}selected{{/ifEquals}}>Bone</option>
+      <option value="crystal" {{#ifEquals system.material "crystal"}}selected{{/ifEquals}}>Crystal</option>
+      <option value="gold" {{#ifEquals system.material "gold"}}selected{{/ifEquals}}>Gold</option>
+      <option value="silver" {{#ifEquals system.material "silver"}}selected{{/ifEquals}}>Silver</option>
+      <option value="arcane" {{#ifEquals system.material "arcane"}}selected{{/ifEquals}}>Arcane</option>
+      <option value="advanced" {{#ifEquals system.material "advanced"}}selected{{/ifEquals}}>Advanced</option>
+    </select>
+  {{else}}
+    <span><strong>{{system.material}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Form -->
+  <label for="weapon-form"><strong>Form:</strong></label>
+  {{#if editMode}}
+    <select id="weapon-form" name="system.form">
+      <option value="blade" {{#ifEquals system.form "blade"}}selected{{/ifEquals}}>Blade</option>
+      <option value="hammer" {{#ifEquals system.form "hammer"}}selected{{/ifEquals}}>Hammer</option>
+      <option value="pistol" {{#ifEquals system.form "pistol"}}selected{{/ifEquals}}>Pistol</option>
+      <option value="rifle" {{#ifEquals system.form "rifle"}}selected{{/ifEquals}}>Rifle</option>
+      <option value="wand" {{#ifEquals system.form "wand"}}selected{{/ifEquals}}>Wand</option>
+      <option value="other" {{#ifEquals system.form "other"}}selected{{/ifEquals}}>Other</option>
+    </select>
+  {{else}}
+    <span><strong>{{system.form}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Modifier -->
+  <label for="weapon-modifier"><strong>Modifier:</strong></label>
+  {{#if editMode}}
+    <select id="weapon-modifier" name="system.modifier">
+      <option value="incendiary" {{#ifEquals system.modifier "incendiary"}}selected{{/ifEquals}}>Incendiary</option>
+      <option value="cold" {{#ifEquals system.modifier "cold"}}selected{{/ifEquals}}>Cold</option>
+      <option value="poison" {{#ifEquals system.modifier "poison"}}selected{{/ifEquals}}>Poison</option>
+      <option value="acid" {{#ifEquals system.modifier "acid"}}selected{{/ifEquals}}>Acid</option>
+      <option value="shock" {{#ifEquals system.modifier "shock"}}selected{{/ifEquals}}>Shock</option>
+      <option value="none" {{#ifEquals system.modifier "none"}}selected{{/ifEquals}}>None</option>
+    </select>
+  {{else}}
+    <span><strong>{{system.modifier}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Damage -->
+  <label for="weapon-damage"><strong>Damage:</strong></label>
+  {{#if editMode}}
+    <input type="number" id="weapon-damage" name="system.damage" value="{{system.damage}}" />
+  {{else}}
+    <span><strong>{{system.damage}}</strong></span>
+  {{/if}}
+  <br>
+  <!-- Weapon Durability -->
+  <label for="weapon-durability"><strong>Durability:</strong></label>
+  {{#if editMode}}
+    <input type="number" id="weapon-durability" name="system.durability.current" value="{{system.durability.current}}" />
+    / <input type="number" id="weapon-durability-max" name="system.durability.max" value="{{system.durability.max}}" />
+  {{else}}
+    <span><strong>{{system.durability.current}} / {{system.durability.max}}</strong></span>
+  {{/if}}
+</div>
+    {{else}}
+      {{#ifEquals type "archetype"}}
+        <div class="archetype-stats">
+          <h3>Archetype: {{name}}</h3>
+
+          <label for="archetype-description"><strong>Description:</strong></label>
+          {{#if editMode}}
+            <textarea id="archetype-description" name="system.description">{{system.description}}</textarea>
+          {{else}}
+            <span>{{system.description}}</span>
+          {{/if}}
+          <br>
+
+          <label for="archetype-benefits"><strong>Benefits:</strong></label>
+          {{#if editMode}}
+            <textarea id="archetype-benefits" name="system.benefits">{{system.benefits}}</textarea>
+          {{else}}
+            <span>{{system.benefits}}</span>
+          {{/if}}
+          <br>
+
+          <label for="archetype-requirements"><strong>Requirements:</strong></label>
+          {{#if editMode}}
+            <textarea id="archetype-requirements" name="system.requirements">{{system.requirements}}</textarea>
+          {{else}}
+            <span>{{system.requirements}}</span>
+          {{/if}}
+          <br>
+
+          <label for="archetype-specialties"><strong>Specialties:</strong></label>
+          {{#if editMode}}
+            <textarea id="archetype-specialties" name="system.specialties">{{system.specialties}}</textarea>
+          {{else}}
+            <span>{{system.specialties}}</span>
+          {{/if}}
+          <br>
+
+          <label for="archetype-synergies"><strong>Bond Synergies:</strong></label>
+          {{#if editMode}}
+            <textarea id="archetype-synergies" name="system.synergies">{{system.synergies}}</textarea>
+          {{else}}
+            <span>{{system.synergies}}</span>
+          {{/if}}
+          <br>
+
+          <label for="archetype-disciplines"><strong>Disciplines:</strong></label>
+          {{#if editMode}}
+            <textarea id="archetype-disciplines" name="system.disciplines">{{system.disciplines}}</textarea>
+          {{else}}
+            <span>{{system.disciplines}}</span>
+          {{/if}}
+        </div>
+      {{else}}
+        {{#ifEquals type "speciality"}}
+          <div class="speciality-stats">
+            <h3>Speciality: {{name}}</h3>
+
+            {{#ifEquals type "speciality"}}
+          <div class="speciality-category">
+            <label for="speciality-category"><strong>Category:</strong></label>
+            {{#if editMode}}
+              <select id="speciality-category" name="system.category">
+                <option value="light" {{#ifEquals system.category "light"}}selected{{/ifEquals}}>Light</option>
+                <option value="dark" {{#ifEquals system.category "dark"}}selected{{/ifEquals}}>Dark</option>
+              </select>
+            {{else}}
+              <span>{{system.category}}</span>
+            {{/if}}
+          </div>
+        {{/ifEquals}}
+
+
+            <label for="speciality-description"><strong>Description:</strong></label>
+            {{#if editMode}}
+              <textarea id="speciality-description" name="system.description">{{system.description}}</textarea>
+            {{else}}
+              <span>{{system.description}}</span>
+            {{/if}}
+            <br>
+
+            <label for="speciality-effect"><strong>Effect:</strong></label>
+            {{#if editMode}}
+              <textarea id="speciality-effect" name="system.effect">{{system.effect}}</textarea>
+            {{else}}
+              <span>{{system.effect}}</span>
+            {{/if}}
+            <br>
+
+            <label for="speciality-requirements"><strong>Requirements:</strong></label>
+            {{#if editMode}}
+              <textarea id="speciality-requirements" name="system.requirements">{{system.requirements}}</textarea>
+            {{else}}
+              <span>{{system.requirements}}</span>
+            {{/if}}
+            <br>
+
+            <label for="speciality-cost"><strong>Cost:</strong></label>
+            {{#if editMode}}
+              <input type="text" id="speciality-cost" name="system.cost" value="{{system.cost}}" />
+            {{else}}
+              <span>{{system.cost}}</span>
+            {{/if}}
+            <br>
+          </div>
+        {{else}}
+          <p>Unknown item type: {{type}}</p>
+        {{/ifEquals}}
+      {{/ifEquals}}
+    {{/ifEquals}}
+  </div>
+
+  <footer class="sheet-footer">
+    {{#if editMode}}
+      <button type="submit">Save</button>
+    {{/if}}
+  </footer>
+</form>
+{{!-- End of item-sheet.hbs --}}
+{{!-- This is a template for a character sheet in a tabletop RPG system. It includes sections for weapons, archetypes, and specialties, with conditional rendering based on the item type. --}}
+
+{{!-- Note: The above code is a simplified version and may require additional context or data to function correctly in the actual system. --}}

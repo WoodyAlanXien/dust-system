@@ -1,0 +1,683 @@
+<link rel="stylesheet" type="text/css" href="systems/dust-system/styles/character-sheet.css">
+<div class="window-titlebar">
+  <div class="window-controls">
+    <i class="fas fa-wrench gear-icon" title="Configure Actor" role="button" tabindex="0">Configure Actor</i>
+  </div>
+</div>
+<div class="dust-sheet character-sheet-option1">
+  <div class="sheet-container">
+    
+    
+            <!-- Character Image and Details -->
+      <div class="character-image">
+        <img src="{{this.actor.img}}" alt="Character Image" class="image-clickable" title="Click to Change Image" aria-label="Click to Change Character Image" />
+      </div>
+      <div class="character-details">
+        <p><strong>Archetype:</strong> {{getAssignedArchetype actor.items}}</p>
+        <p><strong>Quirk:</strong> {{getAssignedQuirk actor.items}}</p>
+        <p><strong>Drive:</strong> {{getAssignedDrive actor.items}}</p>
+        <p><strong>Action Points:</strong></p>
+        <div class="action-points">
+          <!-- Combat Action Points -->
+          <div class="combat-ap">
+            <p>Combat AP:</p>
+            <div class="ap-icons">
+              {{#each (range 0 actor.system.attributes.combatAp.max)}}
+              <i class="fas fa-square {{#if (gt actor.system.attributes.combatAp.value @index)}}red-ap{{else}}gray-ap{{/if}}"></i>
+              {{/each}}
+            </div>
+          </div>
+
+          <!-- General Action Points -->
+          <div class="general-ap">
+            <p>General AP:</p>
+              <div class="ap-icons">
+                {{#each (range 0 actor.system.attributes.generalAp.max)}}
+                <i class="fas fa-square {{#if (gt actor.system.attributes.generalAp.value @index)}}blue-ap{{else}}gray-ap{{/if}}"></i>
+                {{/each}}
+              </div>
+          </div>
+        </div>
+        <p><strong>Level:</strong> {{this.actor.system.attributes.level}}</p>
+        <p><strong>XP:</strong> 
+        {{#if this.actor.system.attributes.xp.current}}{{this.actor.system.attributes.xp.current}}{{else}}0{{/if}} / 
+        {{#if this.actor.system.attributes.xp.cumulative}}{{this.actor.system.attributes.xp.cumulative}}{{else}}0{{/if}}
+        </p>
+        <a class="purchase-upgrade-icon" title="Purchase Upgrade" aria-label="Purchase Upgrade">
+          <i class="fas fa-shopping-cart clickable-icon" title="Purchase Upgrade" aria-label="Purchase Upgrade"></i>
+        </a>
+        <a class="light-shadow-toggle" title="Toggle Light/Shadow" aria-label="Toggle Light/Shadow">
+          <i class="fas fa-sun toggle-icon" data-mode="light"></i> <!-- Default to light mode -->
+        </a>
+        
+        <a class="inventory-icon" title="Assign Inventory" aria-label="Assign Inventory">
+          <i class="fas fa-box-open"></i>
+        </a>
+        <a class="inventory-icon2" title="View Inventory" aria-label="View Inventory">
+          <i class="fas fa-box"></i>
+        </a>
+      </div>
+      <div class="archetype-image">
+        {{#with (getAssignedArchetype actor.items) as |archetype|}}
+          {{#if (eq archetype "Warden")}}
+            <img src="systems/dust-system/ui/logored.webp" alt="Warden Archetype" style="height: 200px;" />
+          {{else if (eq archetype "Magi")}}
+            <img src="systems/dust-system/ui/logopu.webp" alt="Magi Archetype" style="height: 200px;" />
+          {{else if (eq archetype "Agent")}}
+            <img src="systems/dust-system/ui/logobl.webp" alt="Agent Archetype" style="height: 200px;" />
+          {{else if (eq archetype "Professor")}}
+            <img src="systems/dust-system/ui/logogr.webp" alt="Professor Archetype" style="height: 200px;" />
+          {{else}}
+            <img src="systems/dust-system/ui/logo.webp" alt="Default Archetype" style="height: 200px;" />
+          {{/if}}
+        {{/with}}
+      </div>
+  </div>
+         
+
+    <div class="resilience-section">
+      <h3>Resilience</h3>
+      <div class="resilience-container">
+        <!-- Resilience -->
+        <a class="resilience-icon" data-tooltip="Resilience" title="Click to roll for Resilience">
+    <i class="fas fa-heart clickable-resilience" 
+       data-resilience="{{actor.system.attributes.resilienceTotal}}" 
+       data-tempres="{{actor.system.attributes.tempRes}}" 
+       aria-label="Click to roll for Resilience"></i>
+</a>
+            <span>
+              {{#if actor.system.attributes.resilienceTotal}}
+  {{actor.system.attributes.resilienceTotal}}
+{{else}}
+  0
+{{/if}}
+            </span>
+        </div>
+
+        
+        
+      <!-- Skills Section -->
+      <div class="skills">
+        <h3>Skills</h3>
+            
+        <!-- Purpose: Display the attributes of the character -->
+        <div class="attributes">
+          <div class="attribute-group relentless-group">
+            <div class="attribute-group-header">
+             <h3>Relentless</h3><br>
+            </div>
+            
+               <div class="attribute">
+                  <label for="clash">Clash</label><br>
+                    {{actor.system.attributes.relentless.attributes.clash}}
+                        <i class="far fa-dice-d8 clickable-d8" 
+                           role="button" 
+                           aria-label="Roll Clash for Relentless" 
+                           tabindex="0"
+                           onclick="triggerRoll('attributes.relentless.attributes.clash', '{{actor.id}}', 'relentless')">
+                        </i>
+                 </div>
+             
+                <div class="attribute">
+                    <label for="push">Push</label><br>
+                        {{actor.system.attributes.relentless.attributes.push}}
+                        <i class="far fa-dice-d8 clickable-d8" 
+                           role="button" 
+                           aria-label="Roll Push for Relentless" 
+                           tabindex="0"
+                           onclick="triggerRoll('attributes.relentless.attributes.push', '{{actor.id}}', 'relentless')">
+                        </i>
+                    </div>
+                
+                <div class="attribute">
+                    <label for="menace">Menace</label><br>
+                        {{actor.system.attributes.relentless.attributes.menace}}
+                        <i class="far fa-dice-d8 clickable-d8" 
+                           role="button" 
+                           aria-label="Roll Menace for Relentless" 
+                           tabindex="0"
+                           onclick="triggerRoll('attributes.relentless.attributes.menace', '{{actor.id}}', 'relentless')">
+                        </i>
+                    </div>
+                
+            
+                    <div class="attribute">
+        <div class="nerve">
+            <label>Nerve
+            <i class="fa-solid fa-minus" 
+               data-action="minus" 
+               data-attribute="elusive" 
+               data-key="nerveCurrent" 
+               role="button" 
+               tabindex="0" 
+               aria-label="Decrease Elusive Nerve">
+            </i>
+            
+            <i class="fa-solid fa-plus" 
+               data-action="plus" 
+               data-attribute="elusive" 
+               data-key="nerveCurrent" 
+               role="button" 
+               tabindex="0" 
+               aria-label="Increase Relentless Nerve">
+            </i></label><br>
+            <span id="nerveValueR" role="status" aria-live="polite">
+                {{actor.system.attributes.relentless.attributes.nerveCurrent}}
+            </span>
+        </div>
+    </div>
+    <div class="attribute">
+        <div class="temp-nerve">
+            <label>Temp Nerve
+            <i class="fa-solid fa-minus temp-nerve-minus-e" 
+               data-action="minus" 
+               data-attribute="elusive" 
+               data-key="temporaryNerve" 
+               role="button" 
+               tabindex="0" 
+               aria-label="Decrease Temporary Elusive Nerve">
+            </i>
+            
+            <i class="fa-solid fa-plus temp-nerve-plus-e" 
+               data-action="plus" 
+               data-attribute="elusive" 
+               data-key="temporaryNerve" 
+               role="button" 
+               tabindex="0" 
+               aria-label="Increase Temporary Relentless Nerve">
+            </i></label><br>
+            <span id="tempNerveValueR" role="status" aria-live="polite">
+                {{actor.system.attributes.relentless.attributes.temporaryNerve}}
+            </span>
+        </div>
+    </div>
+  </div>
+      
+
+
+
+
+            
+
+    <!-- Elusive Group -->
+<div class="attribute-group elusive-group">
+    <div class="attribute-group-header">
+        <h3>Elusive</h3><br>
+    </div>
+    <div class="attribute">
+        <label for="maneuver">Maneuver</label><br>
+        {{actor.system.attributes.elusive.attributes.maneuver}}
+        <i class="far fa-dice-d8 clickable-d8" 
+           role="button" 
+           aria-label="Roll Maneuver for Elusive" 
+           tabindex="0" 
+           onclick="triggerRoll('attributes.elusive.attributes.maneuver', '{{actor.id}}', 'elusive')">
+        </i>
+    </div>
+    <div class="attribute">
+        <label for="control">Control</label><br>
+        {{actor.system.attributes.elusive.attributes.control}}
+        <i class="far fa-dice-d8 clickable-d8" 
+           role="button" 
+           aria-label="Roll Control for Elusive" 
+           tabindex="0" 
+           onclick="triggerRoll('attributes.elusive.attributes.control', '{{actor.id}}', 'elusive')">
+        </i>
+    </div>
+    <div class="attribute">
+        <label for="stealth">Stealth</label><br>
+        {{actor.system.attributes.elusive.attributes.stealth}}
+        <i class="far fa-dice-d8 clickable-d8" 
+           role="button" 
+           aria-label="Roll Stealth for Elusive" 
+           tabindex="0" 
+           onclick="triggerRoll('attributes.elusive.attributes.stealth', '{{actor.id}}', 'elusive')">
+        </i>
+    </div>
+    <div class="attribute">
+        <div class="nerve">
+            <label>Nerve
+            <i class="fa-solid fa-minus" 
+               data-action="minus" 
+               data-attribute="elusive" 
+               data-key="nerveCurrent" 
+               role="button" 
+               tabindex="0" 
+               aria-label="Decrease Elusive Nerve">
+            </i>
+            
+            <i class="fa-solid fa-plus" 
+               data-action="plus" 
+               data-attribute="elusive" 
+               data-key="nerveCurrent" 
+               role="button" 
+               tabindex="0" 
+               aria-label="Increase Elusive Nerve">
+            </i></label><br>
+            <span id="nerveValueE" role="status" aria-live="polite">
+                {{actor.system.attributes.elusive.attributes.nerveCurrent}}
+            </span>
+        </div>
+    </div>
+    <div class="attribute">
+        <div class="temp-nerve">
+            <label>Temp Nerve
+            <i class="fa-solid fa-minus temp-nerve-minus-e" 
+               data-action="minus" 
+               data-attribute="elusive" 
+               data-key="temporaryNerve" 
+               role="button" 
+               tabindex="0" 
+               aria-label="Decrease Temporary Elusive Nerve">
+            </i>
+           
+            <i class="fa-solid fa-plus temp-nerve-plus-e" 
+               data-action="plus" 
+               data-attribute="elusive" 
+               data-key="temporaryNerve" 
+               role="button" 
+               tabindex="0" 
+               aria-label="Increase Temporary Elusive Nerve">
+            </i></label><br>
+            <span id="tempNerveValueE" role="status" aria-live="polite">
+                {{actor.system.attributes.elusive.attributes.temporaryNerve}}
+            </span>
+        </div>
+    </div>
+</div>  
+     
+
+<!-- Charming Group -->
+<div class="attribute-group charming-group">
+  <div class="attribute-group-header">
+    <h3>Charming</h3><br>
+  </div>
+  <div class="attribute">
+    <label for="sense">Sense</label><br>
+    {{actor.system.attributes.charming.attributes.sense}}
+    <i class="far fa-dice-d8 clickable-d8"
+       role="button"
+       aria-label="Roll Sense for Charming"
+       tabindex="0"
+       onclick="triggerRoll('attributes.charming.attributes.sense', '{{actor.id}}', 'charming')">
+    </i>
+  </div>
+  <div class="attribute">
+    <label for="influence">Influence</label><br>
+    {{actor.system.attributes.charming.attributes.influence}}
+    <i class="far fa-dice-d8 clickable-d8"
+       role="button"
+       aria-label="Roll Influence for Charming"
+       tabindex="0"
+       onclick="triggerRoll('attributes.charming.attributes.influence', '{{actor.id}}', 'charming')">
+    </i>
+  </div>
+  <div class="attribute">
+    <label for="deceive">Deceive</label><br>
+    {{actor.system.attributes.charming.attributes.deceive}}
+    <i class="far fa-dice-d8 clickable-d8"
+       role="button"
+       aria-label="Roll Deceive for Charming"
+       tabindex="0"
+       onclick="triggerRoll('attributes.charming.attributes.deceive', '{{actor.id}}', 'charming')">
+    </i>
+  </div>
+  <div class="attribute">
+    <div class="nerve">
+      <label>
+        Nerve
+        <i class="fa-solid fa-minus"
+           data-action="minus"
+           data-attribute="charming"
+           data-key="nerveCurrent"
+           role="button"
+           tabindex="0"
+           aria-label="Decrease Charming Nerve">
+        </i>
+        <i class="fa-solid fa-plus"
+           data-action="plus"
+           data-attribute="charming"
+           data-key="nerveCurrent"
+           role="button"
+           tabindex="0"
+           aria-label="Increase Charming Nerve">
+        </i>
+      </label><br>
+      <span id="nerveValueC" role="status" aria-live="polite">
+        {{actor.system.attributes.charming.attributes.nerveCurrent}}
+      </span>
+    </div>
+  </div>
+  <div class="attribute">
+    <div class="temp-nerve">
+      <label>
+        Temp Nerve
+        <i class="fa-solid fa-minus"
+           data-action="minus"
+           data-attribute="charming"
+           data-key="temporaryNerve"
+           role="button"
+           tabindex="0"
+           aria-label="Decrease Temporary Charming Nerve">
+        </i>
+        <i class="fa-solid fa-plus"
+           data-action="plus"
+           data-attribute="charming"
+           data-key="temporaryNerve"
+           role="button"
+           tabindex="0"
+           aria-label="Increase Temporary Charming Nerve">
+        </i>
+      </label><br>
+      <span id="tempNerveValueC" role="status" aria-live="polite">
+        {{actor.system.attributes.charming.attributes.temporaryNerve}}
+      </span>
+    </div>
+  </div>
+</div>
+       
+
+<!-- Discreet Group -->
+<div class="attribute-group discreet-group">
+  <div class="attribute-group-header">
+    <h3>Discreet</h3><br>
+  </div>
+  <div class="attribute">
+    <label for="notice">Notice</label><br>
+    {{actor.system.attributes.discreet.attributes.notice}}
+    <i class="far fa-dice-d8 clickable-d8"
+       role="button"
+       aria-label="Roll Notice for Discreet"
+       tabindex="0"
+       onclick="triggerRoll('attributes.discreet.attributes.notice', '{{actor.id}}', 'discreet')">
+    </i>
+  </div>
+  <div class="attribute">
+    <label for="focus">Focus</label><br>
+    {{actor.system.attributes.discreet.attributes.focus}}
+    <i class="far fa-dice-d8 clickable-d8"
+       role="button"
+       aria-label="Roll Focus for Discreet"
+       tabindex="0"
+       onclick="triggerRoll('attributes.discreet.attributes.focus', '{{actor.id}}', 'discreet')">
+    </i>
+  </div>
+  <div class="attribute">
+    <label for="invoke">Invoke</label><br>
+    {{actor.system.attributes.discreet.attributes.invoke}}
+    <i class="far fa-dice-d8 clickable-d8"
+       role="button"
+       aria-label="Roll Invoke for Discreet"
+       tabindex="0"
+       onclick="triggerRoll('attributes.discreet.attributes.invoke', '{{actor.id}}', 'discreet')">
+    </i>
+  </div>
+  <div class="attribute">
+    <div class="nerve">
+      <label>
+        Nerve
+        <i class="fa-solid fa-minus"
+           data-action="minus"
+           data-attribute="discreet"
+           data-key="nerveCurrent"
+           role="button"
+           tabindex="0"
+           aria-label="Decrease Discreet Nerve">
+        </i>
+        <i class="fa-solid fa-plus"
+           data-action="plus"
+           data-attribute="discreet"
+           data-key="nerveCurrent"
+           role="button"
+           tabindex="0"
+           aria-label="Increase Discreet Nerve">
+        </i>
+      </label><br>
+      <span id="nerveValueD" role="status" aria-live="polite">
+        {{actor.system.attributes.discreet.attributes.nerveCurrent}}
+      </span>
+    </div>
+  </div>
+  <div class="attribute">
+    <div class="temp-nerve">
+      <label>
+        Temp Nerve
+        <i class="fa-solid fa-minus"
+           data-action="minus"
+           data-attribute="discreet"
+           data-key="temporaryNerve"
+           role="button"
+           tabindex="0"
+           aria-label="Decrease Temporary Discreet Nerve">
+        </i>
+        <i class="fa-solid fa-plus"
+           data-action="plus"
+           data-attribute="discreet"
+           data-key="temporaryNerve"
+           role="button"
+           tabindex="0"
+           aria-label="Increase Temporary Discreet Nerve">
+        </i>
+      </label><br>
+      <span id="tempNerveValueD" role="status" aria-live="polite">
+        {{actor.system.attributes.discreet.attributes.temporaryNerve}}
+      </span>
+    </div>
+  </div>
+</div>
+</div>  
+<div class="sct-group">     
+
+      <!-- Trauma (range 4) -->
+<div class="trauma-grid">
+  <h4>
+    Trauma
+    <i class="fas fa-minus trauma-decrement" aria-label="Decrease Trauma"></i>
+    <i class="fas fa-plus trauma-increment" aria-label="Increase Trauma"></i>
+  </h4>
+  <div class="grid">
+    {{#each (range 0 actor.system.attributes.trauma)}}
+      <i class="fas fa-square"></i>
+    {{/each}}
+    {{#each (range actor.system.attributes.trauma 4)}}
+      <i class="far fa-square"></i>
+    {{/each}}
+  </div>
+</div>
+
+<!-- Stress (range 20) -->
+<div class="stress-grid">
+  <h4>
+    Stress
+    <i class="fas fa-minus stress-decrement" aria-label="Decrease Stress"></i>
+    <i class="fas fa-plus stress-increment" aria-label="Increase Stress"></i>
+  </h4>
+  <div class="grid">
+    {{#each (range 0 actor.system.attributes.stress)}}
+      <i class="fas fa-square"></i>
+    {{/each}}
+    {{#each (range actor.system.attributes.stress 20)}}
+      <i class="far fa-square"></i>
+    {{/each}}
+    Stress Tolerance: {{actor.system.attributes.stressTolerance}}
+  </div>
+</div>
+
+<!-- Corruption (range 20) -->
+<div class="corruption-grid">
+  <h4>
+    Corruption
+    <i class="fas fa-minus corruption-decrement" aria-label="Decrease Corruption"></i>
+    <i class="fas fa-plus corruption-increment" aria-label="Increase Corruption"></i>
+  </h4>
+  <div class="grid corruption">
+    {{#each (range 0 actor.system.attributes.corruption)}}
+      <i class="far fa-square"></i>
+    {{/each}}
+    {{#each (range actor.system.attributes.corruption 20)}}
+      <i class="fas fa-square"></i>
+    {{/each}}
+  </div>
+</div>
+</div>
+<!-- End of sct-group -->
+
+      <!-- aether -->
+<div class="aether-section">
+  <h3>Aether</h3>
+  <p>
+    <strong>Capacity:</strong> {{this.actor.system.attributes.aether.capacity}}
+    <i class="fas fa-info-circle" title="Aether Capacity is upgradable by items." aria-label="Aether Capacity is upgradable by items."></i>
+  </p>
+  <p>
+    <strong>Conserving:</strong>
+    <i class="fas fa-minus aether-conserving-decrement" aria-label="Decrease Conserving Aether"></i>
+    <span class="aether-conserving-value">{{this.actor.system.attributes.aether.conserved}}</span>
+    <i class="fas fa-plus aether-conserving-increment" aria-label="Increase Conserving Aether"></i>
+  </p>
+  <p>
+    <strong>Supply:</strong>
+    <i class="fas fa-minus aether-supply-decrement" aria-label="Decrease Aether Supply"></i>
+    <span class="aether-supply-value">{{this.actor.system.attributes.aether.supply}}</span>
+    <i class="fas fa-plus aether-supply-increment" aria-label="Increase Aether Supply"></i>
+  </p>
+</div>
+
+
+      <!-- Specialties Section -->
+      <div class="specialty-group">
+        <p class="light-specialty">
+          <strong>Light Specialty:</strong> 
+          <ul>
+    {{#each actor.items}}
+      {{#ifEquals this.type "speciality"}}
+        {{#if this.system.isAssigned}}
+{{#ifEquals this.system.category "light"}}
+  {{#if this.system.isAssigned}}
+    <li class="{{#if (and (eq ../actor.system.mode "light") ../actor.system.lightActiveSpclty.highlighted)}}highlighted-specialty{{/if}}">
+      <strong>{{this.name}}</strong> – {{this.system.description}}
+      <i class="fas fa-times unassign-specialty" data-item-id="{{this.id}}" title="Unassign Light Specialty" aria-label="Unassign Light Specialty"></i>
+    </li>
+  {{/if}}
+{{/ifEquals}}
+        {{/if}}
+      {{/ifEquals}}
+    {{/each}}
+  </ul>
+        </p>
+        <p class="shadow-specialty">
+          <strong>Shadow Specialty:</strong> <ul>
+    {{#each actor.items}}
+      {{#ifEquals this.type "speciality"}}
+        {{#if this.system.isAssigned}}
+{{#ifEquals this.system.category "dark"}}
+  {{#if this.system.isAssigned}}
+    <li class="{{#if (and (eq ../actor.system.mode "shadow") ../actor.system.shadowActiveSpclty.highlighted)}}highlighted-specialty{{/if}}">
+      <strong>{{this.name}}</strong> – {{this.system.description}}
+      <i class="fas fa-times unassign-specialty" data-item-id="{{this.id}}" title="Unassign Shadow Specialty" aria-label="Unassign Shadow Specialty"></i>
+    </li>
+  {{/if}}
+{{/ifEquals}}        {{/if}}
+      {{/ifEquals}}
+    {{/each}}
+  </ul>
+        </p>
+      </div>
+
+      <!-- Abilities -->
+      <div class="abilities-section">
+        <h3>Abilities</h3>
+          <ul>
+            {{#each system.abilities}}
+            <li>
+            <strong>{{this.name}}</strong>
+            <span class="ability-description">{{this.description}}</span>
+            </li>
+            {{else}}
+            <p>No abilities assigned.</p>
+            {{/each}}
+          </ul>
+      </div>
+
+      <!-- Features -->
+      <div class="features-section">
+        <h3>Features</h3>
+          <ul>
+          {{#each system.features}}
+          <li>
+          <strong>{{this.name}}</strong>
+          <span class="feature-description">{{this.description}}</span>
+          </li>
+          {{else}}
+          <p>No features assigned.</p>
+          {{/each}}
+          </ul>
+      </div>
+
+
+      <!-- Bonds Section -->
+      <div class="bond-group">
+        <label class="bond-label" data-bond="1" title="Assign Actor to Bond 1" aria-label="Bond 1: Assign Actor">Bond 1</label>: {{#if system.attributes.bonds.bond1}}
+  {{system.attributes.bonds.bond1.name}}
+{{else}}
+  None
+{{/if}}
+        <br>
+        <label class="bond-label" data-bond="2" title="Assign Actor to Bond 2" aria-label="Bond 2: Assign Actor">Bond 2</label>: {{#if system.attributes.bonds.bond2}}
+  {{system.attributes.bonds.bond2.name}}
+{{else}}
+  None
+{{/if}}
+        <br>
+        <label class="bond-label" data-bond="3" title="Assign Actor to Bond 3" aria-label="Bond 3: Assign Actor">Bond 3</label>: {{#if system.attributes.bonds.bond3}}
+  {{system.attributes.bonds.bond3.name}}
+{{else}}
+  None
+{{/if}}
+      </div>
+  </div>
+<!-- Loadout Section -->
+<div class="loadout-section">
+  <h3>Loadout</h3>
+  <ul>
+    {{#each actor.items}}
+      {{#if this.system.isAssigned}}
+        {{#ifEquals this.type "weapon"}}
+          <li class="assigned-item">
+            <img src="{{this.img}}" alt="{{this.name}}" class="item-image" style="width: 150px; height: 150px;" />
+            <div class="item-details">
+              <h3 class="item-name">{{this.name}}</h3>
+              <p><strong>Type:</strong> {{this.system.type}}</p>
+              <p><strong>Material:</strong> {{this.system.material}}</p>
+              <p><strong>Form:</strong> {{this.system.form}}</p>
+              <p><strong>Modifier:</strong> {{this.system.modifier}}</p>
+              <p><strong>Durability:</strong> {{this.system.durability.current}} / {{this.system.durability.max}}</p>
+              <p class="item-info">{{this.system.description}}</p>
+              <i class="fas fa-times remove-item" data-item-id="{{this.id}}" title="Remove from Loadout" aria-label="Remove {{this.name}} from Loadout"></i>
+            </div>
+          </li>
+        {{/ifEquals}}
+        {{#ifEquals this.type "armor"}}
+          <li class="assigned-item">
+            <img src="{{this.img}}" alt="{{this.name}}" class="item-image" style="width: 150px; height: 150px;" />
+            <div class="item-details">
+              <h3 class="item-name">{{this.name}}</h3>
+              <p class="item-info">{{this.system.description}}</p>
+            <i class="fas fa-times remove-item" data-item-id="{{this.id}}" title="Remove from Loadout" aria-label="Remove {{this.name}} from Loadout"></i>
+          </li>
+        {{/ifEquals}}
+      {{/if}}
+    {{/each}}
+    {{!-- If no assigned weapons or armor are found, show a message --}}
+    {{#unless (anyAssignedWeapons actor.items)}}
+      {{#unless (anyAssignedArmor actor.items)}}
+        <p>No items assigned to Loadout.</p>
+      {{/unless}}
+    {{/unless}}
+  </ul>
+</div>
+
+  
+</div>
+</div>
+{{!-- End of character-sheet-option1.hbs --}}

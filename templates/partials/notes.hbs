@@ -1,0 +1,42 @@
+<div id="notes" class="tab-content" data-tab="notes">
+    <textarea 
+        id="notesArea" 
+        name="system.notes" 
+        rows="10" 
+        cols="50" 
+        aria-label="Character notes" 
+        aria-describedby="notesDescription"
+        aria-live="polite" 
+        aria-required="false">{{system.notes}}</textarea>
+    <p id="notesDescription" class="sr-only">
+    Use this field to write or update notes specific to this character.
+</p>
+
+</div>
+
+
+
+<script>
+    Hooks.on("renderActorSheet", (app, html, data) => {
+        const actor = app.object; // Get the actor object
+        const textarea = html.find("#notesArea"); // Find the textarea element
+
+        // Load existing notes from the actor's flags
+        textarea.val(actor.getFlag("dust-system", "notes") || ""); // Corrected flag retrieval
+
+        // Save the notes when the user types into the field
+        textarea.on("input", (event) => {
+            actor.setFlag("dust-system", "notes", event.target.value); // Corrected flag saving
+        });
+
+        // Listen for changes to the notes flag and update the textarea
+        actor.sheet?.element?.on("update", (updatedData) => {
+            if (updatedData.flags?.["dust-system"]?.notes !== undefined) {
+                textarea.val(updatedData.flags["dust-system"].notes || ""); // Dynamic update
+            }
+            textarea.attr("aria-live", "polite");
+
+        });
+    });
+</script>
+

@@ -1,0 +1,9 @@
+<div id="features" class="tab-content" data-tab="features">
+  <ul>
+    {{#each items}}
+      {{#if (eq this.type "feature")}}
+        <li>{{this.name}}</li>
+      {{/if}}
+    {{/each}}
+  </ul>
+</div>

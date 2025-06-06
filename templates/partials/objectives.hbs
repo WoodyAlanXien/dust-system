@@ -1,0 +1,108 @@
+<div id="objectives" class="tab-content" data-tab="objectives">
+  <div>
+    <strong>Quirk:</strong>
+    <input id="quirkInput" type="text" aria-label="Quirk" value="">
+  </div>
+  <div>
+    <strong>Drive:</strong>
+    <input id="driveInput" type="text" aria-label="Drive" value=""
+  </div>
+  <div>
+    <strong>Player Objective:</strong>
+    <input id="playerObjectiveInput" type="text" aria-label="Player Objective" value="">
+  </div>
+  <div>
+    <strong>Character Objective 1:</strong>
+    <input id="characterObjective1Input" type="text" aria-label="Character Objective 1" value="">
+  </div>
+  <div>
+    <strong>Character Objective 2:</strong>
+    <input id="characterObjective2Input" type="text" aria-label="Character Objective 2" value="">
+  </div>
+  <div>
+    <strong>Character Objective 3:</strong>
+    <input id="characterObjective3Input" type="text" aria-label="Character Objective 3" value="">
+  </div>
+  <h3>Bonds/Connections</h3>
+  <div>
+    <strong>Bond 1:</strong>
+    <input id="bond1CharacterInput" type="text" aria-label="Bond 1 Character" value="">
+  </div>
+  <div>
+    <strong>Level:</strong>
+    <input id="bond1LevelInput" type="number" aria-label="Bond 1 Level" value="">
+  </div>
+  <div>
+    <strong>Health:</strong>
+    <input id="bond1HealthInput" type="number" aria-label="Bond 1 Health" value="">
+  </div>
+  <div>
+    <strong>Bond 2:</strong>
+    <input id="bond2CharacterInput" type="text" aria-label="Bond 2 Character" value="">
+  </div>
+  <div>
+    <strong>Level:</strong>
+    <input id="bond2LevelInput" type="number" aria-label="Bond 2 Level" value="">
+  </div>
+  <div>
+    <strong>Health:</strong>
+    <input id="bond2HealthInput" type="number" aria-label="Bond 2 Health" value="">
+  </div>
+  <div>
+    <strong>Bond 3:</strong>
+    <input id="bond3CharacterInput" type="text" aria-label="Bond 3 Character" value="">
+  </div>
+  <div>
+    <strong>Level:</strong>
+    <input id="bond3LevelInput" type="number" aria-label="Bond 3 Level" value="">
+  </div>
+  <div>
+    <strong>Health:</strong>
+    <input id="bond3HealthInput" type="number" aria-label="Bond 3 Health" value="">
+  </div>
+</div>
+<script>
+  Hooks.on("renderActorSheet", (app, html, data) => {
+    const actor = app.object; // Get the actor object
+
+    // Populate input fields with existing actor data
+    html.find("#quirkInput").val(actor.system.quirk || "");
+    html.find("#driveInput").val(actor.system.drive || "");
+    html.find("#playerObjectiveInput").val(actor.system.playerObjective || "");
+    html.find("#characterObjective1Input").val(actor.system.characterObjectives.objective1 || "");
+    html.find("#characterObjective2Input").val(actor.system.characterObjectives.objective2 || "");
+    html.find("#characterObjective3Input").val(actor.system.characterObjectives.objective3 || "");
+
+    html.find("#bond1CharacterInput").val(actor.system.bonds.bond1.name || "");
+    html.find("#bond1LevelInput").val(actor.system.bonds.bond1.level || 0);
+    html.find("#bond1HealthInput").val(actor.system.bonds.bond1.health || 0);
+
+    html.find("#bond2CharacterInput").val(actor.system.bonds.bond2.name || "");
+    html.find("#bond2LevelInput").val(actor.system.bonds.bond2.level || 0);
+    html.find("#bond2HealthInput").val(actor.system.bonds.bond2.health || 0);
+
+    html.find("#bond3CharacterInput").val(actor.system.bonds.bond3.name || "");
+    html.find("#bond3LevelInput").val(actor.system.bonds.bond3.level || 0);
+    html.find("#bond3HealthInput").val(actor.system.bonds.bond3.health || 0);
+
+    // Add event listeners for updates
+    html.find("#quirkInput").on("change", (event) => actor.update({ "system.quirk": event.target.value }));
+    html.find("#driveInput").on("change", (event) => actor.update({ "system.drive": event.target.value }));
+    html.find("#playerObjectiveInput").on("change", (event) => actor.update({ "system.playerObjective": event.target.value }));
+    html.find("#characterObjective1Input").on("change", (event) => actor.update({ "system.characterObjectives.objective1": event.target.value }));
+    html.find("#characterObjective2Input").on("change", (event) => actor.update({ "system.characterObjectives.objective2": event.target.value }));
+    html.find("#characterObjective3Input").on("change", (event) => actor.update({ "system.characterObjectives.objective3": event.target.value }));
+
+    html.find("#bond1CharacterInput").on("change", (event) => actor.update({ "system.bonds.bond1.name": event.target.value }));
+    html.find("#bond1LevelInput").on("change", (event) => actor.update({ "system.bonds.bond1.level": parseInt(event.target.value) || 0 }));
+    html.find("#bond1HealthInput").on("change", (event) => actor.update({ "system.bonds.bond1.health": parseInt(event.target.value) || 0 }));
+
+    html.find("#bond2CharacterInput").on("change", (event) => actor.update({ "system.bonds.bond2.name": event.target.value }));
+    html.find("#bond2LevelInput").on("change", (event) => actor.update({ "system.bonds.bond2.level": parseInt(event.target.value) || 0 }));
+    html.find("#bond2HealthInput").on("change", (event) => actor.update({ "system.bonds.bond2.health": parseInt(event.target.value) || 0 }));
+
+    html.find("#bond3CharacterInput").on("change", (event) => actor.update({ "system.bonds.bond3.name": event.target.value }));
+    html.find("#bond3LevelInput").on("change", (event) => actor.update({ "system.bonds.bond3.level": parseInt(event.target.value) || 0 }));
+    html.find("#bond3HealthInput").on("change", (event) => actor.update({ "system.bonds.bond3.health": parseInt(event.target.value) || 0 }));
+});
+</script>
