@@ -1,0 +1,363 @@
+.sheet-container {
+  padding: 10px;
+  border-radius: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  filter: brightness(1.2); /* Adjust the brightness as needed */
+  }
+
+    .asheet-header-name {
+    display: grid;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 32px; /* Adjust text size as needed */
+  font-weight: bold; /* Make the value stand out */
+  color: #000000; /* White text for contrast against the badge */
+  }
+
+.sheet-body {
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+}
+/* Styles for attribute groups */
+.attribute-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  }
+
+/* Attribute Styles */
+.attributes {
+  display: grid;
+  align-items: center; 
+  grid-template-columns: repeat(4, minmax(150px, 2fr)); /* Four columns */
+  gap: 10px; /* Space between attribute groups */
+  width: 100%;
+  
+}
+
+.attribute-group {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  
+}
+
+.attribute-group h3 {
+  margin-top: 0;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+}
+
+.attribute {
+  margin: 5px 0;
+  position: relative;
+  text-align: center;
+}
+
+.attribute label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.attribute .badge-skill {
+  display: flex; /* Use Flexbox */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  width: 50px;
+  height: 50px;
+  background-image: url('../ui/skill-badge.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  position: relative;
+}
+
+.attribute .badge-skill span,
+.nerve .badge-nerve span,
+.temp-nerve .badge-tnerve span,
+.resilience .badge span,
+.temp-resilience .badge span {
+  font-size: 14px; /* Adjust text size as needed */
+  font-weight: bold; /* Make the value stand out */
+  color: #fff; /* White text for contrast against the badge */
+  text-shadow: 0 0 5px #000; /* Optional: Add text shadow for better readability */
+}
+
+/* General container styles for the icons */
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px; /* Adjust spacing between the label and icons */
+    gap: 20px; /* Space between minus and plus icons */
+}
+
+/* Icon-specific styles */
+.icon-container i {
+    font-size: 1.5rem; /* Make the icons larger (adjust as needed) */
+    cursor: pointer; /* Show pointer to indicate interactivity */
+    color: #333; /* Change color if needed */
+}
+
+.nerve .badge-nerve {
+  display: flex; /* Use Flexbox */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  width: 50px;
+  height: 50px;
+  background-image: url('../ui/attr-badge2.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  position: relative;
+}
+
+.temp-nerve .badge-tnerve {
+  display: flex; /* Use Flexbox */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  width: 50px;
+  height: 50px;
+  background-image: url('../ui/attr-badge1.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  position: relative;
+}
+
+.resilience .badge {
+  display: flex; /* Use Flexbox */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  width: 50px;
+  height: 50px;
+  background-image: url('../ui/res-badge2.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  position: relative;
+}
+
+.temp-resilience .badge {
+  display: flex; /* Use Flexbox */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  width: 50px;
+  height: 50px;
+  background-image: url('../ui/res-badge1.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  position: relative;
+}
+
+.resilience, .nerve, .temporary-nerve, .permanent-nerve {
+  margin-top: 10px;
+}
+
+
+/* Styles for badge containers */
+.badge-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Four columns */
+  gap: 10px; /* Space between badges */
+  width: 100%;
+}
+
+/* Styles for badge containers */
+.rn-badge-container {
+  display: grid;
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  grid-template-columns: repeat(2, 1fr); /* two columns */
+  width: 100%;
+}
+
+/* Styles for individual badges */
+.badge {
+  flex: 1;
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+}
+
+.badge:last-child {
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+}
+
+/* Styles for Relentless attribute group */
+.relentless-group {
+  background-color: #f8d7da; /* Light red */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Styles for Elusive attribute group */
+.elusive-group {
+  background-color: #d1ecf1; /* Light blue */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Styles for Charming attribute group */
+.charming-group {
+  background-color: #d4edda; /* Light green */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Styles for Discreet attribute group */
+.discreet-group {
+  background-color: #e9a5fc; /* Light purple */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+
+.character-portrait img {
+  max-width: 150px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  gap: 10px;
+  background-image: url('../ui/logored.webp'); /* Path to the logo.webp file */
+  background-color: rgba(255, 255, 255, 0.25); /* Semi-transparent white */
+  background-size: contain; /* Adjust the background size */
+  background-position: right; /* Center the background image */
+  background-repeat: no-repeat;
+}
+
+.sheet-header {
+   background-color: rgba(255, 255, 255, 0.40); /* Semi-transparent white */
+   font-size: 32px; /* Adjust text size as needed */
+  font-weight: bold; /* Make the value stand out */
+  color: #000000; /* White text for contrast against the badge */
+}
+
+.header-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.character-info {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+
+}
+
+.dust-character-sheet h1 {
+  display: flex;
+  justify-content: space-between; /* Pushes items to opposite ends */
+  align-items: center; /* Vertically aligns items */
+  margin: 0; /* Remove default margin for better alignment */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+}
+
+.dust-character-sheet h1 .gear-icon {
+  margin-left: 10px; /* Add some spacing between the name and the gear icon */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+}
+
+.dust-character-sheet .sheet-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 10px; /* Adjust the gap between columns as needed */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+}
+
+.dust-character-sheet .sheet-container section {
+  margin-bottom: 20px; /* Ensures sections are spaced apart */
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+}
+
+.dust-character-sheet .sheet-container section h2 {
+  display: block; /* Ensures the header spans the full width */
+  font-size: 1.5em;
+  color: #333;
+  border-bottom: 2px solid #ccc; /* Separates headings from section content */
+  padding-bottom: 5px;
+}
+
+.dust-character-sheet .sheet-container .content {
+  display: none; /* Hide by default */
+}
+
+.dust-character-sheet .sheet-container .content.active {
+  display: block; /* Show when active */
+}
+
+.dust-character-sheet .sheet-container .toggle-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+
+.dust-character-sheet .sheet-content {
+  display: none; /* Hide by default */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+}
+
+.dust-character-sheet .content.active {
+  display: block; /* Show when active */
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+}
+
+.h2-container {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* Prevent inline elements from breaking */
+  border: 0;
+}
+
+
+
+.toggle-edit-mode {
+  display: inline-block !important;
+  padding: 4px 8px;
+  color: var(--text-light-highlight);
+  cursor: pointer;
+}
+
+.toggle-edit-mode:hover {
+  color: var(--text-bright-highlight);
+}
+
+/* Highlight the light speciality when not in shadow mode */
+.sheet-container:not(.shadow-mode) .light-speciality {
+  background-color: rgba(255, 255, 224, 0.8); /* Light yellow background */
+  color: #000;
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Highlight the shadow speciality when in shadow mode */
+.sheet-container.shadow-mode .shadow-speciality {
+  background-color: rgba(70, 70, 70, 0.8); /* Dark background for shadow mode */
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,129 @@
+/* General Styling for the Item Sheet */
+.item-sheet-item-sheet {
+    font-family: "Segoe UI", sans-serif;
+    background-image: url('/systems/dust-system/ui/banner-item-dark.png');
+    background-repeat: no-repeat; /* Ensures no tiling of the image */
+    background-position: center;
+    filter: brightness(1.2); /* Adjust the brightness as needed */
+    gap: 15px;
+    height: 100%; /* Ensures the background covers the full height of the sheet */
+    width: 100%; /* Ensures the background covers the full width of the sheet */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Header Styling */
+  .sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .sheet-header h1 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #000000;
+  }
+  
+  .sheet-header .toggle-edit {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  
+  .sheet-header .toggle-edit:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Body Styling */
+  .sheet-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .item-details label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .item-details input,
+  .item-details select,
+  .item-details textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #333;
+    color: #f9f9f9;
+  }
+  
+  .item-details input:focus,
+  .item-details select:focus,
+  .item-details textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.8);
+  }
+  
+  /* Span for durability/max */
+  .item-details span {
+    font-size: 0.9em;
+    color: #000000;
+    margin-left: 5px;
+  }
+  
+  /* Footer Styling */
+  .sheet-footer {
+    text-align: right;
+    margin-top: 20px;
+  }
+  
+  .sheet-footer button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  
+  .sheet-footer button[type="submit"]:hover {
+    background-color: #218838;
+  }
+  
+  .item-image {
+    width: auto; 
+    height: auto;
+    max-width: 100%; /* Ensures the image doesn't exceed the container width */
+    margin: 0 auto;
+    display: block;
+    border-radius: 8px;
+    border: 2px solid #444;
+    background-color: #222;
+}
+  
+  .item-image[title="Click to select image"] {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  
+  .item-image[title="Click to select image"]:hover {
+    opacity: 1;
+    border-color: #007bff;
+  }
+  
+  .weapon-stats {
+    font-size: 16px; /* Can also be % or em/rem */
+    font-weight: bold; /* Options: normal, bold, bolder, lighter, or numeric values (100-900) */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    
+  }
