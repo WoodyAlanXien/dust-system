@@ -2,10 +2,10 @@
     "id": "dust-system",
     "title": "Dimensional Unification and Stabilization Taskforce (DUST)",
     "description": "Custom system for DUST",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "compatibility": {
         "minimum": "12.331",
-        "verified": "13.336"
+        "verified": "13.342"
     },
     "authors": [{
         "name": "Woody Alan Xien"
@@ -755,10 +755,8 @@
             "sourceBooks": {
                 "SRD 3.1": "SOURCE.BOOK.SRD"
             }
-        },
-        "needsMigrationVersion": "4.0.1",
-        "compatibleMigrationVersion": "0.8",
-        "hotReload": false
+        }
+        
     },
     "url": "https://github.com/WoodyAlanXien/dust-system",
     "manifest": "https://github.com/WoodyAlanXien/dust-system/releases/download/latest/system.json",
